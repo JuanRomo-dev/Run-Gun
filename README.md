@@ -26,7 +26,7 @@ Run and gun / Shoot em up
 - Niveles con boss al final
 - Coleccionables ocultos 
 - En la facultad. "cada nivel es un sueño, al final de cada nivel se obtiene una mejora en forma de arma o poder
-- Al final de cada nivel puede haver una tienda 
+- Al final de cada nivel puede haber una tienda 
 - Roguelike?
 - Los implantes son armas
 - Profe ayuda al principio, luego plotwist acabo siendo un boss enemigo
@@ -40,6 +40,9 @@ Run and gun / Shoot em up
 # Mecánicas
 - Rodar para esquivar
 - Superataque limitado en area
+- Superpoder de curarse
+- Superpoder de bloqueo de daño
+- Superpoder de Stunear a los enemigos 
 - Bombas
 - Armas que se obtienen como bonus (a lo contra)
 
