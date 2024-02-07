@@ -1,3 +1,4 @@
+![imagen logo](/images/logo.png)
 
 # Sinopsis
 La IA domina el mundo en un contexto apocalíptico tras una guerra nuclear. Pocos seres humanos sobrevivieron y entre ellos estan 4 personas que forman una resistencia en la facultad de informática. 
