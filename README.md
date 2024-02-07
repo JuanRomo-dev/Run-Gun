@@ -4,7 +4,7 @@
 El objetivo de The FAL-out dystopia es producir una sensación a través de una acción frenética de arcade, con una jugabilidad que resulte atractiva y sea rejugable.
 # Sinopsis
 La IA domina el mundo en un contexto apocalíptico tras una guerra nuclear entre las grandes potencias. Pocos seres humanos sobrevivieron y entre ellos estan 4 héroes que forman una resistencia en la facultad de informática gracias a sus increíbles conocimientos en FAL y otros relativos a la informatica para salvar al mundo.
-![imagen logo](/images/logo.png)
+![imagen logo](/images/Ih2K0A.gif)
 # Género
 Run and gun / Shoot em up
 # Rango de edad
