@@ -9,6 +9,29 @@ La IA domina el mundo en un contexto apocalíptico tras una guerra nuclear entre
 # <img src="/images/FluentTetrisApp20Filled.png" width="75" height="75"/> Mecánicas
 <p>El jugador podrá realizar diversas acciones, entre las que se encuentran la posibilidad de disparar en las 8 direcciones, desbloquear armas al final de cada nivel para poder comprarlas en una tienda antes y durante una misión, lanzar granadas, saltar, deslizarse (dash) con lo que puedes esquivar balas, bajar de una plataforma, vehículos, una variedad de enemigos, un boss al final de cada nivel, y además cada personaje tiene una habilidad final que al cargarla eliminando enemigos y obteniendo bonus, minijuegos tipo bonus. </p>
 
+<h3>Controles Teclado</h3> 
+<p>El movimiento es A para ir a izquierda y con la D para ir con la derecha </p>
+<p>Con W apuntas a arriba y con S apuntas a abajo</p>
+<p>Combinadno shift + S te bajas de una plataforma</p>
+<p>Combinando W + D apuntas en diagonal, lo mismo pasaria para apuntar en otras diagonales </p>
+<p>Disparo con el click </p>
+<p>Se salta con espacio </p>
+<p>Dash con shift</p>
+<p>Agacharse con ctrl</p>
+<p>Granadas con la C</p>
+<p>Supepoder con V</p>
+
+<h3>Controles Joystick (PlayStation)</h3>
+<p>Se irá a izquierda o derecha dependiendo del joystick </p>
+<p>Se apunta siguiendo la dirección del joystick, en 8 direcciones</p>
+<p>L2+joystick hacia abajo te bajas de las plataformas</p>
+<p>Disparo con el R2 </p>
+<p>Se salta con la X </p>
+<p>Dash con L2</p>
+<p>Agacharse con Círculo</p>
+<p>Granadas con la R1</p>
+<p>Supepoder con Triángulo</p>
+
 # <img src="/images/RiGamepadLine.png" width="75" height="75"/> Género
 Run and gun / Shoot em up
 # <img src="/images/SolarTargetBold.png" width="75" height="75"/> Objetivo
@@ -29,22 +52,41 @@ Cualquier persona entusiaste de los arcade, sobre todo más clásicos, desde una
 El juego tendrá una interfaz sencilla, con información relevante como las vidas del jugador, la barra que indica cuanto queda para cargar la habilidad del personaje, los puntos, la arma que se tiene en ese momento junto con la munición restante.
 El "feeling", es decir como se verá el juego, será usando colores vivos (neones, rayos láser, nuclear) junto a escenarios apagados y más sobrios propios de un apocalipsis.
 
+# <img src="/images/grenade.png" width="50" height="60"/> Heróes 
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Velocidad</th>
+    <th>Vida</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <th><img src="/images/spider.gif" width="60" height="60"/> Mike</th>
+    <th>2 bloques/seg</th>
+    <th>5 vidas, sin porcentajes</th>
+    <th>Un héroe</th>
+  </tr>
+</table>
+
 # <img src="/images/LsGame.png" width="75" height="75"/> Enemigos
 <table>
   <tr>
     <th>Enemy</th>
     <th>Life</th>
+    <th>Velocidad</th>
     <th>Description</th>
   </tr>
   <tr>
     <th><img src="/images/spider.gif" width="60" height="60"/> SpiderDron</th>
     <th>10</th>
-    <th>Un enemigo débil pero molesto</th>
+    <th>1 bloque/seg</th>
+    <th>Un enemigo débil pero molesto. Se sube a el techo </th>
   </tr>
   <tr>
     <th><img src="/images/IG.png" width="60" height="60"/> T-1000</th>
     <th>50</th>
-    <th>Un enemigo básico no muy difícil de vencer</th>
+    <th>1.5 bloque/seg</th>
+    <th>Un enemigo básico no muy difícil de vencer. Apunta y dispara al héro un láser que va a 1.5 bloque/seg¿?</th>
   </tr>
 </table>
 
