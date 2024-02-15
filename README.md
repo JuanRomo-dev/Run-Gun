@@ -7,7 +7,6 @@ La IA domina el mundo en un contexto apocalíptico tras una guerra nuclear entre
 <br>
 
 # <img src="/images/FluentTetrisApp20Filled.png" width="75" height="75"/> Mecánicas
-<p>El jugador podrá realizar diversas acciones, entre las que se encuentran la posibilidad de disparar en las 8 direcciones, desbloquear armas al final de cada nivel para poder comprarlas en una tienda antes y durante una misión, lanzar granadas, saltar, deslizarse (dash) con lo que puedes esquivar balas, bajar de una plataforma, vehículos, una variedad de enemigos, un boss al final de cada nivel, y además cada personaje tiene una habilidad final que al cargarla eliminando enemigos y obteniendo bonus, minijuegos tipo bonus. </p>
 
 <h3>Controles Teclado</h3> 
 <p>El movimiento es A para ir a izquierda y con la D para ir con la derecha </p>
@@ -19,7 +18,7 @@ La IA domina el mundo en un contexto apocalíptico tras una guerra nuclear entre
 <p>Dash con shift</p>
 <p>Agacharse con ctrl</p>
 <p>Granadas con la C</p>
-<p>Supepoder con V</p>
+<p>Superpoder con V</p>
 
 <h3>Controles Joystick (PlayStation)</h3>
 <p>Se irá a izquierda o derecha dependiendo del joystick </p>
@@ -31,6 +30,8 @@ La IA domina el mundo en un contexto apocalíptico tras una guerra nuclear entre
 <p>Agacharse con Círculo</p>
 <p>Granadas con la R1</p>
 <p>Supepoder con Triángulo</p>
+
+<p>Se desbloqueará armas al final de cada nivel para poder comprarlas en una tienda antes y durante una misión,y al deslizarse (dash) se esquivaran las balas</p>
 
 # <img src="/images/RiGamepadLine.png" width="75" height="75"/> Género
 Run and gun / Shoot em up
