@@ -61,7 +61,7 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
     <th>Description</th>
   </tr>
   <tr>
-    <th><img src="/images/spider.gif" width="60" height="60"/> Mike</th>
+    <th><img src="/images/mike.png" width="40" height="50"/> Mike</th>
     <th>2 bloques/seg</th>
     <th>5 vidas, sin porcentajes</th>
     <th>Un héroe</th>
