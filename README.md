@@ -31,6 +31,7 @@ La IA domina el mundo en un contexto apocalíptico tras una guerra nuclear entre
 <p>Granadas con la R1</p>
 <p>Supepoder con Triángulo</p>
 
+<h3>Otros</h3>
 <p>Se desbloqueará armas al final de cada nivel para poder comprarlas en una tienda antes y durante una misión,y al deslizarse (dash) se esquivaran las balas</p>
 
 # <img src="/images/RiGamepadLine.png" width="75" height="75"/> Género
