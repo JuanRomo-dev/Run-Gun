@@ -60,25 +60,49 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
     <th>Nombre</th>
     <th>Velocidad</th>
     <th>Vida</th>
-    <th>Description</th>
   </tr>
   <tr>
     <th><img src="/images/mike.png" width="40" height="50"/> Mike</th>
     <th>2 bloques/seg</th>
     <th>5 vidas</th>
-    <th></th>
   </tr>
   <tr>
     <th><img src="/images/kime.png" width="40" height="50"/> Kime</th>
     <th>2 bloques/seg</th>
     <th>5 vidas</th>
-    <th></th>
   </tr>
   <tr>
     <th><img src="/images/kike.png" width="40" height="50"/> Kike</th>
     <th>2 bloques/seg</th>
     <th>5 vidas</th>
-    <th></th>
+  </tr>
+</table>
+
+# <img src="/images/grenade.png" width="50" height="60"/> Suporpedores Héroes 
+<table>
+  <tr>
+    <th>Héore</th>
+    <th>Nombre Superpoder</th>
+    <th>Daño</th>
+    <th>Descripcion</th>
+  </tr>
+  <tr>
+    <th> Mike</th>
+    <th>Rayo láser</th>
+    <th>10</th>
+    <th>Dispara un rayo láser desde el cabeza del jugador que va en horizontal ocupando el 3 veces el tamaño de la cabeza </th>
+  </tr>
+  <tr>
+    <th> Kime</th>
+    <th>Granada P.E.M.</th>
+    <th>0</th>
+    <th>Es un granada que lanza X distancia, que robota 2 veces, luego se eleva al centro de la pantalla y stunea a todos los enemigos con ondas electromágneticas</th>
+  </tr>
+  <tr>
+    <th> Kike</th>
+    <th>Dron</th>
+    <th>0</th>
+    <th>Despliega un dron, luego este se pega al jugador y le da un escudo de 1 vida y al ser golpeada el héroe el dron explota</th>
   </tr>
 </table>
 
