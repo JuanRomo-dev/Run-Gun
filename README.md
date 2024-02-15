@@ -143,7 +143,7 @@ Estos serán los jefes finales de cada nivel:
   </tr>
   <tr>
     <th>3</th>
-    <th>El profesor de DVI(plot twist)</th>
+    <th>Cleongh(plot twist)</th>
   </tr>
 </table>
 
