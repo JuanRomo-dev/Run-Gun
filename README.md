@@ -115,16 +115,22 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
     <th>Description</th>
   </tr>
   <tr>
-    <th><img src="/images/spider.gif" width="60" height="60"/> SpiderDron</th>
+    <th><img src="/images/spider.gif" width="75" height="75"/> SpiderDron</th>
     <th>10</th>
     <th>1 bloque/seg</th>
     <th>Un enemigo débil pero molesto. Se sube a el techo </th>
   </tr>
   <tr>
-    <th><img src="/images/IG.png" width="60" height="60"/> T-1000</th>
+    <th><img src="/images/IG.png" width="75" height="75"/>       T-1000       </th>
     <th>50</th>
     <th>1.5 bloque/seg</th>
     <th>Un enemigo básico no muy difícil de vencer. Apunta y dispara al héro un láser que va a 1.5 bloque/seg¿?</th>
+  </tr> 
+  <tr>
+    <th><img src="/images/PhotonDestructor.png" width="75"/> PhotonDestructor</th>
+    <th>80</th>
+    <th>0.75 bloque/seg</th>
+    <th>Enemigo tipo "tanque", que se mueve a baja velocidad, y posee mayor vida. Lanza una bola de energía (fotón), que al recorrer una cierta distancia explota en área</th>
   </tr>
 </table>
 
