@@ -63,8 +63,20 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
   <tr>
     <th><img src="/images/mike.png" width="40" height="50"/> Mike</th>
     <th>2 bloques/seg</th>
-    <th>5 vidas, sin porcentajes</th>
-    <th>Un héroe</th>
+    <th>5 vidas</th>
+    <th></th>
+  </tr>
+  <tr>
+    <th><img src="/images/kime.png" width="40" height="50"/> Kime</th>
+    <th>2 bloques/seg</th>
+    <th>5 vidas</th>
+    <th></th>
+  </tr>
+  <tr>
+    <th><img src="/images/kike.png" width="40" height="50"/> Kike</th>
+    <th>2 bloques/seg</th>
+    <th>5 vidas</th>
+    <th></th>
   </tr>
 </table>
 
@@ -113,7 +125,6 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
 </table>
 
 # <img src="/images/BasilOther1Outline.png" width="40" height="40"/> Otros Ideas
-- Juego Arcade
 - Boss Final es una mega máquina que tomó conciencia propia y controla todo.
 - Neones   
 - Rayos láseres
@@ -125,7 +136,6 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
 - Animales bionicos con implantes y contaminados por las bombas nucleares
 - Fases bonus que implican minijuegos para optener recompensas
 - Basarse en la jugabilidad de contra
-- Niveles con boss al final
 - Coleccionables ocultos 
 - En la facultad. "cada nivel es un sueño, al final de cada nivel se obtiene una mejora en forma de arma o poder
 - Al final de cada nivel puede haber una tienda 
