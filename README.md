@@ -146,7 +146,7 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
     <th>Movimientos</th>
   </tr>
   <tr>
-    <th><img src="/images/gun.png" width="60" height="30"/> Pistola</th>
+    <th><img src="/images/pistole.png" width="32" height="22"/> <br> Pistola</th>
     <th>2</th>
     <th>1</th>
     <th>Una pistola básica para empezar</th>
