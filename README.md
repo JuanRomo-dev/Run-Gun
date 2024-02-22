@@ -79,7 +79,7 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
 </table>
 
 # <img src="/images/grenade.png" width="50" height="60"/> Suporpedores Héroes 
-<p>Matando 10 enemigos se llena la barra del superpoder. Al 100% se puede utilizar el superpoder. Cuando se utiliza la barra vuelve al 0%. En el caso de Kike, hasta que no se destruya su escudo no se cargará la barra de superpoder.</p>
+<p>Matando 10 enemigos se llena la barra del superpoder. Al 100% se puede utilizar el superpoder. Cuando se utiliza la barra vuelve al 0%.</p>
 
 <table>
   <tr>
@@ -104,7 +104,7 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
     <th> Kike</th>
     <th>Dron</th>
     <th>0</th>
-    <th>Despliega un dron, luego este se pega al jugador y le da un escudo de 1 vida y al ser golpeada el héroe el dron explota</th>
+    <th>Despliega un dron, luego este se pega al jugador y le da un escudo de 1 vida y al ser golpeada el héroe el dron explota (hasta que no se destruya no se volverá a cargar la barra de superpoder)</th>
   </tr>
 </table>
 
