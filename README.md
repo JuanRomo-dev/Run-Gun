@@ -143,6 +143,7 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
     <th>Damage</th>
     <th>Firing rate (bullets/sec)</th>
     <th>Description</th>
+    <th>Movimientos</th>
   </tr>
   <tr>
     <th><img src="/images/gun.png" width="60" height="30"/> Pistola</th>
@@ -166,12 +167,13 @@ Estos serán los jefes finales de cada nivel:
   <tr>
     <th>Nivel</th>
     <th>Nombre</th>
-    <th>Description</th>
+    <th>Description (provisional)</th>
   </tr>
   <tr>
     <th>1</th>
     <th>Los cocineros (Jefe doble)</th>
-    <th></th>
+    <th>Uno estará armado con una espatula y el otro con un rodillo de cocina, ambos llevarán gorro de chef</th>
+    <th>Golpes con su arma principal a melé cuando estas cerca y cuando te alejas te lanza utensilios de cocina (platos, cuchillos, comida, ...) </th>
   </tr>
   <tr>
     <th>2</th>
