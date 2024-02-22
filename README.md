@@ -160,7 +160,7 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
 </table>
 
 # <img src="/images/jefe-final.png" width="75" height="75"/> Niveles y Jefes finales
-Vamos a tener 3 niveles. El primero sera dificultad fácil, el segundo medio y el último difícil.
+Vamos a tener 3 niveles. El primero sera dificultad fácil, el segundo medio y el último difícil. Tendrán barra de vida en la parte superior de la pantalla.
 
 Estos serán los jefes finales de cada nivel:
 <table>
@@ -173,8 +173,8 @@ Estos serán los jefes finales de cada nivel:
   <tr>
     <th>1</th>
     <th>Los cocineros (Jefe doble)</th>
-    <th>Uno estará armado con una espatula y el otro con un rodillo de cocina, ambos llevarán gorro de chef</th>
-    <th>Golpes con su arma principal a melé cuando estas cerca y cuando te alejas te lanza utensilios de cocina (platos, cuchillos, comida, ...) </th>
+    <th>Uno estará armado con una espatula y el otro con un rodillo de cocina, ambos llevarán gorro de chef. La barra de vida estará partida a la mitad y serán independientes.</th>
+    <th>Golpes con su arma principal a melé cuando estas cerca y cuando te alejas te lanza utensilios de cocina (platos, cuchillos, comida, ...). A veces harán un ataque conjunto lanzando objetos hacia arriba obligando al juador a esquivar cuando caigan. Si matas a uno de los 2 el otro se enfadará y cubrira el suelo con salsa picante teniendo que combatir sobre las mesas. </th>
   </tr>
   <tr>
     <th>2</th>
