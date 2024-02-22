@@ -120,7 +120,7 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
     <th><img src="/images/spider.gif" width="90" height="75"/> SpiderDron</th>
     <th>10</th>
     <th>1 bloque/seg</th>
-    <th>Un enemigo débil pero molesto. Se sube a el techo </th>
+    <th>Un enemigo débil pero molesto. Se sube al techo </th>
   </tr>
   <tr>
     <th><img src="/images/IG.png" width="120" height="90"/>      <br>   T-1000       </th>
