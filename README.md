@@ -188,3 +188,4 @@ Estos serán los jefes finales de cada nivel:
 </table>
 
 Detalles de cada nivel:
+El nivel 1 empezará en el bosque porque nuestro personaje se ha perdido, después de avanzar un poco entrará por un agujero gigante en la pared de la facultad y continuará por lo pasillos hasta llegar a la cocina, donde aparecerá la primera pelea de jefe.
