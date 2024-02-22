@@ -168,6 +168,7 @@ Estos serán los jefes finales de cada nivel:
     <th>Nivel</th>
     <th>Nombre</th>
     <th>Description (provisional)</th>
+    <th>Ataques (provisional)</th>
   </tr>
   <tr>
     <th>1</th>
