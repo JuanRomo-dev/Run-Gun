@@ -166,10 +166,12 @@ Estos serán los jefes finales de cada nivel:
   <tr>
     <th>Nivel</th>
     <th>Nombre</th>
+    <th>Description</th>
   </tr>
   <tr>
     <th>1</th>
     <th>Los cocineros (Jefe doble)</th>
+    <th></th>
   </tr>
   <tr>
     <th>2</th>
@@ -179,6 +181,7 @@ Estos serán los jefes finales de cada nivel:
     <th>3</th>
     <th>Cleongh(plot twist)</th>
   </tr>
+  
 </table>
 
 Detalles de cada nivel:
