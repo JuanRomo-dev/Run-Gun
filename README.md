@@ -189,4 +189,4 @@ Estos serán los jefes finales de cada nivel:
 
 Detalles de cada nivel:
 
-El nivel 1 empezará en el bosque porque nuestro personaje se ha perdido, después de avanzar un poco entrará por un agujero gigante en la pared de la facultad y continuará por lo pasillos hasta llegar a la cocina, donde aparecerá la primera pelea de jefe.
+El nivel 1 empezará en el bosque porque nuestro personaje se ha perdido (ahi se encontrará con Cleongh y será el tutorial), después de avanzar un poco entrará por un agujero gigante en la pared de la facultad y continuará por lo pasillos hasta llegar a la cocina, donde aparecerá la primera pelea de jefe.
