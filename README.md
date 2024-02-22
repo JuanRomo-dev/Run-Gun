@@ -79,6 +79,8 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
 </table>
 
 # <img src="/images/grenade.png" width="50" height="60"/> Suporpedores Héroes 
+<p>Matando 10 enemigos se llena la barra del superpoder. Al 100% se puede utilizar el superpoder. Cuando se utiliza la barra vuelve al 0%.</p>
+
 <table>
   <tr>
     <th>Héore</th>
@@ -102,7 +104,7 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
     <th> Kike</th>
     <th>Dron</th>
     <th>0</th>
-    <th>Despliega un dron, luego este se pega al jugador y le da un escudo de 1 vida y al ser golpeada el héroe el dron explota</th>
+    <th>Despliega un dron, luego este se pega al jugador y le da un escudo de 1 vida y al ser golpeada el héroe el dron explota (hasta que no se destruya no se volverá a cargar la barra de superpoder)</th>
   </tr>
 </table>
 
@@ -118,7 +120,7 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
     <th><img src="/images/spider.gif" width="90" height="75"/> SpiderDron</th>
     <th>10</th>
     <th>1 bloque/seg</th>
-    <th>Un enemigo débil pero molesto. Se sube a el techo </th>
+    <th>Un enemigo débil pero molesto. Se sube al techo </th>
   </tr>
   <tr>
     <th><img src="/images/IG.png" width="120" height="90"/>      <br>   T-1000       </th>
@@ -141,9 +143,10 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
     <th>Damage</th>
     <th>Firing rate (bullets/sec)</th>
     <th>Description</th>
+    <th>Movimientos</th>
   </tr>
   <tr>
-    <th><img src="/images/gun.png" width="60" height="30"/> Pistola</th>
+    <th><img src="/images/pistole.png" width="32" height="22"/> <br> Pistola</th>
     <th>2</th>
     <th>1</th>
     <th>Una pistola básica para empezar</th>
@@ -157,17 +160,21 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
 </table>
 
 # <img src="/images/jefe-final.png" width="75" height="75"/> Niveles y Jefes finales
-Vamos a tener 3 niveles. El primero sera dificultad fácil, el segundo medio y el último difícil.
+Vamos a tener 3 niveles. El primero sera dificultad fácil, el segundo medio y el último difícil. Tendrán barra de vida en la parte superior de la pantalla.
 
 Estos serán los jefes finales de cada nivel:
 <table>
   <tr>
     <th>Nivel</th>
     <th>Nombre</th>
+    <th>Description (provisional)</th>
+    <th>Ataques (provisional)</th>
   </tr>
   <tr>
     <th>1</th>
     <th>Los cocineros (Jefe doble)</th>
+    <th>Uno estará armado con una espatula y el otro con un rodillo de cocina, ambos llevarán gorro de chef. La barra de vida estará partida a la mitad y serán independientes.</th>
+    <th>Golpes con su arma principal a melé cuando estas cerca y cuando te alejas te lanza utensilios de cocina (platos, cuchillos, comida, ...). A veces harán un ataque conjunto lanzando objetos hacia arriba obligando al juador a esquivar cuando caigan. Si matas a uno de los 2 el otro se enfadará y cubrira el suelo con salsa picante teniendo que combatir sobre las mesas. </th>
   </tr>
   <tr>
     <th>2</th>
@@ -177,6 +184,9 @@ Estos serán los jefes finales de cada nivel:
     <th>3</th>
     <th>Cleongh(plot twist)</th>
   </tr>
+  
 </table>
 
 Detalles de cada nivel:
+
+El nivel 1 empezará en el bosque porque nuestro personaje se ha perdido (ahi se encontrará con Cleongh y será el tutorial), después de avanzar un poco entrará por un agujero gigante en la pared de la facultad y continuará por lo pasillos hasta llegar a la cocina, donde aparecerá la primera pelea de jefe.
