@@ -79,6 +79,8 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
 </table>
 
 # <img src="/images/grenade.png" width="50" height="60"/> Suporpedores Héroes 
+<p>Matando 10 enemigos se llena la barra del superpoder. Al 100% se puede utilizar el superpoder. Cuando se utiliza la barra vuelve al 0%</p>
+
 <table>
   <tr>
     <th>Héore</th>
