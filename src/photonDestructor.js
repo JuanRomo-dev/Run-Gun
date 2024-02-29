@@ -1,9 +1,7 @@
 import Phaser from 'phaser'
 
 
-
-
-export default class photonDestructor extends Phaser.GameObjects.Sprite {
+export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
 
     /**
      * Constructor del enemigo

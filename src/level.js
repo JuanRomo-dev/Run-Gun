@@ -1,6 +1,7 @@
 import Platform from './platform.js';
 import Player from './player.js';
 import Phaser from 'phaser'
+import PhotonDestructor from "./photonDestructor.js";
 
 
 /**
@@ -26,7 +27,7 @@ export default class Level extends Phaser.Scene {
         this.stars = 10;
         this.bases = this.add.group();
         this.player = new Player(this, 200, 300);
-
+        new PhotonDestructor(this, this.player, 400, 100);
         new Platform(this, this.player, this.bases, 150, 450);
         new Platform(this, this.player, this.bases, 1050, 450);
         new Platform(this, this.player, this.bases, 600, 300);
