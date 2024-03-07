@@ -1,8 +1,6 @@
 import Phaser from 'phaser'
 
-
 export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
-
     /**
      * Constructor del enemigo
      * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
