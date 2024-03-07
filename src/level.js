@@ -3,6 +3,8 @@ import Phaser from "phaser";
 import Platform from "./platform.js";
 import Player from "./player.js";
 import T1000 from "./t-1000.js";
+import PhotonDestructor from "./photonDestructor.js";
+
 
 /**
  * Escena principal del juego. La escena se compone de una serie de plataformas
@@ -28,6 +30,8 @@ export default class Level extends Phaser.Scene {
     this.bases = this.add.group();
     this.player = new Player(this, 200, 300);
     new T1000(this, this.player, 400, 100);
+    new PhotonDestructor(this, this.player, 300, 100);
+
     new Platform(this, this.player, this.bases, 150, 450);
     new Platform(this, this.player, this.bases, 1050, 450);
     new Platform(this, this.player, this.bases, 600, 300);
