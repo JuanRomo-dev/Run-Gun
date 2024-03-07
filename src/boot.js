@@ -7,6 +7,7 @@ import star from "../assets/sprites/star.png";
 import t1000 from "../assets/sprites/t-1000.png";
 import photonDestructor from "../assets/sprites/photonDestructor.png";
 
+
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
  * Esta escena se puede mejorar añadiendo una imagen del juego y una
@@ -34,6 +35,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image("player", mike);
     this.load.image("t-1000", t1000);
     this.load.image("photonDestructor", photonDestructor);
+
   }
 
   /**
