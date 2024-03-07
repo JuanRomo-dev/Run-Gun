@@ -1,10 +1,11 @@
 import Phaser from "phaser";
 
 import base from "../assets/sprites/base.png";
-import mike from "../assets/tiles/mike_running.png";
+import mike from "../assets/sprites/mike.png";
 import platform from "../assets/sprites/platform.png";
 import star from "../assets/sprites/star.png";
 import t1000 from "../assets/sprites/t-1000.png";
+import mike_running from "../assets/sprites/mike_running.png";
 
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
@@ -27,10 +28,13 @@ export default class Boot extends Phaser.Scene {
   preload() {
     // Con setPath podemos establecer el prefijo que se añadirá a todos los load que aparecen a continuación
     this.load.setPath("assets/sprites/");
+
+    // Cargar spritesheet
+    this.load.spritesheet('mike', mike_running, { frameWidth: 25, frameHeight: 34 }); // Spritesheet de Mike corriendo
+
     this.load.image("platform", platform);
     this.load.image("base", base);
     this.load.image("star", star);
-    this.load.spritesheet("player", mike, {frameWidth: 32, frameHeight: 40});
     this.load.image("t-1000", t1000);
   }
 
@@ -40,5 +44,6 @@ export default class Boot extends Phaser.Scene {
    */
   create() {
     this.scene.start("level");
+    
   }
 }

@@ -26,7 +26,22 @@ export default class Level extends Phaser.Scene {
   create() {
     this.stars = 10;
     this.bases = this.add.group();
-    this.player = new Player(this, 200, 300);
+
+    // Establecer ciclos de animación
+
+    this.anims.create({           // Animación de Mike corriendo
+      key: 'mike_run',
+      frames: this.anims.generateFrameNumbers('mike', { start: 0, end: 5 }),
+      frameRate: 9,
+      repeat: -1    // Para que se repita el ciclo;
+    })
+
+    
+
+
+    this.player = new Player(this, 300, 300);
+
+    this.player.play('mike_run');
     new T1000(this, this.player, 400, 100);
     new Platform(this, this.player, this.bases, 150, 450);
     new Platform(this, this.player, this.bases, 1050, 450);
