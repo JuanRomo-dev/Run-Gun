@@ -7,12 +7,13 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
      * @param {number} x Coordenada X
      * @param {number} y Coordenada Y
      */
-    constructor(scene, x, y) {
+    constructor(scene, player, x, y) {
         super(scene, x, y, "photonDestructor");
-        this.setScale(3,3);
+        this.score = 0;
+        this.setScale(0.4,0.5);
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-        // Queremos que el jugador no se salga de los límites del mundo
+        this.scene.physics.add.collider(this, player);
         this.body.setCollideWorldBounds();
     }
 }
