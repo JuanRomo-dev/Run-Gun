@@ -8,7 +8,7 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
      * @param {number} y Coordenada Y
      */
     constructor(scene, x, y) {
-        super(scene, x, y, 'photonDestructor');
+        super(scene, x, y, "photonDestructor");
         this.setScale(3,3);
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
