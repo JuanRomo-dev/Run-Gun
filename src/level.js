@@ -36,12 +36,9 @@ export default class Level extends Phaser.Scene {
       repeat: -1    // Para que se repita el ciclo;
     })
 
-    
-
 
     this.player = new Player(this, 300, 300);
 
-    this.player.play('mike_run');
     new T1000(this, this.player, 400, 100);
     new Platform(this, this.player, this.bases, 150, 450);
     new Platform(this, this.player, this.bases, 1050, 450);
