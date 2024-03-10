@@ -19,6 +19,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.scene.physics.add.existing(this);
     // Queremos que el jugador no se salga de los límites del mundo
     this.body.setCollideWorldBounds();
+    this.body.setSize(33, 35);
     this.speed = 300;
     this.jumpSpeed = -400;
     // Esta label es la UI en la que pondremos la puntuación del jugador
@@ -67,7 +68,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.anims.play('mike_run', true).setFlipX(false);
     } else {
       this.body.setVelocityX(0);
-      this.anims.stop('mike_run');
+      this.anims.play('mike_idle', true);
     }
   }
 }

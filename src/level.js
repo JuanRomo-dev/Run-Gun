@@ -29,13 +29,27 @@ export default class Level extends Phaser.Scene {
 
     // Establecer ciclos de animación
 
+    this.anims.create({
+      key: 'mike_idle',
+      frames: this.anims.generateFrameNumbers('mikeIdle', { start: 0, end: 4 }),
+      frameRate: 6,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'mike_idle2',
+      frames: this.anims.generateFrameNumbers('mikeIdle2', { start: 0, end: 5 }),
+      frameRate: 6,
+      repeat: -1
+    })
+
     this.anims.create({           // Animación de Mike corriendo
       key: 'mike_run',
       frames: this.anims.generateFrameNumbers('mike', { start: 0, end: 5 }),
       frameRate: 9,
       repeat: -1    // Para que se repita el ciclo;
     })
-
+    
 
     this.player = new Player(this, 300, 300);
 
