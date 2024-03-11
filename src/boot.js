@@ -8,6 +8,7 @@ import t1000 from "../assets/sprites/t-1000.png";
 import mike_running from "../assets/sprites/mike_running.png";
 import mike_idle from "../assets/sprites/mike_idle.png";
 import mike_idle2 from "../assets/sprites/mike_idle2.png";
+import mike_jump from "../assets/sprites/mike_jump.png"
 
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
@@ -32,7 +33,9 @@ export default class Boot extends Phaser.Scene {
     this.load.setPath("assets/sprites/");
 
     // Cargar spritesheet
-    this.load.spritesheet('mikeIdle', mike_idle, { frameWidth: 33, frameHeight: 35 });
+    this.load.spritesheet('mikeIdle', mike_idle, { frameWidth: 33, frameHeight: 35 });    // Spritesheet de Mike quieto
+
+    this.load.spritesheet('mikeJump', mike_jump, { frameWidth: 33, frameHeight: 35 });    // Spritesheet de Mike saltando
 
     this.load.spritesheet('mike', mike_running, { frameWidth: 33, frameHeight: 35 }); // Spritesheet de Mike corriendo
 
