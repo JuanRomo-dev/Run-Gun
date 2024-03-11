@@ -21,7 +21,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.body.setCollideWorldBounds();
     this.body.setSize(33, 36);
     this.speed = 300;
-    this.jumpSpeed = -390;
+    this.jumpSpeed = -400;
     this.isInAir = false;
     // Esta label es la UI en la que pondremos la puntuación del jugador
     this.label = this.scene.add.text(10, 10, "");
@@ -58,7 +58,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
    */
   preUpdate(t, dt) {
     super.preUpdate(t, dt);
+    if (this.body.velocity.y > 0) {
+      this.isInAir = true;
+      this.anims.play('mike_fall', true);
+    }
     if (this.cursors.spacebar.isDown && !this.isInAir) {
+      this.isInAir = true;
       this.body.setVelocityY(this.jumpSpeed);
       this.anims.play('mike_jump', true);
     }
@@ -76,6 +81,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
     if (this.body.onFloor()) {
       this.isInAir = false;
-  }
+    }
   }
 }
