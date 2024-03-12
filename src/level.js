@@ -62,7 +62,13 @@ export default class Level extends Phaser.Scene {
       frameRate: 1,
       repeat: -1
     })
-    
+
+    this.anims.create({
+      key: 'mike_crouching',
+      frames: this.anims.generateFrameNumbers('mikeCrouching', { start: 0, end: 2 }),
+      frameRate: 3,
+      repeat: -1
+    })
 
     this.player = new Player(this, 300, 300);
 

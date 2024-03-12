@@ -21,6 +21,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.body.setCollideWorldBounds();
     this.body.setSize(33, 36);
     this.speed = 300;
+    this.fallSpeed = 200;
     this.jumpSpeed = -400;
     this.isInAir = false;
     // Esta label es la UI en la que pondremos la puntuación del jugador
@@ -58,9 +59,46 @@ export default class Player extends Phaser.GameObjects.Sprite {
    */
   preUpdate(t, dt) {
     super.preUpdate(t, dt);
-    if (this.body.velocity.y > 0) {
+
+
+    if (this.body.onFloor()) {   // Si está en el suelo
+      if (this.body.velocity.x === 0) {     // Y está quieto
+        this.anims.play('mike_idle', true);
+      }
+      if (this.cursors.down.isDown) {    // Y está agachado
+        this.anims.play('mike_crouching');
+      }
+      if (this.cursors.right.isDown) {    // Y se mueve a la derecha
+        this.body.setVelocityX(this.speed);
+        this.anims.play('mike_run', true);
+      }
+      else if (this.cursors.left.isDown) {    // Y se mueve a la izquierda
+        this.body.setVelocityX(-this.speed);
+        this.anims.play('mike_run', true).setFlipX(true);
+      }
+      else if (this.cursors.spacebar.isDown) {    // Y está saltando
+        this.body.setVelocityY(this.jumpSpeed);
+        this.anims.play('mike_jump', true);
+      }
+    } else {    // Si está en el aire
+      
+    }
+
+
+    if (!this.body.onFloor()) {
       this.isInAir = true;
       this.anims.play('mike_fall', true);
+      if (this.cursors.right.isDown) {
+        this.body.setVelocityX(this.fallSpeed);
+      }
+      else if (this.cursors.left.isDown) {
+        this.body.setVelocityX(-this.fallSpeed);
+      }
+    }
+    else {    // Si está en el suelo
+      if(this.cursors.down.isDown) {
+        this.anims.play('mike_crouching', true);
+      } 
     }
     if (this.cursors.spacebar.isDown && !this.isInAir) {
       this.isInAir = true;
