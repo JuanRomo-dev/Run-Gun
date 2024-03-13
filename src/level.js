@@ -75,7 +75,7 @@ export default class Level extends Phaser.Scene {
     new T1000(this, this.player, 400, 100);
     new Platform(this, this.player, this.bases, 150, 450);
     new Platform(this, this.player, this.bases, 1050, 450);
-    new Platform(this, this.player, this.bases, 600, 300);
+;
     new Platform(this, this.player, this.bases, 150, 200);
     new Platform(this, this.player, this.bases, 1050, 200);
     this.spawn();

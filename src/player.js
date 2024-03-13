@@ -20,6 +20,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     // Queremos que el jugador no se salga de los límites del mundo
     this.body.setCollideWorldBounds();
     this.body.setSize(33, 36);
+    this.idleTime = null;
     this.speed = 300;
     this.fallSpeed = 200;
     this.jumpSpeed = -400;
@@ -61,7 +62,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     super.preUpdate(t, dt);
 
 
-    if (this.body.onFloor()) {   // Si está en el suelo
+    if (this.body.onFloor() ) {   // Si está en el suelo
       if (this.body.velocity.x === 0) {     // Y está quieto
         this.anims.play('mike_idle', true);
       }
@@ -69,24 +70,47 @@ export default class Player extends Phaser.GameObjects.Sprite {
         this.anims.play('mike_crouching');
       }
       if (this.cursors.right.isDown) {    // Y se mueve a la derecha
-        this.body.setVelocityX(this.speed);
-        this.anims.play('mike_run', true);
+        if (this.cursors.spacebar.isDown) {    // Y está saltando
+          this.anims.stop('mike_run', true);
+          this.body.setVelocityY(this.jumpSpeed);
+          this.anims.play('mike_jump', true);
+        }
+        else {
+          this.body.setVelocityX(this.speed);
+          this.anims.play('mike_run', true).setFlipX(false);
+        }
       }
       else if (this.cursors.left.isDown) {    // Y se mueve a la izquierda
-        this.body.setVelocityX(-this.speed);
-        this.anims.play('mike_run', true).setFlipX(true);
+        if (this.cursors.spacebar.isDown) {   // Y está saltando
+          this.anims.stop('mike_run', true);
+          this.body.setVelocityY(this.jumpSpeed);
+          this.anims.play('mike_jump', true);
+          
+        }
+        else {    // No está saltando
+          this.body.setVelocityX(-this.speed);
+          this.anims.play('mike_run', true).setFlipX(true); 
+        }
       }
-      else if (this.cursors.spacebar.isDown) {    // Y está saltando
+      else if (this.cursors.spacebar.isDown) {    // Está saltando
         this.body.setVelocityY(this.jumpSpeed);
         this.anims.play('mike_jump', true);
+
       }
-    } else {    // Si está en el aire
-      
+      else {
+        this.body.setVelocityX(0);
+      }
     }
-
-
-    if (!this.body.onFloor()) {
-      this.isInAir = true;
+    else if (this.body.velocity.y < 0) {    // Si está saltando (es decir, está subiendo verticalmente)
+      if (this.cursors.right.isDown) {
+        this.body.setVelocityX(this.speed);
+      }
+      else if (this.cursors.left.isDown) {
+        this.body.setVelocityX(-this.speed);
+      
+      }
+    }
+    else {    // Si ha tarminado el salto (es decir, está cayendo verticalmente)
       this.anims.play('mike_fall', true);
       if (this.cursors.right.isDown) {
         this.body.setVelocityX(this.fallSpeed);
@@ -95,30 +119,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
         this.body.setVelocityX(-this.fallSpeed);
       }
     }
-    else {    // Si está en el suelo
-      if(this.cursors.down.isDown) {
-        this.anims.play('mike_crouching', true);
-      } 
-    }
-    if (this.cursors.spacebar.isDown && !this.isInAir) {
-      this.isInAir = true;
-      this.body.setVelocityY(this.jumpSpeed);
-      this.anims.play('mike_jump', true);
-    }
-    if (this.cursors.left.isDown && this.body.onFloor()) {
-      this.body.setVelocityX(-this.speed);
-      this.anims.play('mike_run', true).setFlipX(true);
-    } else if (this.cursors.right.isDown && this.body.onFloor()) {
-      this.body.setVelocityX(this.speed);
-      this.anims.play('mike_run', true).setFlipX(false);
-    } else {
-      if (this.body.onFloor()) {
-        this.body.setVelocityX(0);
-        this.anims.play('mike_idle', true);
-      }
-    }
-    if (this.body.onFloor()) {
-      this.isInAir = false;
-    }
+
   }
 }
