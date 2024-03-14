@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 
 import base from "../assets/sprites/base.png";
+import bullet from "../assets/sprites/bullet.png";
 import mike from "../assets/sprites/mike.png";
 import platform from "../assets/sprites/platform.png";
 import star from "../assets/sprites/star.png";
@@ -32,6 +33,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image("star", star);
     this.load.image("player", mike);
     this.load.image("t-1000", t1000);
+    this.load.image("bullet", bullet);
   }
 
   /**
