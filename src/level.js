@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 
 import Bullets from "./bullet.js";
+import PhotonDestructor from "./photonDestructor.js";
 import Platform from "./platform.js";
 import Player from "./player.js";
 import T1000 from "./t-1000.js";
@@ -29,6 +30,9 @@ export default class Level extends Phaser.Scene {
     this.stars = 10;
     this.bases = this.add.group();
     this.player = new Player(this, 200, 300);
+    new T1000(this, this.player, 400, 100);
+    new PhotonDestructor(this, this.player, 300, 100);
+
     this.bullets = new Bullets(this);
     this.enemy = new T1000(this, this.player, 400, 100);
     new Platform(this, this.player, this.bases, 150, 450);
