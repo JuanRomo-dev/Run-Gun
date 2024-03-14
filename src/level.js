@@ -1,10 +1,10 @@
 import Phaser from "phaser";
 
+import Bullets from "./bullet.js";
+import PhotonDestructor from "./photonDestructor.js";
 import Platform from "./platform.js";
 import Player from "./player.js";
 import T1000 from "./t-1000.js";
-import PhotonDestructor from "./photonDestructor.js";
-
 
 /**
  * Escena principal del juego. La escena se compone de una serie de plataformas
@@ -20,6 +20,7 @@ export default class Level extends Phaser.Scene {
    */
   constructor() {
     super({ key: "level" });
+    this.bullets;
   }
 
   /**
@@ -32,11 +33,29 @@ export default class Level extends Phaser.Scene {
     new T1000(this, this.player, 400, 100);
     new PhotonDestructor(this, this.player, 300, 100);
 
+    this.bullets = new Bullets(this);
+    this.enemy = new T1000(this, this.player, 400, 100);
     new Platform(this, this.player, this.bases, 150, 450);
     new Platform(this, this.player, this.bases, 1050, 450);
     new Platform(this, this.player, this.bases, 600, 300);
     new Platform(this, this.player, this.bases, 150, 200);
     new Platform(this, this.player, this.bases, 1050, 200);
+
+    this.spaceDown = this.input.keyboard.addKey("SPACE");
+    this.spaceDown.on(
+      "down",
+      function () {
+        this.bullets.fireBullet(this.player.x + 18, this.player.y - 10);
+      },
+      this
+    );
+    this.physics.add.overlap(
+      this.bullets,
+      this.enemy,
+      this.hitEnemy,
+      null,
+      this
+    );
     this.spawn();
   }
 
@@ -62,5 +81,13 @@ export default class Level extends Phaser.Scene {
       let s = this.bases.children.entries;
       this.spawn(s.filter((o) => o !== base));
     }
+  }
+
+  hitEnemy(bullets, enemy) {
+    // remove stars once collected
+    console.log("stars shot");
+    enemy.destroy();
+    bullets.destroy();
+    return false;
   }
 }
