@@ -1,0 +1,47 @@
+{
+    "frames": [
+        {
+            "filename": "atlas_crouch-1",
+            "frame": {
+                "w": 19,
+                "h": 34,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "atlas_crouch-11",
+            "frame": {
+                "w": 18,
+                "h": 31,
+                "x": 19,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "atlas_crouch-12",
+            "frame": {
+                "w": 17,
+                "h": 27,
+                "x": 0,
+                "y": 34
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}

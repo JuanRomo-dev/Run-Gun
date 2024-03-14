@@ -64,8 +64,8 @@ export default class Level extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'mike_crouching',
-      frames: this.anims.generateFrameNumbers('mikeCrouching', { start: 0, end: 2 }),
+      key: 'mikeCrouching',
+      frames: this.anims.generateFrameNames('mikeCrouching', { prefix: 'atlas_crouch-10' }, {prefix: 'atlas_crouch-11'}, {prefix: 'atlas_crouch-12'} ),
       frameRate: 3,
       repeat: -1
     })

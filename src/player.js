@@ -22,7 +22,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.body.setSize(33, 36);
     this.idleTime = null;
     this.speed = 300;
-    this.fallSpeed = 200;
+    this.fallSpeed = 300;
     this.jumpSpeed = -400;
     this.isInAir = false;
     // Esta label es la UI en la que pondremos la puntuación del jugador
@@ -67,7 +67,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
         this.anims.play('mike_idle', true);
       }
       if (this.cursors.down.isDown) {    // Y está agachado
-        this.anims.play('mike_crouching');
+        this.anims.play('mikeCrouching');
       }
       if (this.cursors.right.isDown) {    // Y se mueve a la derecha
         if (this.cursors.spacebar.isDown) {    // Y está saltando

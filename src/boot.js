@@ -10,7 +10,9 @@ import mike_idle from "../assets/sprites/mike_idle.png";
 import mike_idle2 from "../assets/sprites/mike_idle2.png";
 import mike_jump from "../assets/sprites/mike_jump.png";
 import mike_fall from "../assets/sprites/mike_fall.png";
-import mike_crouching from "../assets/sprites/mike_crouching.png";
+
+import mike_crouch from "../assets/sprites/atlas_mike_crouching/atlas_mike_crouching.png";
+import mike_crouch_json from "../assets/sprites/atlas_mike_crouching/atlas_mike_crouching_atlas.json";
 
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
@@ -45,7 +47,7 @@ export default class Boot extends Phaser.Scene {
 
     this.load.spritesheet('mikeFall', mike_fall, { frameWidth: 33, frameHeight: 35 });    // Spritesheet de Mike cayendo
 
-    this.load.spritesheet('mikeCrouching', mike_crouching, { frameWidth: 33, frameHeight: 35 });  // Spritesheet de Mike agachándose
+    this.load.atlas('mikeCrouching', mike_crouch, mike_crouch_json);
 
     this.load.image("platform", platform);
     this.load.image("base", base);
