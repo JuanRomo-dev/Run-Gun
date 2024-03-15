@@ -18,7 +18,7 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
         this.body.setCollideWorldBounds();
         this.speed = 100;
         this.jumpSpeed = -100;
-        //this.body.setVelocityX(this.speed);
+        this.player = player;
     }
 
 /**
@@ -27,16 +27,15 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
    */
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
-        //this.body.setVelocityX(-this.speed);
-        /*
-        if (this.player.x < this.x) { falla aqui
+        if (this.player.x  < this.x) { //si el jugador está a la izquierda 
             this.body.setVelocityX(-this.speed);
-        }else if (this.player.x > this.x){
+            this.anims.play('photonDestructor_running', true).setFlipX(true); 
+        }else if (this.player.x > this.x){ //si el jugador está a la derecha
             this.body.setVelocityX(this.speed);
+            this.anims.play('photonDestructor_running', true).setFlipX(false); 
         }else{
             this.body.setVelocityX(0);
         }
-        */
     }
 
 }
