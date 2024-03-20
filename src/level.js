@@ -27,10 +27,9 @@ export default class Level extends Phaser.Scene {
    * Creación de los elementos de la escena principal de juego
    */
   create() {
-    this.stars = 10;
+    this.stars = 15;
     this.bases = this.add.group();
     this.player = new Player(this, 200, 300);
-    new T1000(this, this.player, 400, 100);
     new PhotonDestructor(this, this.player, 300, 100);
 
     this.bullets = new Bullets(this);
@@ -56,6 +55,10 @@ export default class Level extends Phaser.Scene {
       null,
       this
     );
+    console.log("hola");
+    //camera
+    this.cameras.main.setBounds(0, 0, 2000, 600);
+    this.cameras.main.startFollow(this.player);
     this.spawn();
   }
 
