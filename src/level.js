@@ -57,7 +57,6 @@ export default class Level extends Phaser.Scene {
     );
     console.log("hola");
     //camera
-    this.cameras.main.setBounds(0, 0, 2000, 600);
     this.cameras.main.startFollow(this.player);
     this.spawn();
   }
