@@ -1,0 +1,39 @@
+{
+  "frames": {
+    "photonDestructor_running.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 262,
+        "h": 173
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 21,
+        "w": 262,
+        "h": 173
+      },
+      "sourceSize": {
+        "w": 339,
+        "h": 221
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "atlas_photonDestructor_running.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 262,
+      "h": 173
+    },
+    "scale": 1
+  }
+}

@@ -6,6 +6,8 @@ import platform from "../assets/sprites/platform.png";
 import star from "../assets/sprites/star.png";
 import t1000 from "../assets/sprites/t-1000.png";
 import photonDestructor from "../assets/sprites/photondestructor.png";
+import photonDestructor_running from "../assets/sprites/atlas_photonDestructor_running.png";
+import photonDestructor_running_json from "../assets/sprites/atlas_photonDestructor_running.json";
 
 
 /**
@@ -35,6 +37,9 @@ export default class Boot extends Phaser.Scene {
     this.load.image("player", mike);
     this.load.image("t-1000", t1000);
     this.load.image("photonDestructor", photonDestructor);
+
+    this.load.atlas("photonDestructor_running", photonDestructor_running, photonDestructor_running_json);
+    //this.load.spritesheet('photonDestructor_running', photonDestructor_running, { frameWidth: 40, frameHeight: 40 }); // Spritesheet de Mike corriendo
 
   }
 
