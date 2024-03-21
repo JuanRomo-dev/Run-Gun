@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 
 import Bullets from "./bullet.js";
+import EnemyGruop from "./enemyGroup.js";
 import Platform from "./platform.js";
 import Player from "./player.js";
 import T1000 from "./t-1000.js";
@@ -14,12 +15,13 @@ import T1000 from "./t-1000.js";
  * @extends Phaser.Scene
  */
 export default class Level extends Phaser.Scene {
+  enemies = [];
+
   /**
    * Constructor de la escena
    */
   constructor() {
     super({ key: "level" });
-    this.bullets;
   }
 
   /**
@@ -32,12 +34,15 @@ export default class Level extends Phaser.Scene {
     //new PhotonDestructor(this, this.player, 300, 100);
 
     this.bullets = new Bullets(this);
-    this.enemy = new T1000(this, this.player, 400, 100);
     new Platform(this, this.player, this.bases, 150, 450);
     new Platform(this, this.player, this.bases, 1050, 450);
     new Platform(this, this.player, this.bases, 600, 300);
     new Platform(this, this.player, this.bases, 150, 200);
     new Platform(this, this.player, this.bases, 1050, 200);
+
+    this.enemies.push(new T1000(this, this.player, 450, 100));
+    this.enemies.push(new T1000(this, this.player, 800, 160));
+    this.enemyGroup = new EnemyGruop(this, this.enemies);
 
     this.spaceDown = this.input.keyboard.addKey("SPACE");
     this.spaceDown.on(
@@ -47,13 +52,11 @@ export default class Level extends Phaser.Scene {
       },
       this
     );
-    this.physics.add.overlap(
-      this.bullets,
-      this.enemy,
-      this.hitEnemy,
-      null,
-      this
-    );
+
+    this.enemies.forEach((e) => {
+      this.physics.add.overlap(this.bullets, e, this.hitEnemy, null, this);
+    });
+
     this.spawn();
   }
 
@@ -83,6 +86,7 @@ export default class Level extends Phaser.Scene {
 
   hitEnemy(bullets, enemy) {
     enemy.life -= bullets.damage;
+    console.log("🚀 ~ Level ~ hitEnemy ~  enemy.life:", enemy.life);
 
     if (enemy.life <= 0) {
       enemy.destroy();

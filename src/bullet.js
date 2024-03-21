@@ -36,7 +36,7 @@ export default class Bullets extends Phaser.GameObjects.Group {
     super(scene);
 
     this.createMultiple({
-      frameQuantity: 50,
+      frameQuantity: 20,
       key: "bullet",
       active: false,
       visible: false,
