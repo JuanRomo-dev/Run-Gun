@@ -1,4 +1,4 @@
-import Phaser from "phaser";
+import Phaser from 'phaser';
 
 class Bullet extends Phaser.GameObjects.Sprite {
   damage = 2;
@@ -17,7 +17,7 @@ class Bullet extends Phaser.GameObjects.Sprite {
 
     this.setActive(true);
     this.setVisible(true);
-    this.body.setVelocityX(velocity);
+    this.body.setVelocityX(this.velocity);
 
     console.log("bullet (x,y) ", this.x, this.y);
   }
@@ -26,7 +26,7 @@ class Bullet extends Phaser.GameObjects.Sprite {
     super.preUpdate(time, delta);
 
     // Reset the bullets when it reaches end of screen
-    if (this.x > endScreenWidth) {
+    if (this.x > this.endScreenWidth) {
       this.setActive(false);
       this.setVisible(false);
     }
