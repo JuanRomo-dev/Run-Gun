@@ -1,0 +1,200 @@
+{
+    "anims": [
+        {
+            "key": "idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 4,
+            "frames": [
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_idle_1"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_idle_2"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_idle_3"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_idle_4"
+                }
+            ]
+        },
+        {
+            "key": "run",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 9,
+            "frames": [
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_run_0"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_run_1"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_run_2"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_run_3"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_run_4"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_run_5"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_run_6"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_run_7"
+                }
+            ]
+        },
+        {
+            "key": "desenfundado",
+            "type": "frames",
+            "repeat": 0,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_desenfundado_0"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_desenfundado_1"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_desenfundado_2"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_desenfundado_3"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_desenfundado_4"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_desenfundado_5"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_desenfundado_6"
+                }
+            ]
+        },
+        {
+            "key": "enfundado",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 8,
+            "frames": [
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_enfundado_0"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_enfundado_1"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_enfundado_2"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_enfundado_3"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_enfundado_4"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_enfundado_5"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_enfundado_6"
+                }
+            ]
+        },
+        {
+            "key": "shoot",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 10,
+            "frames": [
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_shoot_0"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_shoot_1"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_shoot_2"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_shoot_3"
+                }
+            ]
+        },
+        {
+            "key": "dead",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 9,
+            "frames": [
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_dead_0"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_dead_1"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_dead_2"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_dead_3"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_dead_4"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_dead_5"
+                },
+                {
+                    "key": "photondestructor",
+                    "frame": "black_soldier_dead_6"
+                }
+            ]
+        }
+    ]
+}

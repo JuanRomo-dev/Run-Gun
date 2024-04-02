@@ -1,0 +1,502 @@
+{
+    "frames": [
+        {
+            "filename": "black_soldier_dead_0",
+            "frame": {
+                "w": 65,
+                "h": 33,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_dead_1",
+            "frame": {
+                "w": 65,
+                "h": 33,
+                "x": 0,
+                "y": 33
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_dead_2",
+            "frame": {
+                "w": 65,
+                "h": 33,
+                "x": 65,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_dead_3",
+            "frame": {
+                "w": 65,
+                "h": 33,
+                "x": 65,
+                "y": 33
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_dead_4",
+            "frame": {
+                "w": 65,
+                "h": 33,
+                "x": 0,
+                "y": 66
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_dead_5",
+            "frame": {
+                "w": 65,
+                "h": 33,
+                "x": 65,
+                "y": 66
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_dead_6",
+            "frame": {
+                "w": 65,
+                "h": 33,
+                "x": 0,
+                "y": 99
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_shoot_0",
+            "frame": {
+                "w": 50,
+                "h": 34,
+                "x": 130,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_shoot_1",
+            "frame": {
+                "w": 50,
+                "h": 34,
+                "x": 130,
+                "y": 34
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_shoot_2",
+            "frame": {
+                "w": 50,
+                "h": 34,
+                "x": 130,
+                "y": 68
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_shoot_3",
+            "frame": {
+                "w": 50,
+                "h": 34,
+                "x": 0,
+                "y": 132
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_enfundado_0",
+            "frame": {
+                "w": 35,
+                "h": 39,
+                "x": 65,
+                "y": 102
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_enfundado_1",
+            "frame": {
+                "w": 35,
+                "h": 39,
+                "x": 100,
+                "y": 102
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_enfundado_2",
+            "frame": {
+                "w": 35,
+                "h": 39,
+                "x": 135,
+                "y": 102
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_enfundado_3",
+            "frame": {
+                "w": 35,
+                "h": 39,
+                "x": 0,
+                "y": 166
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_enfundado_4",
+            "frame": {
+                "w": 35,
+                "h": 39,
+                "x": 35,
+                "y": 166
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_enfundado_5",
+            "frame": {
+                "w": 35,
+                "h": 39,
+                "x": 70,
+                "y": 141
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_enfundado_6",
+            "frame": {
+                "w": 35,
+                "h": 39,
+                "x": 105,
+                "y": 141
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_desenfundado_0",
+            "frame": {
+                "w": 35,
+                "h": 38,
+                "x": 140,
+                "y": 141
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_desenfundado_1",
+            "frame": {
+                "w": 35,
+                "h": 38,
+                "x": 180,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_desenfundado_2",
+            "frame": {
+                "w": 35,
+                "h": 38,
+                "x": 180,
+                "y": 38
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_desenfundado_3",
+            "frame": {
+                "w": 35,
+                "h": 38,
+                "x": 180,
+                "y": 76
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_desenfundado_4",
+            "frame": {
+                "w": 35,
+                "h": 38,
+                "x": 175,
+                "y": 114
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_desenfundado_5",
+            "frame": {
+                "w": 35,
+                "h": 38,
+                "x": 175,
+                "y": 152
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_desenfundado_6",
+            "frame": {
+                "w": 35,
+                "h": 38,
+                "x": 140,
+                "y": 179
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_run_0",
+            "frame": {
+                "w": 31,
+                "h": 37,
+                "x": 0,
+                "y": 205
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_run_1",
+            "frame": {
+                "w": 31,
+                "h": 37,
+                "x": 31,
+                "y": 205
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_run_2",
+            "frame": {
+                "w": 31,
+                "h": 37,
+                "x": 62,
+                "y": 205
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_run_3",
+            "frame": {
+                "w": 31,
+                "h": 37,
+                "x": 175,
+                "y": 190
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_run_4",
+            "frame": {
+                "w": 31,
+                "h": 37,
+                "x": 93,
+                "y": 180
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_run_5",
+            "frame": {
+                "w": 31,
+                "h": 37,
+                "x": 215,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_run_6",
+            "frame": {
+                "w": 31,
+                "h": 37,
+                "x": 215,
+                "y": 37
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_run_7",
+            "frame": {
+                "w": 31,
+                "h": 37,
+                "x": 215,
+                "y": 74
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_idle_0",
+            "frame": {
+                "w": 31,
+                "h": 37,
+                "x": 215,
+                "y": 111
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_idle_1",
+            "frame": {
+                "w": 31,
+                "h": 37,
+                "x": 210,
+                "y": 148
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_idle_2",
+            "frame": {
+                "w": 31,
+                "h": 37,
+                "x": 210,
+                "y": 185
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_idle_3",
+            "frame": {
+                "w": 31,
+                "h": 37,
+                "x": 0,
+                "y": 242
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "black_soldier_idle_4",
+            "frame": {
+                "w": 31,
+                "h": 37,
+                "x": 31,
+                "y": 242
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}

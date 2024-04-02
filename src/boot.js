@@ -7,6 +7,9 @@ import star from "../assets/sprites/star.png";
 import t1000 from "../assets/sprites/t-1000.png";
 import photonDestructor from "../assets/sprites/photondestructor.png";
 
+import photonDestructor_atlas from "../assets/sprites/photondestructor/photondestructor_atlas.json";
+import photonDestructor_atlas_png from "../assets/sprites/photondestructor/photondestructor.png";
+import photonDestructor_animacion from "../assets/sprites/photondestructor/photondestructor_anim.json";
 
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
@@ -34,8 +37,11 @@ export default class Boot extends Phaser.Scene {
     this.load.image("star", star);
     this.load.image("player", mike);
     this.load.image("t-1000", t1000);
+    
+    // Carga de los assets del photon destructor
     this.load.image("photonDestructor", photonDestructor);
-
+    this.load.json("photonDestructor_anim", photonDestructor_animacion);
+    this.load.atlas("photondestructor", photonDestructor_atlas_png, photonDestructor_atlas);
   }
 
   /**

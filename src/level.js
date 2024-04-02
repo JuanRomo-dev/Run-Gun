@@ -26,6 +26,12 @@ export default class Level extends Phaser.Scene {
    * Creación de los elementos de la escena principal de juego
    */
   create() {
+
+
+    // Animación del photonDestructor corriendo
+    this.photonDestructor_anim = this.cache.json.get("photonDestructor_anim");
+    this.anims.fromJSON(this.photonDestructor_anim);
+
     this.stars = 10;
     this.bases = this.add.group();
     this.player = new Player(this, 200, 300);
