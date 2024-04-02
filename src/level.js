@@ -29,13 +29,64 @@ export default class Level extends Phaser.Scene {
    */
   create() {
     this.bases = this.add.group();
-    this.player = new Player(this, 200, 300);
+
+    // Establecer ciclos de animación
+
+    this.anims.create({     // Animación de Mike quieto
+      key: 'mike_idle',
+      frames: this.anims.generateFrameNumbers('mikeIdle', { start: 0, end: 4 }),
+      frameRate: 6,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'mike_jump',
+      frames: this.anims.generateFrameNumbers('mikeJump', { start: 0, end: 3 }),
+      frameRate: 6
+    })
+
+    this.anims.create({
+      key: 'mike_idle2',
+      frames: this.anims.generateFrameNumbers('mikeIdle2', { start: 0, end: 5 }),
+      frameRate: 6,
+      repeat: -1
+    })
+
+    this.anims.create({           // Animación de Mike corriendo
+      key: 'mike_run',
+      frames: this.anims.generateFrameNumbers('mike', { start: 0, end: 5 }),
+      frameRate: 9,
+      repeat: -1    // Para que se repita el ciclo;
+    })
+
+    this.anims.create({
+      key: 'mike_fall',
+      frames: this.anims.generateFrameNumbers('mikeFall', { start: 0, end: 0 }),
+      frameRate: 1,
+      repeat: -1
+    })
+
+    this.anims.create({
+      key: 'mikeDown',
+      frames: this.anims.generateFrameNames('mikeDown', { start: 0, end: 2 }),
+      frameRate: 4,
+      repeat: 1
+    })
+
+    this.anims.create({
+      key: 'mikeIsDown',
+      frames: this.anims.generateFrameNames('mikeIsDown', { start: 0, end: 0 })
+    })
+ 
+
+    this.player = new Player(this, 300, 300);
+
     //new PhotonDestructor(this, this.player, 300, 100);
 
     this.bullets = new Bullets(this);
     new Platform(this, this.player, this.bases, 150, 450);
     new Platform(this, this.player, this.bases, 1050, 450);
-    new Platform(this, this.player, this.bases, 600, 300);
+;
     new Platform(this, this.player, this.bases, 150, 200);
     new Platform(this, this.player, this.bases, 1050, 200);
 
@@ -43,9 +94,8 @@ export default class Level extends Phaser.Scene {
     this.enemies.push(new T1000(this, this.player, 800, 160));
     this.enemyGroup = new EnemyGruop(this, this.enemies);
 
-    this.spaceDown = this.input.keyboard.addKey("SPACE");
-    this.spaceDown.on(
-      "down",
+    this.input.on(
+      "pointerdown",
       function () {
         this.bullets.fireBullet(this.player);
       },
