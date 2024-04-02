@@ -25,6 +25,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.label = this.scene.add.text(10, 10, "");
     this.cursors = this.scene.input.keyboard.createCursorKeys();
     this.updateScore();
+    // Dirección para saber a donde apuntar
+    this.direction = "right"
   }
 
   /**
@@ -56,8 +58,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.body.setVelocityY(this.jumpSpeed);
     }
     if (this.cursors.left.isDown) {
+      this.direction = "left"
       this.body.setVelocityX(-this.speed);
     } else if (this.cursors.right.isDown) {
+      this.direction = "right"
       this.body.setVelocityX(this.speed);
     } else {
       this.body.setVelocityX(0);
