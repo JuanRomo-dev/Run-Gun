@@ -2,10 +2,10 @@ import Phaser from 'phaser';
 
 import Bullets from './bullet.js';
 import EnemyGruop from './enemyGroup.js';
+import PhotonDestructor from './photonDestructor.js';
 import Platform from './platform.js';
 import Player from './player.js';
 import T1000 from './t-1000.js';
-import PhotonDestructor from "./photonDestructor.js";
 
 /**
  * Escena principal del juego. La escena se compone de una serie de plataformas
@@ -118,8 +118,10 @@ export default class Level extends Phaser.Scene {
 
   hitEnemy(bullets, enemy) {
     enemy.life -= bullets.damage;
+    console.log("🚀 ~ Level ~ hitEnemy ~ enemy.life:", enemy)
 
     if (enemy.life <= 0) {
+      console.log("🚀 ~ Level ~ hitEnemy ~ enemy.score:", enemy.score)        
       this.player.point(enemy.score)
       enemy.destroy();
     }

@@ -1,25 +1,25 @@
-import Phaser from "phaser";
+import Phaser from 'phaser';
 
-import base from "../assets/sprites/base.png";
-import bullet from "../assets/sprites/bullet.png";
-import mike from "../assets/sprites/mike.png";
-import photonDestructor from "../assets/sprites/photonDestructor.png";
-import platform from "../assets/sprites/platform.png";
-import star from "../assets/sprites/star.png";
-import t1000 from "../assets/sprites/t-1000.png";
-
-import photonDestructor from "../assets/sprites/photondestructor.png";
-import photonDestructor_atlas from "../assets/sprites/photondestructor/photondestructor_atlas.json";
-import photonDestructor_atlas_png from "../assets/sprites/photondestructor/photondestructor.png";
-import photonDestructor_animacion from "../assets/sprites/photondestructor/photondestructor_anim.json";
-import mike_running from "../assets/sprites/mike_running.png";
-import mike_idle from "../assets/sprites/mike_idle.png";
-import mike_idle2 from "../assets/sprites/mike_idle2.png";
-import mike_jump from "../assets/sprites/mike_jump.png";
-import mike_fall from "../assets/sprites/mike_fall.png";
-import mike_down from "../assets/sprites/mike_down.png";
-import mike_is_down from "../assets/sprites/mikeIsDown.png";
-import mike_dash from "../assets/sprites/Dash.png";
+import base from '../assets/sprites/base.png';
+import bullet from '../assets/sprites/bullet.png';
+import mike_dash from '../assets/sprites/Dash.png';
+import mike_down from '../assets/sprites/mike_down.png';
+import mike_fall from '../assets/sprites/mike_fall.png';
+import mike_idle from '../assets/sprites/mike_idle.png';
+import mike_idle2 from '../assets/sprites/mike_idle2.png';
+import mike_jump from '../assets/sprites/mike_jump.png';
+import mike_running from '../assets/sprites/mike_running.png';
+import mike_is_down from '../assets/sprites/mikeIsDown.png';
+import photonDestructor from '../assets/sprites/photonDestructor.png';
+import photonDestructor_atlas_png
+  from '../assets/sprites/photondestructor/photondestructor.png';
+import photonDestructor_animacion
+  from '../assets/sprites/photondestructor/photondestructor_anim.json';
+import photonDestructor_atlas
+  from '../assets/sprites/photondestructor/photondestructor_atlas.json';
+import platform from '../assets/sprites/platform.png';
+import star from '../assets/sprites/star.png';
+import t1000 from '../assets/sprites/t-1000.png';
 
 /**
  * Escena para la precarga de los assets que se usarán en el juego.

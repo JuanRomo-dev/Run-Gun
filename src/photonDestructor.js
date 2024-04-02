@@ -1,6 +1,8 @@
-import Phaser from "phaser"
+import Phaser from 'phaser';
 
 export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
+    life = 15;
+    score = 20;
     /**
      * Constructor del enemigo
      * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
@@ -10,7 +12,6 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
      */
     constructor(scene, player, x, y) {
         super(scene, x, y, "photonDestructor");
-        this.score = 0;
         this.setScale(3,3);
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
