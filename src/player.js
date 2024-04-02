@@ -1,4 +1,4 @@
-import Phaser from "phaser";
+import Phaser from 'phaser';
 
 /**
  * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
@@ -51,7 +51,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     
     // Esta label es la UI en la que pondremos la puntuación del jugador
     this.label = this.scene.add.text(10, 10, "");
-
+    this.direction = "right"
     // Keys
     this.cursors = this.scene.input.keyboard.addKeys({
       spacebar: Phaser.Input.Keyboard.KeyCodes.SPACE,
@@ -69,8 +69,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
    * El jugador ha recogido una estrella por lo que este método añade un punto y
    * actualiza la UI con la puntuación actual.
    */
-  point() {
-    this.score++;
+  point(score) {
+    this.score += score;
     this.updateScore();
   }
 
@@ -89,9 +89,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
           if (this.cursors.down.isDown) { // Y está agachado
             this.anims.play('mikeIsDown', true);
           } else if (this.cursors.right.isDown) { // Player se mueve a la derecha
+            this.direction = "right";
             this.body.setVelocityX(this.speed);
             this.anims.play('mike_run', true).setFlipX(false);
           } else if (this.cursors.left.isDown) { // Player se mueve a la izquierda
+            this.direction = "left";
             this.body.setVelocityX(-this.speed);
             this.anims.play('mike_run', true).setFlipX(true);
           } else { // Player está quieto
@@ -105,15 +107,19 @@ export default class Player extends Phaser.GameObjects.Sprite {
           }
         } else if (this.body.velocity.y < 0) { // Si está saltando (subiendo verticalmente)
           if (this.cursors.right.isDown) {
+            this.direction = "right";
             this.body.setVelocityX(this.speed);
           } else if (this.cursors.left.isDown) {
+            this.direction = "left";
             this.body.setVelocityX(-this.speed);
           }
         } else { // Si ha terminado el salto (bajando verticalmente)
           this.anims.play('mike_fall', true);
           if (this.cursors.right.isDown) {
+            this.direction = "right";
             this.body.setVelocityX(this.fallSpeed);
           } else if (this.cursors.left.isDown) {
+            this.direction = "left";
             this.body.setVelocityX(-this.fallSpeed);
           }
         }

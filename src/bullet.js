@@ -1,28 +1,35 @@
-import Phaser from "phaser";
+import Phaser from 'phaser';
 
 class Bullet extends Phaser.GameObjects.Sprite {
+  damage = 2;
+  velocity = 600;
+  endScreenWidth = 1200;
+
   constructor(scene, x, y) {
     super(scene, x, y, "bullet");
     this.scene.physics.add.existing(this);
     this.setScale(3, 3);
   }
 
-  fire(x, y) {
+  fire(x, y, player) {
     this.body.reset(x, y);
     this.body.setAllowGravity(false);
 
     this.setActive(true);
     this.setVisible(true);
-    this.body.setVelocityX(600);
-
-    console.log("bullet (x,y) ", this.x, this.y);
+    if(player.direction == "right"){
+      this.body.setVelocityX(this.velocity);
+    }
+    else if(player.direction == "left"){
+      this.body.setVelocityX(-this.velocity);
+    }
   }
 
   preUpdate(time, delta) {
     super.preUpdate(time, delta);
 
     // Reset the bullets when it reaches end of screen
-    if (this.x > 2600) {
+    if (this.x > this.endScreenWidth) {
       this.setActive(false);
       this.setVisible(false);
     }
@@ -42,11 +49,11 @@ export default class Bullets extends Phaser.GameObjects.Group {
     });
   }
 
-  fireBullet(x, y) {
+  fireBullet(player) {
     let bullet = this.getFirstDead(false);
 
     if (bullet) {
-      bullet.fire(x, y);
+      bullet.fire(player.x, player.y, player);
     }
   }
 }
