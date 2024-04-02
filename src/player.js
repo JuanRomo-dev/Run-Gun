@@ -1,4 +1,4 @@
-import Phaser from "phaser";
+import Phaser from 'phaser';
 
 /**
  * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
@@ -31,8 +31,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
    * El jugador ha recogido una estrella por lo que este método añade un punto y
    * actualiza la UI con la puntuación actual.
    */
-  point() {
-    this.score++;
+  point(score) {
+    console.log("🚀 ~ Player ~ point ~ score:", score)
+    this.score += score;
     this.updateScore();
   }
 

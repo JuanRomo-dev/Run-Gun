@@ -1,10 +1,10 @@
-import Phaser from "phaser";
+import Phaser from 'phaser';
 
-import Bullets from "./bullet.js";
-import EnemyGruop from "./enemyGroup.js";
-import Platform from "./platform.js";
-import Player from "./player.js";
-import T1000 from "./t-1000.js";
+import Bullets from './bullet.js';
+import EnemyGruop from './enemyGroup.js';
+import Platform from './platform.js';
+import Player from './player.js';
+import T1000 from './t-1000.js';
 
 /**
  * Escena principal del juego. La escena se compone de una serie de plataformas
@@ -28,7 +28,6 @@ export default class Level extends Phaser.Scene {
    * Creación de los elementos de la escena principal de juego
    */
   create() {
-    this.stars = 10;
     this.bases = this.add.group();
     this.player = new Player(this, 200, 300);
     //new PhotonDestructor(this, this.player, 300, 100);
@@ -57,31 +56,6 @@ export default class Level extends Phaser.Scene {
       this.physics.add.overlap(this.bullets, e, this.hitEnemy, null, this);
     });
 
-    this.spawn();
-  }
-
-  /**
-   * Genera una estrella en una de las bases del escenario
-   * @param {Array<Base>} from Lista de bases sobre las que se puede crear una estrella
-   * Si es null, entonces se crea aleatoriamente sobre cualquiera de las bases existentes
-   */
-  spawn(from = null) {
-    Phaser.Math.RND.pick(from || this.bases.children.entries).spawn();
-  }
-
-  /**
-   * Método que se ejecuta al coger una estrella. Se pasa la base
-   * sobre la que estaba la estrella cogida para evitar repeticiones
-   * @param {Base} base La base sobre la que estaba la estrella que se ha cogido
-   */
-  starPickt(base) {
-    this.player.point();
-    if (this.player.score == this.stars) {
-      this.scene.start("end");
-    } else {
-      let s = this.bases.children.entries;
-      this.spawn(s.filter((o) => o !== base));
-    }
   }
 
   hitEnemy(bullets, enemy) {
@@ -89,6 +63,7 @@ export default class Level extends Phaser.Scene {
     console.log("🚀 ~ Level ~ hitEnemy ~  enemy.life:", enemy.life);
 
     if (enemy.life <= 0) {
+      this.player.point(enemy.score)
       enemy.destroy();
     }
     bullets.destroy();
