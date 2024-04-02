@@ -64,11 +64,17 @@ export default class Level extends Phaser.Scene {
     })
 
     this.anims.create({
-      key: 'mikeCrouching',
-      frames: this.anims.generateFrameNames('mikeCrouching', { prefix: 'atlas_crouch-10' }, {prefix: 'atlas_crouch-11'}, {prefix: 'atlas_crouch-12'} ),
-      frameRate: 3,
-      repeat: -1
+      key: 'mikeDown',
+      frames: this.anims.generateFrameNames('mikeDown', { start: 0, end: 2 }),
+      frameRate: 4,
+      repeat: 1
     })
+
+    this.anims.create({
+      key: 'mikeIsDown',
+      frames: this.anims.generateFrameNames('mikeIsDown', { start: 0, end: 0 })
+    })
+ 
 
     this.player = new Player(this, 300, 300);
 
