@@ -47,7 +47,7 @@ export default class Level extends Phaser.Scene {
     this.spaceDown.on(
       "down",
       function () {
-        this.bullets.fireBullet(this.player.x + 18, this.player.y - 10);
+        this.bullets.fireBullet(this.player);
       },
       this
     );

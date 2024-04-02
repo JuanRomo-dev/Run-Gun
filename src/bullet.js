@@ -11,15 +11,18 @@ class Bullet extends Phaser.GameObjects.Sprite {
     this.setScale(3, 3);
   }
 
-  fire(x, y) {
+  fire(x, y, player) {
     this.body.reset(x, y);
     this.body.setAllowGravity(false);
 
     this.setActive(true);
     this.setVisible(true);
-    this.body.setVelocityX(this.velocity);
-
-    console.log("bullet (x,y) ", this.x, this.y);
+    if(player.direction == "right"){
+      this.body.setVelocityX(this.velocity);
+    }
+    else if(player.direction == "left"){
+      this.body.setVelocityX(-this.velocity);
+    }
   }
 
   preUpdate(time, delta) {
@@ -46,11 +49,11 @@ export default class Bullets extends Phaser.GameObjects.Group {
     });
   }
 
-  fireBullet(x, y) {
+  fireBullet(player) {
     let bullet = this.getFirstDead(false);
 
     if (bullet) {
-      bullet.fire(x, y);
+      bullet.fire(player.x, player.y, player);
     }
   }
 }
