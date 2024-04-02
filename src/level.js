@@ -92,9 +92,8 @@ export default class Level extends Phaser.Scene {
     new Platform(this, this.player, this.bases, 150, 200);
     new Platform(this, this.player, this.bases, 1050, 200);
 
-    this.spaceDown = this.input.keyboard.addKey("SPACE");
-    this.spaceDown.on(
-      "down",
+    this.input.on(
+      "pointerdown",
       function () {
         this.bullets.fireBullet(this.player.x + 18, this.player.y - 10);
       },
