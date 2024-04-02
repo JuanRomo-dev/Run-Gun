@@ -5,6 +5,7 @@ import EnemyGruop from './enemyGroup.js';
 import Platform from './platform.js';
 import Player from './player.js';
 import T1000 from './t-1000.js';
+import PhotonDestructor from "./photonDestructor.js";
 
 /**
  * Escena principal del juego. La escena se compone de una serie de plataformas
@@ -87,7 +88,7 @@ export default class Level extends Phaser.Scene {
 
     this.player = new Player(this, 300, 300);
 
-    //new PhotonDestructor(this, this.player, 300, 100);
+    
 
     this.bullets = new Bullets(this);
     new Platform(this, this.player, this.bases, 150, 450);
@@ -98,6 +99,7 @@ export default class Level extends Phaser.Scene {
 
     this.enemies.push(new T1000(this, this.player, 450, 100));
     this.enemies.push(new T1000(this, this.player, 800, 160));
+    this.enemies.push(new PhotonDestructor(this, this.player, 300, 100));
     this.enemyGroup = new EnemyGruop(this, this.enemies);
 
     this.input.on(
