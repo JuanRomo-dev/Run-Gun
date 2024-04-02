@@ -46,9 +46,11 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
             }else{
                 this.body.setVelocityX(0);
                 if (this.player.x  < this.x) { //si el jugador está a la izquierda 
-                    this.anims.play('desenfundado', true).setFlipX(true); 
+                    //this.anims.play('desenfundado').setFlipX(true);
+                    this.anims.play('shoot', true).setFlipX(true);                    
                 }else{ //si el jugador está a la derecha
-                    this.anims.play('desenfundado', true).setFlipX(false); 
+                    this.anims.play('desenfundado', true).setFlipX(false);
+                    //this.anims.chain('shoot', true).setFlipX(false);
                 }
             }
         }   
