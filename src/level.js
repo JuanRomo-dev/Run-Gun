@@ -27,7 +27,6 @@ export default class Level extends Phaser.Scene {
    */
   create() {
 
-
     // Animación del photonDestructor corriendo
     this.photonDestructor_anim = this.cache.json.get("photonDestructor_anim");
     this.anims.fromJSON(this.photonDestructor_anim);

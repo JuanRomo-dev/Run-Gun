@@ -5,8 +5,8 @@ import mike from "../assets/sprites/mike.png";
 import platform from "../assets/sprites/platform.png";
 import star from "../assets/sprites/star.png";
 import t1000 from "../assets/sprites/t-1000.png";
-import photonDestructor from "../assets/sprites/photondestructor.png";
 
+import photonDestructor from "../assets/sprites/photondestructor.png";
 import photonDestructor_atlas from "../assets/sprites/photondestructor/photondestructor_atlas.json";
 import photonDestructor_atlas_png from "../assets/sprites/photondestructor/photondestructor.png";
 import photonDestructor_animacion from "../assets/sprites/photondestructor/photondestructor_anim.json";
