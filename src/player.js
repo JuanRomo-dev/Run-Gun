@@ -34,7 +34,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
    * actualiza la UI con la puntuación actual.
    */
   point(score) {
-    console.log("🚀 ~ Player ~ point ~ score:", score)
     this.score += score;
     this.updateScore();
   }

@@ -60,7 +60,6 @@ export default class Level extends Phaser.Scene {
 
   hitEnemy(bullets, enemy) {
     enemy.life -= bullets.damage;
-    console.log("🚀 ~ Level ~ hitEnemy ~  enemy.life:", enemy.life);
 
     if (enemy.life <= 0) {
       this.player.point(enemy.score)
