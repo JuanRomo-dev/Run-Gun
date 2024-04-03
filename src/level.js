@@ -29,7 +29,10 @@ export default class Level extends Phaser.Scene {
    * Creación de los elementos de la escena principal de juego
    */
   create() {
-
+    
+    // Cargar el mapa
+    this.initMap();
+    
     // Animación del photonDestructor corriendo
     this.photonDestructor_anim = this.cache.json.get("photonDestructor_anim");
     this.anims.fromJSON(this.photonDestructor_anim);
@@ -127,5 +130,21 @@ export default class Level extends Phaser.Scene {
     }
     bullets.destroy();
     return false;
+  }
+  
+  initMap() {
+    // Crear tilemap
+    const mapa = this.map = this.make.tilemap({
+      key: 'rungun'
+    });
+    
+    // Cargar tilesets
+    const terrain = mapa.addTilesetImage('escenario', 'tiles2');
+    
+    this.sueloLayer = this.map.createLayer('suelo', terrain);
+    this.fondoLayer = this.map.createLayer('fondo', terrain);
+
+
+
   }
 }

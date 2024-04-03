@@ -11,7 +11,7 @@ import Level from "./level.js";
 let config = {
   type: Phaser.AUTO,
   width: 1000,
-  height: 600,
+  height: 640,
   scale: {
     // mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
@@ -22,7 +22,7 @@ let config = {
     default: "arcade",
     arcade: {
       gravity: { y: 400 },
-      debug: true,
+      debug: false,
     },
   },
 };

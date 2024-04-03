@@ -21,6 +21,10 @@ import platform from '../assets/sprites/platform.png';
 import star from '../assets/sprites/star.png';
 import t1000 from '../assets/sprites/t-1000.png';
 
+import map from '../assets/maps/rungun.json';
+import decorations from '../assets/tilesets/Decorations.png';
+import terrain from '../assets/tilesets/Terrain.png';
+
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
  * Esta escena se puede mejorar añadiendo una imagen del juego y una
@@ -43,6 +47,11 @@ export default class Boot extends Phaser.Scene {
     // Con setPath podemos establecer el prefijo que se añadirá a todos los load que aparecen a continuación
     this.load.setPath("assets/sprites/");
 
+    // Cargar el mapa y las imágenes de los tilesets
+    this.load.tilemapTiledJSON('rungun', map);
+    this.load.image('tiles1', decorations);
+    this.load.image('tiles2', terrain);
+    
     // Cargar spritesheet
     this.load.spritesheet('mikeIdle', mike_idle, { frameWidth: 33, frameHeight: 35 });    // Spritesheet de Mike quieto
 
