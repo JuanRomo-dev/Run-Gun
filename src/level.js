@@ -28,10 +28,7 @@ export default class Level extends Phaser.Scene {
   /**
    * Creación de los elementos de la escena principal de juego
    */
-  create() {
-    
-    // Cargar el mapa
-    this.initMap();
+  create() {  
     
     // Animación del photonDestructor corriendo
     this.photonDestructor_anim = this.cache.json.get("photonDestructor_anim");
@@ -88,15 +85,31 @@ export default class Level extends Phaser.Scene {
       frames: this.anims.generateFrameNames('mikeIsDown', { start: 0, end: 0 })
     })
  
-
+    // Cargar mapa
+    const mapa = this.map = this.make.tilemap({
+        key: 'rungun'
+    });  
+    // Cargar tilesets y capas
+    const terrain = mapa.addTilesetImage('escenario', 'tiles2');
+    this.sueloLayer = this.map.createLayer('suelo', terrain);
+    this.fondoLayer = this.map.createLayer('fondo', terrain);
+    
     this.player = new Player(this, 300, 300);
 
+    // Movimiento cámara sobre el jugador
+    this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
+    this.cameras.main.startFollow(this.player)
     
+    // Bounds del nivel
+    this.physics.world.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
+    
+    // Colisión con el suelo
+    this.sueloLayer.setCollisionBetween(0, 1000);
+    this.physics.add.collider(this.player, this.sueloLayer);
 
+    
     this.bullets = new Bullets(this);
     new Platform(this, this.player, this.bases, 150, 450);
-    new Platform(this, this.player, this.bases, 1050, 450);
-;
     new Platform(this, this.player, this.bases, 150, 200);
     new Platform(this, this.player, this.bases, 1050, 200);
 
@@ -105,6 +118,11 @@ export default class Level extends Phaser.Scene {
     this.enemies.push(new PhotonDestructor(this, this.player, 300, 100));
     this.enemyGroup = new EnemyGruop(this, this.enemies);
 
+    // Colisión enemigos con suelo
+    this.enemies.forEach((enemy) => {
+      this.physics.add.collider(enemy, this.sueloLayer);
+    })
+    
     this.input.on(
       "pointerdown",
       function () {
@@ -134,15 +152,7 @@ export default class Level extends Phaser.Scene {
   
   initMap() {
     // Crear tilemap
-    const mapa = this.map = this.make.tilemap({
-      key: 'rungun'
-    });
     
-    // Cargar tilesets
-    const terrain = mapa.addTilesetImage('escenario', 'tiles2');
-    
-    this.sueloLayer = this.map.createLayer('suelo', terrain);
-    this.fondoLayer = this.map.createLayer('fondo', terrain);
 
 
 
