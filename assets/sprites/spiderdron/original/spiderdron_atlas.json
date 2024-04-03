@@ -1,0 +1,606 @@
+{
+    "frames": [
+        {
+            "filename": "spider_dead_0",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_dead_1",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 0,
+                "y": 76
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_dead_2",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 95,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_dead_3",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 95,
+                "y": 76
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_dead_4",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 0,
+                "y": 152
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_dead_5",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 95,
+                "y": 152
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_dead_6",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 190,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_dead_7",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 190,
+                "y": 76
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_dead_8",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 190,
+                "y": 152
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_hurt_0",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 0,
+                "y": 228
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_hurt_1",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 95,
+                "y": 228
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_hurt_2",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 190,
+                "y": 228
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_hurt_3",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 285,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_hurt_4",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 285,
+                "y": 76
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_hurt_5",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 285,
+                "y": 152
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_hurt_6",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 285,
+                "y": 228
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_hurt_7",
+            "frame": {
+                "w": 95,
+                "h": 76,
+                "x": 0,
+                "y": 304
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_atack_0",
+            "frame": {
+                "w": 91,
+                "h": 76,
+                "x": 95,
+                "y": 304
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_atack_1",
+            "frame": {
+                "w": 91,
+                "h": 76,
+                "x": 186,
+                "y": 304
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_atack_2",
+            "frame": {
+                "w": 91,
+                "h": 76,
+                "x": 277,
+                "y": 304
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_atack_3",
+            "frame": {
+                "w": 91,
+                "h": 76,
+                "x": 368,
+                "y": 304
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_atack_4",
+            "frame": {
+                "w": 91,
+                "h": 76,
+                "x": 380,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_atack_5",
+            "frame": {
+                "w": 91,
+                "h": 76,
+                "x": 380,
+                "y": 76
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_atack_6",
+            "frame": {
+                "w": 91,
+                "h": 76,
+                "x": 380,
+                "y": 152
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_atack_7",
+            "frame": {
+                "w": 91,
+                "h": 76,
+                "x": 380,
+                "y": 228
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_atack_8",
+            "frame": {
+                "w": 91,
+                "h": 76,
+                "x": 0,
+                "y": 380
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_atack_9",
+            "frame": {
+                "w": 91,
+                "h": 76,
+                "x": 91,
+                "y": 380
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_atack_10",
+            "frame": {
+                "w": 91,
+                "h": 76,
+                "x": 182,
+                "y": 380
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_idle_0",
+            "frame": {
+                "w": 91,
+                "h": 70,
+                "x": 273,
+                "y": 380
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_idle_1",
+            "frame": {
+                "w": 91,
+                "h": 70,
+                "x": 364,
+                "y": 380
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_idle_2",
+            "frame": {
+                "w": 91,
+                "h": 70,
+                "x": 0,
+                "y": 456
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_idle_3",
+            "frame": {
+                "w": 91,
+                "h": 70,
+                "x": 91,
+                "y": 456
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_walk_1",
+            "frame": {
+                "w": 91,
+                "h": 61,
+                "x": 182,
+                "y": 456
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_walk_2",
+            "frame": {
+                "w": 91,
+                "h": 61,
+                "x": 273,
+                "y": 450
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_walk_0",
+            "frame": {
+                "w": 91,
+                "h": 61,
+                "x": 364,
+                "y": 450
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_walk_3",
+            "frame": {
+                "w": 91,
+                "h": 61,
+                "x": 471,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_walk_4",
+            "frame": {
+                "w": 91,
+                "h": 61,
+                "x": 471,
+                "y": 61
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_walk_5",
+            "frame": {
+                "w": 91,
+                "h": 61,
+                "x": 471,
+                "y": 122
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_walk_6",
+            "frame": {
+                "w": 91,
+                "h": 61,
+                "x": 471,
+                "y": 183
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_walk_7",
+            "frame": {
+                "w": 91,
+                "h": 61,
+                "x": 471,
+                "y": 244
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_walk_9",
+            "frame": {
+                "w": 91,
+                "h": 61,
+                "x": 459,
+                "y": 305
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_walk_8",
+            "frame": {
+                "w": 91,
+                "h": 61,
+                "x": 459,
+                "y": 366
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_dodge_0",
+            "frame": {
+                "w": 88,
+                "h": 55,
+                "x": 455,
+                "y": 427
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_dodge_1",
+            "frame": {
+                "w": 88,
+                "h": 55,
+                "x": 0,
+                "y": 526
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_dodge_2",
+            "frame": {
+                "w": 88,
+                "h": 55,
+                "x": 88,
+                "y": 526
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spider_dodge_3",
+            "frame": {
+                "w": 88,
+                "h": 55,
+                "x": 176,
+                "y": 526
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}

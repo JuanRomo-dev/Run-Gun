@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 import Bullets from './bullet.js';
 import EnemyGruop from './enemyGroup.js';
 import PhotonDestructor from './photonDestructor.js';
+import Spiderdron from './spiderdron.js';
 import Platform from './platform.js';
 import Player from './player.js';
 import T1000 from './t-1000.js';
@@ -30,9 +31,13 @@ export default class Level extends Phaser.Scene {
    */
   create() {
 
-    // Animación del photonDestructor corriendo
+    // Animaciones del photonDestructor
     this.photonDestructor_anim = this.cache.json.get("photonDestructor_anim");
     this.anims.fromJSON(this.photonDestructor_anim);
+
+    // Animaciones del spiderdron
+    this.spiderdron_anim = this.cache.json.get("spiderdron_anim");
+    this.anims.fromJSON(this.spiderdron_anim);
 
     this.stars = 10;
     this.bases = this.add.group();
@@ -100,6 +105,7 @@ export default class Level extends Phaser.Scene {
     this.enemies.push(new T1000(this, this.player, 450, 100));
     this.enemies.push(new T1000(this, this.player, 800, 160));
     this.enemies.push(new PhotonDestructor(this, this.player, 300, 100));
+    this.enemies.push(new Spiderdron(this, this.player, 200, 100));
     this.enemyGroup = new EnemyGruop(this, this.enemies);
 
     this.input.on(

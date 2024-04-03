@@ -1,0 +1,296 @@
+{
+    "anims": [
+        {
+            "key": "spiderdron_dodge",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_dodge_3"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_dodge_2"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_dodge_1"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_dodge_0"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_dodge_0"
+                }
+            ]
+        },
+        {
+            "key": "spiderdron_run",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 25,
+            "frames": [
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_0"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_1"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_2"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_3"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_4"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_5"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_6"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_7"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_8"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_9"
+                }
+            ]
+        },
+        {
+            "key": "spiderdron_walk",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 8,
+            "frames": [
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_0"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_1"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_2"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_3"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_4"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_5"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_6"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_7"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_8"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_walk_9"
+                }
+            ]
+        },
+        {
+            "key": "spiderdron_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 6,
+            "frames": [
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_idle_0"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_idle_1"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_idle_2"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_idle_3"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_idle_2"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_idle_1"
+                }
+            ]
+        },
+        {
+            "key": "spiderdron_atack",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 14,
+            "frames": [
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_atack_0"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_atack_1"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_atack_2"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_atack_3"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_atack_4"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_atack_5"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_atack_6"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_atack_7"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_atack_8"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_atack_9"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_atack_10"
+                }
+            ]
+        },
+        {
+            "key": "spiderdron_hurt",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 10,
+            "frames": [
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_hurt_0"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_hurt_1"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_hurt_2"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_hurt_3"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_hurt_4"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_hurt_5"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_hurt_6"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_hurt_7"
+                }
+            ]
+        },
+        {
+            "key": "spiderdron_dead",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_dead_0"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_dead_1"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_dead_2"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_dead_3"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_dead_4"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_dead_5"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_dead_6"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_dead_7"
+                },
+                {
+                    "key": "spiderdron",
+                    "frame": "spider_dead_8"
+                }
+            ]
+        }
+    ]
+}
