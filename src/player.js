@@ -109,19 +109,15 @@ export default class Player extends Phaser.GameObjects.Sprite {
           }
         } else if (this.body.velocity.y < 0) { // Si está saltando (subiendo verticalmente)
           if (this.cursors.right.isDown) {
-            this.direction = "right";
             this.body.setVelocityX(this.speed);
           } else if (this.cursors.left.isDown) {
-            this.direction = "left";
             this.body.setVelocityX(-this.speed);
           }
         } else { // Si ha terminado el salto (bajando verticalmente)
           this.anims.play('mike_fall', true);
           if (this.cursors.right.isDown) {
-            this.direction = "right";
             this.body.setVelocityX(this.fallSpeed);
           } else if (this.cursors.left.isDown) {
-            this.direction = "left";
             this.body.setVelocityX(-this.fallSpeed);
           }
         }
