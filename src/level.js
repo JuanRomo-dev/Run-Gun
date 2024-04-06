@@ -5,7 +5,6 @@ import EnemyGruop from './enemyGroup.js';
 import PhotonDestructor from './photonDestructor.js';
 import Platform from './platform.js';
 import Player from './player.js';
-import T1000 from './t-1000.js';
 
 /**
  * Escena principal del juego. La escena se compone de una serie de plataformas
@@ -109,14 +108,15 @@ export default class Level extends Phaser.Scene {
 
     
     this.bullets = new Bullets(this);
+    this.enemyBullets = new Bullets(this);
     new Platform(this, this.player, this.bases, 150, 450);
     new Platform(this, this.player, this.bases, 150, 200);
     new Platform(this, this.player, this.bases, 1050, 200);
 
-    this.enemies.push(new T1000(this, this.player, 450, 100));
-    this.enemies.push(new T1000(this, this.player, 800, 160));
-    this.enemies.push(new PhotonDestructor(this, this.player, 300, 100));
-    this.enemyGroup = new EnemyGruop(this, this.enemies);
+    // this.enemies.push(new T1000(this, this.player, 450, 100));
+    // this.enemies.push(new T1000(this, this.player, 800, 160));
+    this.enemies.push(new PhotonDestructor(this, this.player, 800, 100));
+    this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
 
     // Colisión enemigos con suelo
     this.enemies.forEach((enemy) => {
@@ -131,21 +131,22 @@ export default class Level extends Phaser.Scene {
       this
     );
 
-    this.enemies.forEach((e) => {
-      this.physics.add.overlap(this.bullets, e, this.hitEnemy, null, this);
-    });
 
   }
 
   hitEnemy(bullets, enemy) {
     enemy.life -= bullets.damage;
-    console.log("🚀 ~ Level ~ hitEnemy ~ enemy.life:", enemy)
 
     if (enemy.life <= 0) {
-      console.log("🚀 ~ Level ~ hitEnemy ~ enemy.score:", enemy.score)        
       this.player.point(enemy.score)
       enemy.destroy();
     }
+    bullets.destroy();
+    return false;
+  }
+
+  hitPlayer(bullets, player) {
+    console.log("Player dado");
     bullets.destroy();
     return false;
   }

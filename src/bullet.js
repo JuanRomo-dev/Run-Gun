@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 class Bullet extends Phaser.GameObjects.Sprite {
   damage = 2;
   velocity = 600;
-  endScreenWidth = 1200;
+  endScreenWidth = 3200;
 
   constructor(scene, x, y) {
     super(scene, x, y, "bullet");
@@ -41,7 +41,7 @@ export default class Bullets extends Phaser.GameObjects.Group {
     super(scene);
 
     this.createMultiple({
-      frameQuantity: 20,
+      frameQuantity: 40,
       key: "bullet",
       active: false,
       visible: false,

@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
     life = 15;
     score = 20;
+    tickRate = 0.5;
     /**
      * Constructor del enemigo
      * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
@@ -18,8 +19,8 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
         this.scene.physics.add.collider(this, player);
         this.body.setCollideWorldBounds();
         this.speed = 100;
-        this.jumpSpeed = -100;
         this.player = player;
+        this.direction = "left"
     }
 
 /**
@@ -28,7 +29,7 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
    */
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
-
+        
         if(this.player.y < this.y){ //si el jugador esta arriba
             this.body.setVelocityX(0);
             this.anims.play('idle', true);
@@ -38,9 +39,11 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
                 if (this.player.x  < this.x) { //si el jugador está a la izquierda 
                     this.body.setVelocityX(-this.speed);
                     this.anims.play('run', true).setFlipX(true); 
+                    this.direction = "left"
                 }else if (this.player.x > this.x){ //si el jugador está a la derecha
                     this.body.setVelocityX(this.speed);
                     this.anims.play('run', true).setFlipX(false); 
+                    this.direction = "right"
                 }else{
                     this.body.setVelocityX(0);
                 }
@@ -48,13 +51,32 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
                 this.body.setVelocityX(0);
                 if (this.player.x  < this.x) { //si el jugador está a la izquierda 
                     //this.anims.play('desenfundado').setFlipX(true);
-                    this.anims.play('shoot', true).setFlipX(true);                    
+                    this.anims.play('shoot', true).setFlipX(true);
+                    // this.timer = this.scene.time.delayedCall( 10000,this.fire, null, this);
+                    this.fire(t)
                 }else{ //si el jugador está a la derecha
                     this.anims.play('desenfundado', true).setFlipX(false);
                     //this.anims.chain('shoot', true).setFlipX(false);
                 }
             }
         }   
+    }
+
+    initBullets(bullets){
+        this.bullets = bullets;
+    }
+
+    shoot(){
+        this.timer = this.scene.time.addEvent({ delay: Phaser.Math.Between(1000, 3000), callback: this.fire, callbackScope: this });
+    }
+
+    fire(time){
+        if(time > this.tickRate){
+            console.log("🚀 ~ PhotonDestructor ~ fire ~ this.tickRate:", this.tickRate)
+            console.log("DISPARO")
+            this.bullets.fireBullet(this);
+            this.tickRate = time + 1000;
+        }
     }
 
 }
