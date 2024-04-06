@@ -5,13 +5,15 @@ import Phaser from 'phaser';
  * También almacena la puntuación o número de estrellas que ha recogido hasta el momento.
  */
 export default class Player extends Phaser.GameObjects.Sprite {
+  
+  bulletVelocity = 600;
+  life = 3;
   /**
    * Constructor del jugador
    * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
    * @param {number} x Coordenada X
    * @param {number} y Coordenada Y
    */
-  
   constructor(scene, x, y) {
     super(scene, x, y, "player");
     

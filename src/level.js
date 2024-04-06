@@ -147,6 +147,11 @@ export default class Level extends Phaser.Scene {
 
   hitPlayer(bullets, player) {
     console.log("Player dado");
+    player.life --;
+    if (player.life == 0){
+      player.destroy();
+      this.scene.start("end");
+    }
     bullets.destroy();
     return false;
   }

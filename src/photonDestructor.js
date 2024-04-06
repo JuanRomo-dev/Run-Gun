@@ -4,6 +4,8 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
     life = 15;
     score = 20;
     tickRate = 0.5;
+    shootRate = 1000; //milisegundos
+    bulletVelocity = 400;
     /**
      * Constructor del enemigo
      * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
@@ -52,7 +54,6 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
                 if (this.player.x  < this.x) { //si el jugador está a la izquierda 
                     //this.anims.play('desenfundado').setFlipX(true);
                     this.anims.play('shoot', true).setFlipX(true);
-                    // this.timer = this.scene.time.delayedCall( 10000,this.fire, null, this);
                     this.fire(t)
                 }else{ //si el jugador está a la derecha
                     this.anims.play('desenfundado', true).setFlipX(false);
@@ -72,10 +73,8 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
 
     fire(time){
         if(time > this.tickRate){
-            console.log("🚀 ~ PhotonDestructor ~ fire ~ this.tickRate:", this.tickRate)
-            console.log("DISPARO")
             this.bullets.fireBullet(this);
-            this.tickRate = time + 1000;
+            this.tickRate = time + this.shootRate;
         }
     }
 
