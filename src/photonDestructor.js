@@ -3,6 +3,9 @@ import Phaser from 'phaser';
 export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
     life = 15;
     score = 20;
+    tickRate = 0.5;
+    shootRate = 1000; //milisegundos
+    bulletVelocity = 400;
     /**
      * Constructor del enemigo
      * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
@@ -18,8 +21,8 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
         this.scene.physics.add.collider(this, player);
         this.body.setCollideWorldBounds();
         this.speed = 100;
-        this.jumpSpeed = -100;
         this.player = player;
+        this.direction = "left"
     }
 
 /**
@@ -28,7 +31,7 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
    */
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
-
+        
         if(this.player.y < this.y){ //si el jugador esta arriba
             this.body.setVelocityX(0);
             this.anims.play('idle', true);
@@ -46,15 +49,29 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
                 }
             }else{
                 this.body.setVelocityX(0);
-                if (this.player.x  < this.x) { //si el jugador está a la izquierda 
-                    //this.anims.play('desenfundado').setFlipX(true);
-                    this.anims.play('shoot', true).setFlipX(true);                    
+                if (this.player.x  < this.x) { //si el jugador está a la izquierda
+                    console.log("izq"); 
+                    //this.anims.play('desenfundado', true).setFlipX()
+                    this.anims.play('shoot', true).setFlipX(true);
+                    this.fire(t)
                 }else{ //si el jugador está a la derecha
-                    this.anims.play('desenfundado', true).setFlipX(false);
-                    //this.anims.chain('shoot', true).setFlipX(false);
+                    this.direction = "right"
+                    this.anims.play('shoot', true).setFlipX(false);
+                    this.fire(t)
                 }
             }
         }   
+    }
+
+    initBullets(bullets){
+        this.bullets = bullets;
+    }
+
+    fire(time){
+        if(time > this.tickRate){
+            this.bullets.fireBullet(this);
+            this.tickRate = time + this.shootRate;
+        }
     }
 
 }
