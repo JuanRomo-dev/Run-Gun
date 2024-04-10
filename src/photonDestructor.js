@@ -41,23 +41,23 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
                 if (this.player.x  < this.x) { //si el jugador está a la izquierda 
                     this.body.setVelocityX(-this.speed);
                     this.anims.play('run', true).setFlipX(true); 
-                    this.direction = "left"
                 }else if (this.player.x > this.x){ //si el jugador está a la derecha
                     this.body.setVelocityX(this.speed);
                     this.anims.play('run', true).setFlipX(false); 
-                    this.direction = "right"
                 }else{
                     this.body.setVelocityX(0);
                 }
             }else{
                 this.body.setVelocityX(0);
-                if (this.player.x  < this.x) { //si el jugador está a la izquierda 
-                    //this.anims.play('desenfundado').setFlipX(true);
+                if (this.player.x  < this.x) { //si el jugador está a la izquierda
+                    console.log("izq"); 
+                    //this.anims.play('desenfundado', true).setFlipX()
                     this.anims.play('shoot', true).setFlipX(true);
                     this.fire(t)
                 }else{ //si el jugador está a la derecha
-                    this.anims.play('desenfundado', true).setFlipX(false);
-                    //this.anims.chain('shoot', true).setFlipX(false);
+                    this.direction = "right"
+                    this.anims.play('shoot', true).setFlipX(false);
+                    this.fire(t)
                 }
             }
         }   
@@ -65,10 +65,6 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
 
     initBullets(bullets){
         this.bullets = bullets;
-    }
-
-    shoot(){
-        this.timer = this.scene.time.addEvent({ delay: Phaser.Math.Between(1000, 3000), callback: this.fire, callbackScope: this });
     }
 
     fire(time){
