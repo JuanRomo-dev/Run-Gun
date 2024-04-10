@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
     life = 15;
     score = 20;
+    
     /**
      * Constructor del enemigo
      * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
@@ -11,10 +12,12 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
      * @param {Phaser.GameObjects.Sprite} player jugador
      */
     constructor(scene, player, x, y) {
+        
         super(scene, x, y, "photonDestructor");
         this.setScale(3,3);
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
+        this.body.setSize(30,37,5,5);
         this.scene.physics.add.collider(this, player);
         this.body.setCollideWorldBounds();
         this.speed = 100;
@@ -48,10 +51,16 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
                 this.body.setVelocityX(0);
                 if (this.player.x  < this.x) { //si el jugador está a la izquierda 
                     //this.anims.play('desenfundado').setFlipX(true);
-                    this.anims.play('shoot', true).setFlipX(true);                    
+                    this.anims.play('shoot', true).setFlipX(true);    
+                    this.body.setSize(23,37); // Mantener el mismo tamaño del colisionador
+                    this.body.setOffset(23,-2); // Mantener el mismo desplazamiento del colisionador
+          
                 }else{ //si el jugador está a la derecha
-                    this.anims.play('desenfundado', true).setFlipX(false);
-                    //this.anims.chain('shoot', true).setFlipX(false);
+                    this.anims.play('desenfundado', true).setFlipX(true);
+                    
+                    this.body.setSize(23,37); // Mantener el mismo tamaño del colisionador
+                    this.body.setOffset(0,0); // Mantener el mismo desplazamiento del colisionador
+
                 }
             }
         }   

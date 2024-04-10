@@ -137,17 +137,35 @@ export default class Player extends Phaser.GameObjects.Sprite {
         if (this.body.onFloor()) { // Si está en el suelo
           if (this.cursors.down.isDown) { // Y está agachado
             this.anims.play('mikeIsDown', true);
-          } else if (this.cursors.right.isDown) { // Player se mueve a la derecha
+            this.body.setVelocityX(0);
+            this.body.setSize(19, 28,false);
+            if(this.direction=="left"){
+              this.body.setOffset(6, 6); // Ajustar la posición del hitbox desde la parte inferior del sprite
+
+            }
+            else{
+              this.body.setOffset(8.5, 6); // Ajustar la posición del hitbox desde la parte inferior del sprite
+
+            }
+           } else if (this.cursors.right.isDown) { 
+            this.body.setSize(19, 34,false);// Player se mueve a la derecha
+            
             this.direction = "right";
             this.body.setVelocityX(this.speed);
             this.anims.play('mike_run', true).setFlipX(false);
-          } else if (this.cursors.left.isDown) { // Player se mueve a la izquierda
+            this.body.setOffset(8, 0);
+          } else if (this.cursors.left.isDown) {
+            this.body.setSize(19, 34,false); // Player se mueve a la izquierda
             this.direction = "left";
             this.body.setVelocityX(-this.speed);
             this.anims.play('mike_run', true).setFlipX(true);
+            this.body.setOffset(8, 0);
           } else { // Player está quieto
+            this.body.setSize(19, 34,false);
             this.body.setVelocityX(0);
             this.anims.play('mike_idle', true);
+          
+            this.body.setOffset(8,0);
           }
           // Control de salto
           if (Phaser.Input.Keyboard.JustDown(this.cursors.spacebar)) { // Si la tecla de espacio se presiona
