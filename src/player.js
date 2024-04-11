@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import PhotonDestructor from './photonDestructor';
 
 /**
  * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
@@ -82,23 +83,41 @@ export default class Player extends Phaser.GameObjects.Sprite {
   }
 
   // Para el movimiento del jugador
-  /*handleControls() { FORMA EN LA QUE PUEDE CAMBAIR DE DIRECCION EN EL AIRE
+  handleControls() {// FORMA EN LA QUE PUEDE CAMBAIR DE DIRECCION EN EL AIRE
     this.keyboardControls = {
       movementControl: () => {
         if (this.body.onFloor()) { // Si está en el suelo
           if (this.cursors.down.isDown) { // Y está agachado
             this.anims.play('mikeIsDown', true);
-          } else if (this.cursors.right.isDown) { // Player se mueve a la derecha
+            this.body.setVelocityX(0);
+            this.body.setSize(19, 28,false);
+            if(this.direction=="left"){
+              this.body.setOffset(6, 6); // Ajustar la posición del hitbox desde la parte inferior del sprite
+
+            }
+            else{
+              this.body.setOffset(8.5, 6); // Ajustar la posición del hitbox desde la parte inferior del sprite
+
+            }
+          }else if (this.cursors.right.isDown) { 
+            this.body.setSize(19, 34,false);// Player se mueve a la derecha
+            
             this.direction = "right";
             this.body.setVelocityX(this.speed);
             this.anims.play('mike_run', true).setFlipX(false);
-          } else if (this.cursors.left.isDown) { // Player se mueve a la izquierda
+            this.body.setOffset(8, 0);
+          } else if (this.cursors.left.isDown) {
+            this.body.setSize(19, 34,false); // Player se mueve a la izquierda
             this.direction = "left";
             this.body.setVelocityX(-this.speed);
             this.anims.play('mike_run', true).setFlipX(true);
+            this.body.setOffset(8, 0);
           } else { // Player está quieto
+            this.body.setSize(19, 34,false);
             this.body.setVelocityX(0);
             this.anims.play('mike_idle', true);
+          
+            this.body.setOffset(8,0);
           }
           // Control de salto
           if (Phaser.Input.Keyboard.JustDown(this.cursors.spacebar)) { // Si la tecla de espacio se presiona
@@ -106,17 +125,17 @@ export default class Player extends Phaser.GameObjects.Sprite {
             this.anims.play('mike_jump', true);
           }
         } else { // Si está en el aire
-          const airResistance = 0.99; // Factor de resistencia del aire
+          const airResistance = 0.989; // Factor de resistencia del aire
           this.body.setVelocityX(this.body.velocity.x * airResistance);
           // Cambiar de dirección en el aire sin cambiar la velocidad
           if (Phaser.Input.Keyboard.JustDown(this.cursors.left)) {
             this.direction = "left";
             this.body.setVelocityX(-Math.abs(this.body.velocity.x)); // Cambia la dirección sin cambiar la magnitud de la velocidad
-            this.anims.play('mike_run', true).setFlipX(true);
+            this.anims.play('mike_jump', true).setFlipX(true);
           } else if (Phaser.Input.Keyboard.JustDown(this.cursors.right)) {
             this.direction = "right";
             this.body.setVelocityX(Math.abs(this.body.velocity.x)); // Cambia la dirección sin cambiar la magnitud de la velocidad
-            this.anims.play('mike_run', true).setFlipX(false);
+            this.anims.play('mike_jump', true).setFlipX(false);
           }
         }
       },
@@ -130,7 +149,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
         }
       },
     };
-  }*/
+  }/*
   handleControls() { //Esta opcion es para que el personaje no pueda cambiar de direccion en el salto y simplemente se vaya frenando si sigue en la direccion del salto y si no que se detenga
     this.keyboardControls = {
       movementControl: () => {
@@ -201,7 +220,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
         }
       },
     };
-  }
+  }*/
 
   /**
    * Métodos preUpdate de Phaser. En este caso solo se encarga del movimiento del jugador.
@@ -219,6 +238,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
   }
 
   initDash() {
+    
     this.isDashing = true;
     this.canDash = false;
     if (this.cursors.right.isDown) {   // Dash a la derecha
@@ -230,6 +250,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.scene.time.addEvent({
       delay: 500,
       callback: () => {
+    
         this.canDash = true;
       }
     });
