@@ -89,10 +89,20 @@ export default class Level extends Phaser.Scene {
         key: 'rungun'
     });  
     // Cargar tilesets y capas
-    const terrain = mapa.addTilesetImage('escenario', 'tiles2');
-    this.sueloLayer = this.map.createLayer('suelo', terrain);
-    this.fondoLayer = this.map.createLayer('fondo', terrain);
+    const pared = mapa.addTilesetImage('escenario', 'tiles1');
+    const suelo = mapa.addTilesetImage('fondo', 'tiles2');
+    const decorations = mapa.addTilesetImage('decorations', 'tiles3');
+    const utensilios = mapa.addTilesetImage('muebles', 'tiles4');
+    const mesas = mapa.addTilesetImage('mesas', 'tiles5');
+
     
+    this.paredLayer = this.map.createLayer('fondo', pared);
+    this.sueloLayer = this.map.createLayer('suelo', [suelo, pared]);
+    this.ventanasLayer = this.map.createLayer('ventanas', decorations);
+    this.plataformasLayer = this.map.createLayer('plataformas', [utensilios, decorations]);
+    this.mueblesLayer = this.map.createLayer('muebles', [mesas, utensilios]);
+    this.mesasLayer = this.map.createLayer('mesas', mesas);
+
     this.player = new Player(this, 300, 300);
 
     // Movimiento cámara sobre el jugador
@@ -105,13 +115,18 @@ export default class Level extends Phaser.Scene {
     // Colisión con el suelo
     this.sueloLayer.setCollisionBetween(0, 1000);
     this.physics.add.collider(this.player, this.sueloLayer);
+    
+    // Colisión con las plataformas
+    this.plataformasLayer.setCollisionBetween(0, 1000);
+    this.physics.add.collider(this.player, this.plataformasLayer);
+    
+    // Colisión con las mesas
+    this.plataformasLayer.setCollisionBetween(0, 1000);
+    this.physics.add.collider(this.player, this.mesasLayer);
 
     
     this.bullets = new Bullets(this);
     this.enemyBullets = new Bullets(this);
-    new Platform(this, this.player, this.bases, 150, 450);
-    new Platform(this, this.player, this.bases, 150, 200);
-    new Platform(this, this.player, this.bases, 1050, 200);
 
     // this.enemies.push(new T1000(this, this.player, 450, 100));
     // this.enemies.push(new T1000(this, this.player, 800, 160));

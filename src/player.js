@@ -31,7 +31,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     });
     
     this.score = 0;
-    this.setScale(3, 3);
+    this.setScale(2.2, 2.2);
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
 

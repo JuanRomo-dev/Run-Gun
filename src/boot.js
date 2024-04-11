@@ -22,8 +22,12 @@ import star from '../assets/sprites/star.png';
 import t1000 from '../assets/sprites/t-1000.png';
 
 import map from '../assets/maps/rungun.json';
+import fondos from '../assets/tilesets/Terrain.png';
 import decorations from '../assets/tilesets/Decorations.png';
-import terrain from '../assets/tilesets/Terrain.png';
+import bricks from '../assets/tilesets/bricks.png';
+import ware from '../assets/tilesets/House-kitchen.png';
+import tables from '../assets/tilesets/Living Room.png';
+
 
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
@@ -49,8 +53,12 @@ export default class Boot extends Phaser.Scene {
 
     // Cargar el mapa y las imágenes de los tilesets
     this.load.tilemapTiledJSON('rungun', map);
-    this.load.image('tiles1', decorations);
-    this.load.image('tiles2', terrain);
+    this.load.image('tiles1', fondos);
+    this.load.image('tiles2', bricks);
+    this.load.image('tiles3', decorations);
+    this.load.image('tiles4', ware);
+    this.load.image('tiles5', tables);
+
     
     // Cargar spritesheet
     this.load.spritesheet('mikeIdle', mike_idle, { frameWidth: 33, frameHeight: 35 });    // Spritesheet de Mike quieto
