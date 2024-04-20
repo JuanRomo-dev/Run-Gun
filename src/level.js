@@ -2,10 +2,9 @@ import Phaser from 'phaser';
 
 import Bullets from './bullet.js';
 import EnemyGruop from './enemyGroup.js';
+import PhotonDestructor from './photonDestructor.js';
 import Platform from './platform.js';
 import Player from './player.js';
-import T1000 from './t-1000.js';
-import PhotonDestructor from "./photonDestructor.js";
 
 /**
  * Escena principal del juego. La escena se compone de una serie de plataformas
@@ -28,8 +27,8 @@ export default class Level extends Phaser.Scene {
   /**
    * Creación de los elementos de la escena principal de juego
    */
-  create() {
-
+  create() {  
+    
     // Animación del photonDestructor corriendo
     this.photonDestructor_anim = this.cache.json.get("photonDestructor_anim");
     this.anims.fromJSON(this.photonDestructor_anim);
@@ -85,23 +84,60 @@ export default class Level extends Phaser.Scene {
       frames: this.anims.generateFrameNames('mikeIsDown', { start: 0, end: 0 })
     })
  
+    // Cargar mapa
+    const mapa = this.map = this.make.tilemap({
+        key: 'rungun'
+    });  
+    // Cargar tilesets y capas
+    const pared = mapa.addTilesetImage('escenario', 'tiles1');
+    const suelo = mapa.addTilesetImage('fondo', 'tiles2');
+    const decorations = mapa.addTilesetImage('decorations', 'tiles3');
+    const utensilios = mapa.addTilesetImage('muebles', 'tiles4');
+    const mesas = mapa.addTilesetImage('mesas', 'tiles5');
+
+    
+    this.paredLayer = this.map.createLayer('fondo', pared);
+    this.sueloLayer = this.map.createLayer('suelo', [suelo, pared]);
+    this.ventanasLayer = this.map.createLayer('ventanas', decorations);
+    this.plataformasLayer = this.map.createLayer('plataformas', [utensilios, decorations]);
+    this.mueblesLayer = this.map.createLayer('muebles', [mesas, utensilios]);
+    this.mesasLayer = this.map.createLayer('mesas', mesas);
 
     this.player = new Player(this, 300, 300);
 
+    // Movimiento cámara sobre el jugador
+    this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
+    this.cameras.main.startFollow(this.player)
     
+    // Bounds del nivel
+    this.physics.world.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
+    
+    // Colisión con el suelo
+    this.sueloLayer.setCollisionBetween(0, 1000);
+    this.physics.add.collider(this.player, this.sueloLayer);
+    
+    // Colisión con las plataformas
+    this.plataformasLayer.setCollisionBetween(0, 1000);
+    this.physics.add.collider(this.player, this.plataformasLayer);
+    
+    // Colisión con las mesas
+    this.plataformasLayer.setCollisionBetween(0, 1000);
+    this.physics.add.collider(this.player, this.mesasLayer);
 
+    
     this.bullets = new Bullets(this);
-    new Platform(this, this.player, this.bases, 150, 450);
-    new Platform(this, this.player, this.bases, 1050, 450);
-;
-    new Platform(this, this.player, this.bases, 150, 200);
-    new Platform(this, this.player, this.bases, 1050, 200);
+    this.enemyBullets = new Bullets(this);
 
-    this.enemies.push(new T1000(this, this.player, 450, 100));
-    this.enemies.push(new T1000(this, this.player, 800, 160));
-    this.enemies.push(new PhotonDestructor(this, this.player, 300, 100));
-    this.enemyGroup = new EnemyGruop(this, this.enemies);
+    // this.enemies.push(new T1000(this, this.player, 450, 100));
+    // this.enemies.push(new T1000(this, this.player, 800, 160));
+    this.enemies.push(new PhotonDestructor(this, this.player, 800, 100));
+    this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
 
+    // Colisión enemigos con suelo
+    this.enemies.forEach((enemy) => {
+      this.physics.add.collider(enemy, this.sueloLayer);
+    })
+    
     this.input.on(
       "pointerdown",
       function () {
@@ -110,9 +146,6 @@ export default class Level extends Phaser.Scene {
       this
     );
 
-    this.enemies.forEach((e) => {
-      this.physics.add.overlap(this.bullets, e, this.hitEnemy, null, this);
-    });
 
   }
 
@@ -125,5 +158,24 @@ export default class Level extends Phaser.Scene {
     }
     bullets.destroy();
     return false;
+  }
+
+  hitPlayer(bullets, player) {
+    console.log("Player dado");
+    player.life --;
+    if (player.life == 0){
+      player.destroy();
+      this.scene.start("end");
+    }
+    bullets.destroy();
+    return false;
+  }
+  
+  initMap() {
+    // Crear tilemap
+    
+
+
+
   }
 }

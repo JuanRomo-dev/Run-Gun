@@ -2,8 +2,7 @@ import Phaser from 'phaser';
 
 class Bullet extends Phaser.GameObjects.Sprite {
   damage = 2;
-  velocity = 600;
-  endScreenWidth = 1200;
+  endScreenWidth = 3200;
 
   constructor(scene, x, y) {
     super(scene, x, y, "bullet");
@@ -11,17 +10,17 @@ class Bullet extends Phaser.GameObjects.Sprite {
     this.setScale(3, 3);
   }
 
-  fire(x, y, player) {
-    this.body.reset(x, y);
+  fire(player) {
+    this.body.reset(player.x, player.y);
     this.body.setAllowGravity(false);
 
     this.setActive(true);
     this.setVisible(true);
     if(player.direction == "right"){
-      this.body.setVelocityX(this.velocity);
+      this.body.setVelocityX(player.bulletVelocity);
     }
     else if(player.direction == "left"){
-      this.body.setVelocityX(-this.velocity);
+      this.body.setVelocityX(-player.bulletVelocity);
     }
   }
 
@@ -41,7 +40,7 @@ export default class Bullets extends Phaser.GameObjects.Group {
     super(scene);
 
     this.createMultiple({
-      frameQuantity: 20,
+      frameQuantity: 40,
       key: "bullet",
       active: false,
       visible: false,
@@ -53,7 +52,7 @@ export default class Bullets extends Phaser.GameObjects.Group {
     let bullet = this.getFirstDead(false);
 
     if (bullet) {
-      bullet.fire(player.x, player.y, player);
+      bullet.fire(player);
     }
   }
 }

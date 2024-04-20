@@ -5,13 +5,15 @@ import Phaser from 'phaser';
  * También almacena la puntuación o número de estrellas que ha recogido hasta el momento.
  */
 export default class Player extends Phaser.GameObjects.Sprite {
+  
+  bulletVelocity = 600;
+  life = 3;
   /**
    * Constructor del jugador
    * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
    * @param {number} x Coordenada X
    * @param {number} y Coordenada Y
    */
-  
   constructor(scene, x, y) {
     super(scene, x, y, "player");
     
@@ -29,19 +31,19 @@ export default class Player extends Phaser.GameObjects.Sprite {
     });
     
     this.score = 0;
-    this.setScale(3, 3);
+    this.setScale(2.2, 2.2);
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
 
     // Queremos que el jugador no se salga de los límites del mundo
     this.body.setCollideWorldBounds();
-    this.body.setSize(33, 36);
+    this.body.setSize(33, 35);
     this.idleTime = null;
     
     // Datos del jugador
     this.speed = 300;
-    this.fallSpeed = 300;
-    this.jumpSpeed = -400;
+    this.fallSpeed = 220;
+    this.jumpSpeed = -350;
     this.dashSpeed = 500;
     
     // Estados del jugador
@@ -88,39 +90,49 @@ export default class Player extends Phaser.GameObjects.Sprite {
         if (this.body.onFloor()) { // Si está en el suelo
           if (this.cursors.down.isDown) { // Y está agachado
             this.anims.play('mikeIsDown', true);
+            this.body.setVelocityX(0);
+            this.body.setSize(19, 28,false);
+            if(this.direction=="left") {
+              this.body.setOffset(6, 6); // Ajustar la posición del hitbox desde la parte inferior del sprite
+            }
+            else{
+               this.body.setOffset(8.5, 6); // Ajustar la posición del hitbox desde la parte inferior del sprite
+            }
           } else if (this.cursors.right.isDown) { // Player se mueve a la derecha
+            this.body.setSize(19, 34,false);
             this.direction = "right";
             this.body.setVelocityX(this.speed);
             this.anims.play('mike_run', true).setFlipX(false);
+            this.body.setOffset(8, 0);
           } else if (this.cursors.left.isDown) { // Player se mueve a la izquierda
+            this.body.setSize(19, 34,false);
             this.direction = "left";
             this.body.setVelocityX(-this.speed);
             this.anims.play('mike_run', true).setFlipX(true);
+            this.body.setOffset(8, 0);
           } else { // Player está quieto
+            this.body.setSize(19, 34,false);
             this.body.setVelocityX(0);
             this.anims.play('mike_idle', true);
+            this.body.setOffset(8,0);
           }
           // Control de salto
           if (Phaser.Input.Keyboard.JustDown(this.cursors.spacebar)) { // Si la tecla de espacio se presiona
             this.body.setVelocityY(this.jumpSpeed);
             this.anims.play('mike_jump', true);
           }
-        } else if (this.body.velocity.y < 0) { // Si está saltando (subiendo verticalmente)
-          if (this.cursors.right.isDown) {
-            this.direction = "right";
-            this.body.setVelocityX(this.speed);
-          } else if (this.cursors.left.isDown) {
-            this.direction = "left";
-            this.body.setVelocityX(-this.speed);
-          }
         } else { // Si ha terminado el salto (bajando verticalmente)
-          this.anims.play('mike_fall', true);
-          if (this.cursors.right.isDown) {
-            this.direction = "right";
-            this.body.setVelocityX(this.fallSpeed);
-          } else if (this.cursors.left.isDown) {
+          const airResistance = 0.989; // Factor de resistencia del aire
+          this.body.setVelocityX(this.body.velocity.x * airResistance);
+          // Cambiar de dirección en el aire sin cambiar la velocidad
+          if (Phaser.Input.Keyboard.JustDown(this.cursors.left)) {
             this.direction = "left";
-            this.body.setVelocityX(-this.fallSpeed);
+            this.body.setVelocityX(-Math.abs(this.body.velocity.x)); // Cambia la dirección sin cambiar la magnitud de la velocidad
+            this.anims.play('mike_jump', true).setFlipX(true);
+          } else if (Phaser.Input.Keyboard.JustDown(this.cursors.right)) {
+            this.direction = "right";
+            this.body.setVelocityX(Math.abs(this.body.velocity.x)); // Cambia la dirección sin cambiar la magnitud de la velocidad
+            this.anims.play('mike_jump', true).setFlipX(false);
           }
         }
       },
