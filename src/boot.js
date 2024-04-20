@@ -14,7 +14,7 @@ import photonDestructor from '../assets/sprites/photonDestructor.png';
 import photonDestructor_atlas_png from '../assets/sprites/photondestructor/photondestructor.png';
 import photonDestructor_animacion from '../assets/sprites/photondestructor/photondestructor_anim.json';
 import photonDestructor_atlas from '../assets/sprites/photondestructor/photondestructor_atlas.json';
-import spiderdron from '../assets/sprites/photonDestructor.png';
+import spiderdron from '../assets/sprites/spiderdron.png';
 import spiderdron_atlas_png from '../assets/sprites/spiderdron/spiderdron.png';
 import spiderdron_animacion from '../assets/sprites/spiderdron/spiderdron_anim.json';
 import spiderdron_atlas from '../assets/sprites/spiderdron/spiderdron_atlas.json';
