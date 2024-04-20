@@ -37,16 +37,16 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
 
         if(this.player.y < this.y){ //si el jugador esta arriba
             this.body.setVelocityX(0);
-            this.anims.play('idle', true);
+            this.anims.play('photondestructor_idle', true);
         }else{
             if(Math.abs(this.player.x - this.x) > 350){ //Si esta demasiado lejos del jugador
 
                 if (this.player.x  < this.x) { //si el jugador está a la izquierda 
                     this.body.setVelocityX(-this.speed);
-                    this.anims.play('run', true).setFlipX(true); 
+                    this.anims.play('photondestructor_run', true).setFlipX(true); 
                 }else if (this.player.x > this.x){ //si el jugador está a la derecha
                     this.body.setVelocityX(this.speed);
-                    this.anims.play('run', true).setFlipX(false); 
+                    this.anims.play('photondestructor_run', true).setFlipX(false); 
                 }else{
                     this.body.setVelocityX(0);
                 }

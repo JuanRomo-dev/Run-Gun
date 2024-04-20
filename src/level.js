@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 import Bullets from './bullet.js';
 import EnemyGruop from './enemyGroup.js';
 import PhotonDestructor from './photonDestructor.js';
+import Spiderdron from './spiderdron.js';
 import Platform from './platform.js';
 import Player from './player.js';
 
@@ -27,11 +28,15 @@ export default class Level extends Phaser.Scene {
   /**
    * Creación de los elementos de la escena principal de juego
    */
-  create() {  
-    
-    // Animación del photonDestructor corriendo
+  create() {
+
+    // Animaciones del photonDestructor
     this.photonDestructor_anim = this.cache.json.get("photonDestructor_anim");
     this.anims.fromJSON(this.photonDestructor_anim);
+
+    // Animaciones del spiderdron
+    this.spiderdron_anim = this.cache.json.get("spiderdron_anim");
+    this.anims.fromJSON(this.spiderdron_anim);
 
     this.stars = 10;
     this.bases = this.add.group();

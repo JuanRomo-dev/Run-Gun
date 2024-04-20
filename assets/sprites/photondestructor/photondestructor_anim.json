@@ -1,7 +1,7 @@
 {
     "anims": [
         {
-            "key": "idle",
+            "key": "photondestructor_idle",
             "type": "frames",
             "repeat": -1,
             "frameRate": 4,
@@ -25,7 +25,7 @@
             ]
         },
         {
-            "key": "run",
+            "key": "photondestructor_run",
             "type": "frames",
             "repeat": -1,
             "frameRate": 9,
@@ -65,7 +65,7 @@
             ]
         },
         {
-            "key": "desenfundado",
+            "key": "photondestructor_desenfundado",
             "type": "frames",
             "repeat": 0,
             "frameRate": 12,
@@ -101,7 +101,7 @@
             ]
         },
         {
-            "key": "enfundado",
+            "key": "photondestructor_enfundado",
             "type": "frames",
             "repeat": -1,
             "frameRate": 8,
@@ -137,7 +137,7 @@
             ]
         },
         {
-            "key": "shoot",
+            "key": "photondestructor_shoot",
             "type": "frames",
             "repeat": -1,
             "frameRate": 10,
@@ -161,7 +161,7 @@
             ]
         },
         {
-            "key": "dead",
+            "key": "photondestructor_dead",
             "type": "frames",
             "repeat": -1,
             "frameRate": 9,

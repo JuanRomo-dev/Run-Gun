@@ -11,12 +11,13 @@ import mike_jump from '../assets/sprites/mike_jump.png';
 import mike_running from '../assets/sprites/mike_running.png';
 import mike_is_down from '../assets/sprites/mikeIsDown.png';
 import photonDestructor from '../assets/sprites/photonDestructor.png';
-import photonDestructor_atlas_png
-  from '../assets/sprites/photondestructor/photondestructor.png';
-import photonDestructor_animacion
-  from '../assets/sprites/photondestructor/photondestructor_anim.json';
-import photonDestructor_atlas
-  from '../assets/sprites/photondestructor/photondestructor_atlas.json';
+import photonDestructor_atlas_png from '../assets/sprites/photondestructor/photondestructor.png';
+import photonDestructor_animacion from '../assets/sprites/photondestructor/photondestructor_anim.json';
+import photonDestructor_atlas from '../assets/sprites/photondestructor/photondestructor_atlas.json';
+import spiderdron from '../assets/sprites/spiderdron.png';
+import spiderdron_atlas_png from '../assets/sprites/spiderdron/spiderdron.png';
+import spiderdron_animacion from '../assets/sprites/spiderdron/spiderdron_anim.json';
+import spiderdron_atlas from '../assets/sprites/spiderdron/spiderdron_atlas.json';
 import platform from '../assets/sprites/platform.png';
 import star from '../assets/sprites/star.png';
 import t1000 from '../assets/sprites/t-1000.png';
@@ -86,6 +87,11 @@ export default class Boot extends Phaser.Scene {
     this.load.image("photonDestructor", photonDestructor);
     this.load.json("photonDestructor_anim", photonDestructor_animacion);
     this.load.atlas("photondestructor", photonDestructor_atlas_png, photonDestructor_atlas);
+
+    // Carga de los assets del spiderdron
+    this.load.image("spiderDron", spiderdron);
+    this.load.json("spiderdron_anim", spiderdron_animacion);
+    this.load.atlas("spiderdron", spiderdron_atlas_png, spiderdron_atlas);
 
     this.load.image("bullet", bullet);
   }
