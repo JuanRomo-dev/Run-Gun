@@ -1,0 +1,96 @@
+{
+    "anims": [
+        {
+            "key": "t1000_hurt",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 10,
+            "frames": [
+                {
+                    "key": "t1000",
+                    "frame": "death_0"
+                },
+                {
+                    "key": "t1000",
+                    "frame": "attack_1"
+                },
+                {
+                    "key": "t1000",
+                    "frame": "attack_0"
+                }
+            ]
+        },
+        {
+            "key": "t1000_attack",
+            "type": "frames",
+            "repeat": 0,
+            "frameRate": 10,
+            "frames": [
+                {
+                    "key": "t1000",
+                    "frame": "attack_0"
+                },
+                {
+                    "key": "t1000",
+                    "frame": "attack_1"
+                },
+                {
+                    "key": "t1000",
+                    "frame": "attack_2"
+                },
+                {
+                    "key": "t1000",
+                    "frame": "attack_3"
+                }
+            ]
+        },
+        {
+            "key": "t1000_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 10,
+            "frames": [
+                {
+                    "key": "t1000",
+                    "frame": "idle_0"
+                },
+                {
+                    "key": "t1000",
+                    "frame": "idle_1"
+                },
+                {
+                    "key": "t1000",
+                    "frame": "idle_2"
+                },
+                {
+                    "key": "t1000",
+                    "frame": "idle_3"
+                }
+            ]
+        },
+        {
+            "key": "t1000_walk",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 10,
+            "frames": [
+                {
+                    "key": "t1000",
+                    "frame": "walk_0"
+                },
+                {
+                    "key": "t1000",
+                    "frame": "walk_1"
+                },
+                {
+                    "key": "t1000",
+                    "frame": "walk_2"
+                },
+                {
+                    "key": "t1000",
+                    "frame": "walk_3"
+                }
+            ]
+        }
+    ]
+}

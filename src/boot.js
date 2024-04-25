@@ -21,6 +21,9 @@ import spiderdron_atlas from '../assets/sprites/spiderdron/spiderdron_atlas.json
 import platform from '../assets/sprites/platform.png';
 import star from '../assets/sprites/star.png';
 import t1000 from '../assets/sprites/t-1000.png';
+import t1000_atlas_png from '../assets/sprites/t1000/t1000.png';
+import t1000_animacion from '../assets/sprites/t1000/t1000_anim.json';
+import t1000_atlas from '../assets/sprites/t1000/t1000_atlas.json';
 
 import map from '../assets/maps/rungun.json';
 import fondos from '../assets/tilesets/Terrain.png';
@@ -81,7 +84,6 @@ export default class Boot extends Phaser.Scene {
     this.load.image("platform", platform);
     this.load.image("base", base);
     this.load.image("star", star);
-    this.load.image("t-1000", t1000);
     
     // Carga de los assets del photon destructor
     this.load.image("photonDestructor", photonDestructor);
@@ -92,6 +94,12 @@ export default class Boot extends Phaser.Scene {
     this.load.image("spiderDron", spiderdron);
     this.load.json("spiderdron_anim", spiderdron_animacion);
     this.load.atlas("spiderdron", spiderdron_atlas_png, spiderdron_atlas);
+
+    // Carga de los assets del t1000
+    this.load.image("T1000", t1000);
+    this.load.json("t1000_anim", t1000_animacion);
+    this.load.atlas("t1000", t1000_atlas_png, t1000_atlas);
+
 
     this.load.image("bullet", bullet);
   }
