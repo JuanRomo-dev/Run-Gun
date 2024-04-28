@@ -53,7 +53,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
     
     // Esta label es la UI en la que pondremos la puntuación del jugador
     this.labelScore = this.scene.add.text(10, 10, "Score: 0");
+    this.labelScore.setScrollFactor(0);
     this.lifeScore = this.scene.add.text(10, 30, "Life: 5");
+    this.lifeScore.setScrollFactor(0);
     this.direction = "right"
     // Keys
     this.cursors = this.scene.input.keyboard.addKeys({
