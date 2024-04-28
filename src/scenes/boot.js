@@ -1,36 +1,33 @@
 import Phaser from 'phaser';
 
-import base from '../assets/sprites/base.png';
-import bullet from '../assets/sprites/bullet.png';
-import mike_dash from '../assets/sprites/Dash.png';
-import mike_down from '../assets/sprites/mike_down.png';
-import mike_fall from '../assets/sprites/mike_fall.png';
-import mike_idle from '../assets/sprites/mike_idle.png';
-import mike_idle2 from '../assets/sprites/mike_idle2.png';
-import mike_jump from '../assets/sprites/mike_jump.png';
-import mike_running from '../assets/sprites/mike_running.png';
-import mike_is_down from '../assets/sprites/mikeIsDown.png';
-import photonDestructor from '../assets/sprites/photonDestructor.png';
-import photonDestructor_atlas_png from '../assets/sprites/photondestructor/photondestructor.png';
-import photonDestructor_animacion from '../assets/sprites/photondestructor/photondestructor_anim.json';
-import photonDestructor_atlas from '../assets/sprites/photondestructor/photondestructor_atlas.json';
-import spiderdron from '../assets/sprites/spiderdron.png';
-import spiderdron_atlas_png from '../assets/sprites/spiderdron/spiderdron.png';
-import spiderdron_animacion from '../assets/sprites/spiderdron/spiderdron_anim.json';
-import spiderdron_atlas from '../assets/sprites/spiderdron/spiderdron_atlas.json';
-import platform from '../assets/sprites/platform.png';
-import star from '../assets/sprites/star.png';
-import t1000 from '../assets/sprites/t-1000.png';
-import t1000_atlas_png from '../assets/sprites/t1000/t1000.png';
-import t1000_animacion from '../assets/sprites/t1000/t1000_anim.json';
-import t1000_atlas from '../assets/sprites/t1000/t1000_atlas.json';
+import bullet from '../../assets/sprites/bullet.png';
+import mike_dash from '../../assets/sprites/Dash.png';
+import mike_down from '../../assets/sprites/mike_down.png';
+import mike_fall from '../../assets/sprites/mike_fall.png';
+import mike_idle from '../../assets/sprites/mike_idle.png';
+import mike_idle2 from '../../assets/sprites/mike_idle2.png';
+import mike_jump from '../../assets/sprites/mike_jump.png';
+import mike_running from '../../assets/sprites/mike_running.png';
+import mike_is_down from '../../assets/sprites/mikeIsDown.png';
+import photonDestructor from '../../assets/sprites/photonDestructor.png';
+import photonDestructor_atlas_png from '../../assets/sprites/photondestructor/photondestructor.png';
+import photonDestructor_animacion from '../../assets/sprites/photondestructor/photondestructor_anim.json';
+import photonDestructor_atlas from '../../assets/sprites/photondestructor/photondestructor_atlas.json';
+import spiderdron from '../../assets/sprites/spiderdron.png';
+import spiderdron_atlas_png from '../../assets/sprites/spiderdron/spiderdron.png';
+import spiderdron_animacion from '../../assets/sprites/spiderdron/spiderdron_anim.json';
+import spiderdron_atlas from '../../assets/sprites/spiderdron/spiderdron_atlas.json';
+import t1000 from '../../assets/sprites/t-1000.png';
+import t1000_atlas_png from '../../assets/sprites/t1000/t1000.png';
+import t1000_animacion from '../../assets/sprites/t1000/t1000_anim.json';
+import t1000_atlas from '../../assets/sprites/t1000/t1000_atlas.json';
 
-import map from '../assets/maps/rungun.json';
-import fondos from '../assets/tilesets/Terrain.png';
-import decorations from '../assets/tilesets/Decorations.png';
-import bricks from '../assets/tilesets/bricks.png';
-import ware from '../assets/tilesets/House-kitchen.png';
-import tables from '../assets/tilesets/Living Room.png';
+import map from '../../assets/maps/rungun.json';
+import fondos from '../../assets/tilesets/Terrain.png';
+import decorations from '../../assets/tilesets/Decorations.png';
+import bricks from '../../assets/tilesets/bricks.png';
+import ware from '../../assets/tilesets/House-kitchen.png';
+import tables from '../../assets/tilesets/Living Room.png';
 
 
 /**
@@ -81,9 +78,6 @@ export default class Boot extends Phaser.Scene {
 
     this.load.spritesheet('mikeDash', mike_dash, { frameWidth: 33, frameHeight: 35 });
     
-    this.load.image("platform", platform);
-    this.load.image("base", base);
-    this.load.image("star", star);
     
     // Carga de los assets del photon destructor
     this.load.image("photonDestructor", photonDestructor);

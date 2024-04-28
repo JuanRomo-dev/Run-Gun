@@ -7,7 +7,7 @@ import Phaser from 'phaser';
 export default class Player extends Phaser.GameObjects.Sprite {
   
   bulletVelocity = 600;
-  life = 3;
+  life = 5;
   /**
    * Constructor del jugador
    * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
@@ -31,7 +31,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     });
     
     this.score = 0;
-    this.setScale(2.2, 2.2);
+    this.setScale(1.8, 1.8);
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
 
@@ -52,7 +52,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.canDash = true;
     
     // Esta label es la UI en la que pondremos la puntuación del jugador
-    this.label = this.scene.add.text(10, 10, "");
+    this.labelScore = this.scene.add.text(10, 10, "Score: 0");
+    this.lifeScore = this.scene.add.text(10, 30, "Life: 5");
     this.direction = "right"
     // Keys
     this.cursors = this.scene.input.keyboard.addKeys({
@@ -60,27 +61,23 @@ export default class Player extends Phaser.GameObjects.Sprite {
       down: Phaser.Input.Keyboard.KeyCodes.S,
       left: Phaser.Input.Keyboard.KeyCodes.A,
       right: Phaser.Input.Keyboard.KeyCodes.D,
-      ctrl: Phaser.Input.Keyboard.KeyCodes.CTRL
+      ctrl: Phaser.Input.Keyboard.KeyCodes.CTRL,
+      shift: Phaser.Input.Keyboard.KeyCodes.SHIFT
     })
     
     this.handleControls();
     this.controls = this.keyboardControls;  
   }
 
-  /**
-   * El jugador ha recogido una estrella por lo que este método añade un punto y
-   * actualiza la UI con la puntuación actual.
-   */
-  point(score) {
-    this.score += score;
-    this.updateScore();
+
+  loseLife(){
+    this.life--;
+    this.lifeScore.text = "Life: " + this.life;
   }
 
-  /**
-   * Actualiza la UI con la puntuación actual
-   */
-  updateScore() {
-    this.label.text = "Score: " + this.score;
+  updateScore(enemyScore) {
+    this.score += enemyScore;
+    this.labelScore.text = "Score: " + this.score;
   }
 
   // Para el movimiento del jugador
@@ -90,55 +87,41 @@ export default class Player extends Phaser.GameObjects.Sprite {
         if (this.body.onFloor()) { // Si está en el suelo
           if (this.cursors.down.isDown) { // Y está agachado
             this.anims.play('mikeIsDown', true);
-            this.body.setVelocityX(0);
-            this.body.setSize(19, 28,false);
-            if(this.direction=="left") {
-              this.body.setOffset(6, 6); // Ajustar la posición del hitbox desde la parte inferior del sprite
-            }
-            else{
-               this.body.setOffset(8.5, 6); // Ajustar la posición del hitbox desde la parte inferior del sprite
-            }
           } else if (this.cursors.right.isDown) { // Player se mueve a la derecha
-            this.body.setSize(19, 34,false);
             this.direction = "right";
             this.body.setVelocityX(this.speed);
             this.anims.play('mike_run', true).setFlipX(false);
-            this.body.setOffset(8, 0);
           } else if (this.cursors.left.isDown) { // Player se mueve a la izquierda
-            this.body.setSize(19, 34,false);
             this.direction = "left";
             this.body.setVelocityX(-this.speed);
             this.anims.play('mike_run', true).setFlipX(true);
-            this.body.setOffset(8, 0);
           } else { // Player está quieto
-            this.body.setSize(19, 34,false);
             this.body.setVelocityX(0);
             this.anims.play('mike_idle', true);
-            this.body.setOffset(8,0);
           }
           // Control de salto
           if (Phaser.Input.Keyboard.JustDown(this.cursors.spacebar)) { // Si la tecla de espacio se presiona
             this.body.setVelocityY(this.jumpSpeed);
             this.anims.play('mike_jump', true);
           }
+        } else if (this.body.velocity.y < 0) { // Si está saltando (subiendo verticalmente)
+          if (this.cursors.right.isDown) {
+            this.body.setVelocityX(this.speed);
+          } else if (this.cursors.left.isDown) {
+            this.body.setVelocityX(-this.speed);
+          }
         } else { // Si ha terminado el salto (bajando verticalmente)
-          const airResistance = 0.989; // Factor de resistencia del aire
-          this.body.setVelocityX(this.body.velocity.x * airResistance);
-          // Cambiar de dirección en el aire sin cambiar la velocidad
-          if (Phaser.Input.Keyboard.JustDown(this.cursors.left)) {
-            this.direction = "left";
-            this.body.setVelocityX(-Math.abs(this.body.velocity.x)); // Cambia la dirección sin cambiar la magnitud de la velocidad
-            this.anims.play('mike_jump', true).setFlipX(true);
-          } else if (Phaser.Input.Keyboard.JustDown(this.cursors.right)) {
-            this.direction = "right";
-            this.body.setVelocityX(Math.abs(this.body.velocity.x)); // Cambia la dirección sin cambiar la magnitud de la velocidad
-            this.anims.play('mike_jump', true).setFlipX(false);
+          this.anims.play('mike_fall', true);
+          if (this.cursors.right.isDown) {
+            this.body.setVelocityX(this.fallSpeed);
+          } else if (this.cursors.left.isDown) {
+            this.body.setVelocityX(-this.fallSpeed);
           }
         }
       },
       
       dashControl: () => {
-        if (Phaser.Input.Keyboard.JustDown(this.cursors.ctrl) && this.canDash) {
+        if (Phaser.Input.Keyboard.JustDown(this.cursors.shift) && this.canDash) {
           this.initDash();
           this.play('mikeDash', true);
         }
