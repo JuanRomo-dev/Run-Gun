@@ -23,7 +23,8 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
         this.speed = 100;
         this.jumpSpeed = -100;
         this.player = player;
-        this.direction = "left"
+        this.direction = "left";
+        this.setScale(2.3, 2.3);
     }
 
 /**
