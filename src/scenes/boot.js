@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
 
+import logo_estudio from "../../assets/img/logo_estudio.png";
+import map from '../../assets/maps/rungun.json';
 import bullet from '../../assets/sprites/bullet.png';
 import mike_dash from '../../assets/sprites/Dash.png';
 import mike_down from '../../assets/sprites/mike_down.png';
@@ -21,15 +23,13 @@ import t1000 from '../../assets/sprites/t-1000.png';
 import t1000_atlas_png from '../../assets/sprites/t1000/t1000.png';
 import t1000_animacion from '../../assets/sprites/t1000/t1000_anim.json';
 import t1000_atlas from '../../assets/sprites/t1000/t1000_atlas.json';
-import ui_heart_empty from "../../assets/ui/ui_heart_empty.png";
-import ui_heart_full from "../../assets/ui/ui_heart_full.png";
-
-import map from '../../assets/maps/rungun.json';
 import bricks from '../../assets/tilesets/bricks.png';
 import decorations from '../../assets/tilesets/Decorations.png';
 import ware from '../../assets/tilesets/House-kitchen.png';
 import tables from '../../assets/tilesets/Living Room.png';
 import fondos from '../../assets/tilesets/Terrain.png';
+import ui_heart_empty from "../../assets/ui/ui_heart_empty.png";
+import ui_heart_full from "../../assets/ui/ui_heart_full.png";
 
 
 /**
@@ -100,14 +100,24 @@ export default class Boot extends Phaser.Scene {
     this.load.image("bullet", bullet);
     this.load.image('ui-heart-empty', ui_heart_empty)
 		this.load.image('ui-heart-full', ui_heart_full)
+    this.load.image('logo', logo_estudio);
+   
   }
 
-  /**
-   * Creación de la escena. En este caso, solo cambiamos a la escena que representa el
-   * nivel del juego
-   */
   create() {
-    this.scene.start("level");
-    
+    let image = this.add.image(this.sys.game.canvas.width/2,this.sys.game.canvas.height/2, 'logo');
+    image.setAlpha(0); 
+    image.setScale(0.5);
+
+    this.tweens.add({
+      targets: image,
+      alpha: 1,
+      duration: 2500,
+      ease: 'Linear',
+      yoyo: true,
+      onComplete: () => { 
+        this.scene.start("level");
+      }
+    });
   }
 }
