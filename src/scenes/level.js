@@ -3,10 +3,9 @@ import Phaser from 'phaser';
 import Bullets from '../bullet.js';
 import EnemyGruop from '../enemies/enemyGroup.js';
 import PhotonDestructor from '../enemies/photonDestructor.js';
-import Spiderdron from '../enemies/spiderdron.js';
 import T1000 from '../enemies/t-1000.js';
+import { sceneEvents } from "../events/eventsCenter.js";
 import Player from '../heroes/player.js';
-
 export default class Level extends Phaser.Scene {
   enemies = [];
 
@@ -21,7 +20,7 @@ export default class Level extends Phaser.Scene {
    * Creación de los elementos de la escena principal de juego
    */
   create() {
-
+    this.scene.run("game-ui")
     // Animaciones del photonDestructor
     this.photonDestructor_anim = this.cache.json.get("photonDestructor_anim");
     this.anims.fromJSON(this.photonDestructor_anim);
@@ -151,17 +150,18 @@ export default class Level extends Phaser.Scene {
 
   hitEnemy(bullets, enemy) {
     enemy.life -= bullets.damage;
-
+    enemy.setTint(0xff0000);
     if (enemy.life <= 0) {
       this.player.updateScore(enemy.score)
       enemy.destroy();
     }
     bullets.destroy();
-    return false;
-  }
+    return false;  }
 
   hitPlayer(bullets, player) {
     player.loseLife();
+    player.setTint(0xff0000);
+    sceneEvents.emit('player-health-changed', player.life)
     if (player.life <= 0){
       player.destroy();
       this.scene.start("end");

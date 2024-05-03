@@ -3,7 +3,7 @@ import Phaser from "phaser";
 import Boot from "./scenes/boot.js";
 import End from "./scenes/end.js";
 import Level from "./scenes/level.js";
-
+import GameUI from "./scenes/gameUI.js";
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
  * la clase Game de Phaser, encargada de crear e iniciar el juego.
@@ -17,7 +17,7 @@ let config = {
     autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
   },
   pixelArt: true,
-  scene: [Boot, Level, End],
+  scene: [Boot, Level, End, GameUI],
   physics: {
     default: "arcade",
     arcade: {

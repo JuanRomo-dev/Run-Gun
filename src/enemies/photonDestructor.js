@@ -35,6 +35,7 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
         super.preUpdate(t, dt);
         this.body.setSize(23,37); // Mantener el mismo tamaño del colisionador
         this.body.setOffset(4,0); // Mantener el mismo desplazamiento del colisionador
+        this.setTint(0xffffff);
 
         if(this.player.y < this.y){ //si el jugador esta arriba
             this.body.setVelocityX(0);
