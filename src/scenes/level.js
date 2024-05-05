@@ -8,7 +8,7 @@ import { sceneEvents } from "../events/eventsCenter.js";
 import Player from '../heroes/player.js';
 export default class Level extends Phaser.Scene {
   enemies = [];
-
+  weapons = [];
   /**
    * Constructor de la escena
    */
@@ -131,12 +131,17 @@ export default class Level extends Phaser.Scene {
     this.enemies.push(new T1000(this, this.player, 1400, 160));
     this.enemies.push(new PhotonDestructor(this, this.player, 1500, 100));
     this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
+    
+    // this.weapons.push(new Rifle(this, 200, 510));
+    // this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
 
     // Colisión enemigos con suelo
     this.enemies.forEach((enemy) => {
       this.physics.add.collider(enemy, this.sueloLayer);
     })
     
+a
+
     this.input.on(
       "pointerdown",
       function () {
@@ -144,7 +149,6 @@ export default class Level extends Phaser.Scene {
       },
       this
     );
-
 
   }
 
@@ -156,7 +160,8 @@ export default class Level extends Phaser.Scene {
       enemy.destroy();
     }
     bullets.destroy();
-    return false;  }
+    return false;  
+  }
 
   hitPlayer(bullets, player) {
     player.loseLife();
@@ -170,6 +175,12 @@ export default class Level extends Phaser.Scene {
     return false;
   }
   
+  hitWeapon(weapon, player) {
+    player.updateBulletVelocity(weapon);
+    weapon.destroy();
+    return false;
+  }
+
   initMap() {
     // Crear tilemap
     

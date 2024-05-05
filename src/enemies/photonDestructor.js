@@ -15,7 +15,6 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
      */
     constructor(scene, player, x, y) {
         super(scene, x, y, "photonDestructor");
-        this.setScale(3,3);
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.scene.physics.add.collider(this, player);

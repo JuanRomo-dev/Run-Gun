@@ -1,6 +1,9 @@
 import Phaser from 'phaser';
 
 import logo_estudio from "../../assets/img/logo_estudio.png";
+import m16 from "../../assets/img/m16.png";
+import rifle from "../../assets/img/rifle.png";
+import thunder from "../../assets/img/thunder.png";
 import map from '../../assets/maps/rungun.json';
 import bullet from '../../assets/sprites/bullet.png';
 import mike_dash from '../../assets/sprites/Dash.png';
@@ -30,7 +33,6 @@ import tables from '../../assets/tilesets/Living Room.png';
 import fondos from '../../assets/tilesets/Terrain.png';
 import ui_heart_empty from "../../assets/ui/ui_heart_empty.png";
 import ui_heart_full from "../../assets/ui/ui_heart_full.png";
-
 
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
@@ -101,7 +103,10 @@ export default class Boot extends Phaser.Scene {
     this.load.image('ui-heart-empty', ui_heart_empty)
 		this.load.image('ui-heart-full', ui_heart_full)
     this.load.image('logo', logo_estudio);
-   
+    this.load.image('rifle', rifle);
+    this.load.image('m16', m16);
+    this.load.image('thunder', thunder);
+    
   }
 
   create() {
