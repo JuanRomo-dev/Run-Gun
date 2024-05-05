@@ -140,7 +140,6 @@ export default class Level extends Phaser.Scene {
       this.physics.add.collider(enemy, this.sueloLayer);
     })
     
-a
 
     this.input.on(
       "pointerdown",
