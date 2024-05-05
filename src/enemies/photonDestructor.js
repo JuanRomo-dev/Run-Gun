@@ -15,7 +15,6 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
      */
     constructor(scene, player, x, y) {
         super(scene, x, y, "photonDestructor");
-        this.setScale(3,3);
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.scene.physics.add.collider(this, player);
@@ -23,7 +22,8 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
         this.speed = 100;
         this.jumpSpeed = -100;
         this.player = player;
-        this.direction = "left"
+        this.direction = "left";
+        this.setScale(2.3, 2.3);
     }
 
 /**
@@ -34,6 +34,7 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
         super.preUpdate(t, dt);
         this.body.setSize(23,37); // Mantener el mismo tamaño del colisionador
         this.body.setOffset(4,0); // Mantener el mismo desplazamiento del colisionador
+        this.setTint(0xffffff);
 
         if(this.player.y < this.y){ //si el jugador esta arriba
             this.body.setVelocityX(0);
