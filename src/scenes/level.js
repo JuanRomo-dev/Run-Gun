@@ -6,6 +6,9 @@ import PhotonDestructor from '../enemies/photonDestructor.js';
 import T1000 from '../enemies/t-1000.js';
 import { sceneEvents } from "../events/eventsCenter.js";
 import Player from '../heroes/player.js';
+import Rifle from "../weapons/rifle.js";
+import WeaponsGroup from "../weapons/weaponsGroup.js";
+
 export default class Level extends Phaser.Scene {
   enemies = [];
   weapons = [];
@@ -132,6 +135,7 @@ export default class Level extends Phaser.Scene {
     this.enemies.push(new PhotonDestructor(this, this.player, 1500, 100));
     this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
     
+    this.weapons.push(new Rifle(this, 3142, 225));
     this.weapons.push(new Rifle(this, 250, 310));
     this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
 
@@ -140,10 +144,23 @@ export default class Level extends Phaser.Scene {
       this.physics.add.collider(enemy, this.sueloLayer);
     })
     
+    // Colisión armas
+    this.weapons.forEach((weapon) => {
+      this.physics.add.collider(weapon, this.sueloLayer);
+      this.physics.add.collider(weapon, this.plataformasLayer);
+      this.physics.add.collider(weapon, this.mesasLayer);
+
+    })
+    
+
 
     this.input.on(
       "pointerdown",
       function () {
+        console.log("🚀 ~ Level ~ create ~ this.player.x;", this.player.x)
+        console.log("🚀 ~ Level ~ create ~ this.player.y;", this.player.y)
+        
+        this.player.restAmmo();
         this.bullets.fireBullet(this.player);
       },
       this
@@ -153,6 +170,8 @@ export default class Level extends Phaser.Scene {
 
   hitEnemy(bullets, enemy) {
     enemy.life -= bullets.damage;
+    console.log("🚀 ~ Level ~ hitEnemy ~ bullets.damage:", bullets.damage)
+    
     enemy.setTint(0xff0000);
     if (enemy.life <= 0) {
       this.player.updateScore(enemy.score)
@@ -175,7 +194,7 @@ export default class Level extends Phaser.Scene {
   }
   
   hitWeapon(weapon, player) {
-    player.updateBulletVelocity(weapon);
+    player.updateWeapon(weapon);
     weapon.destroy();
     return false;
   }

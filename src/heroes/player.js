@@ -4,8 +4,11 @@ import Phaser from 'phaser';
  * También almacena la puntuación o número de estrellas que ha recogido hasta el momento.
  */
 export default class Player extends Phaser.GameObjects.Sprite {
-  bulletDamage = 2;
-  bulletVelocity = 400;
+  bulletDamage;
+  bulletVelocity;
+  defaultbulletDamage = 2;
+  defaultbulletVelocity = 350;
+  ammo = undefined;
   life = 5;
   /**
    * Constructor del jugador
@@ -29,6 +32,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
       }
     });
     
+    this.bulletDamage = this.defaultbulletDamage;
+    this.bulletVelocity = this.defaultbulletVelocity;
+
     this.score = 0;
     this.setScale(1.8, 1.8);
     this.scene.add.existing(this);
@@ -49,13 +55,20 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.isInAir = false;
     this.isDashing = false;
     this.canDash = true;
-    
+  
+    this.direction = "right"
+
+
     // Esta label es la UI en la que pondremos la puntuación del jugador
     this.labelScore = this.scene.add.text(10, 10, "Score: 0");
     this.labelScore.setScrollFactor(0);
     this.lifeScore = this.scene.add.text(10, 30, "Life:");
     this.lifeScore.setScrollFactor(0);
-    this.direction = "right"
+
+    //UI ammo
+    this.labelAmmo = this.scene.add.text(10, 50, "Ammo: ∞");
+    this.labelAmmo.setScrollFactor(0);
+
     // Keys
     this.cursors = this.scene.input.keyboard.addKeys({
       spacebar: Phaser.Input.Keyboard.KeyCodes.SPACE,
@@ -71,19 +84,42 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
   }
 
-  updateBulletVelocity(weapon){
+  updateWeapon(weapon){
     this.bulletVelocity = weapon.bulletVelocity;
     this.bulletDamage = weapon.bulletDamage;
+    this.ammo = weapon.ammo;
+    this.updateAmmoLabel(this.ammo);
   }
 
   loseLife(){
     --this.life;
   }
 
+  updateAmmoLabel(ammo){
+    if(ammo !== undefined)
+      this.labelAmmo.text = "Ammo: " + ammo;
+    else
+      this.labelAmmo.text = "Ammo: ∞";
+  }
+
+  restAmmo(){
+    if(this.ammo != undefined){
+      this.ammo--;
+      if(this.ammo === 0){
+        this.ammo = undefined;
+        this.bulletDamage = this.defaultbulletDamage;
+        this.bulletVelocity = this.defaultbulletVelocity
+      }
+      this.updateAmmoLabel(this.ammo);
+    }
+  }
+
   updateScore(enemyScore) {
     this.score += enemyScore;
     this.labelScore.text = "Score: " + this.score;
   }
+
+
 
   // Para el movimiento del jugador
   handleControls() {

@@ -11,6 +11,7 @@ class Bullet extends Phaser.GameObjects.Sprite {
   }
 
   fire(player) {
+    console.log("🚀 ~ Bullet ~ fire ~ player.bulletVelocity):", player.bulletVelocity)
     this.damage = player.bulletDamage;
     this.body.reset(player.x, player.y);
     this.body.setAllowGravity(false);
