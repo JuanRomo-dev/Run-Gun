@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 
 export default class Rifle extends Phaser.GameObjects.Sprite {
+  bulletDamage = 5;
   bulletVelocity = 600;
   name = "rifle";
 
@@ -11,6 +12,6 @@ export default class Rifle extends Phaser.GameObjects.Sprite {
       this.scene.physics.add.existing(this);
       this.scene.physics.add.collider(this, player);
       this.body.setCollideWorldBounds();
-  }
+  }       
 
 }

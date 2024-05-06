@@ -1,8 +1,8 @@
 import Phaser from 'phaser';
 
 class Bullet extends Phaser.GameObjects.Sprite {
-  damage = 2;
-  endScreenWidth = 3200;
+  damage = 0;
+  endScreenWidth = 7648;
 
   constructor(scene, x, y) {
     super(scene, x, y, "bullet");
@@ -11,6 +11,7 @@ class Bullet extends Phaser.GameObjects.Sprite {
   }
 
   fire(player) {
+    this.damage = player.bulletDamage;
     this.body.reset(player.x, player.y);
     this.body.setAllowGravity(false);
 
@@ -27,10 +28,10 @@ class Bullet extends Phaser.GameObjects.Sprite {
   preUpdate(time, delta) {
     super.preUpdate(time, delta);
 
-    // Reset the bullets when it reaches end of screen
     if (this.x > this.endScreenWidth) {
       this.setActive(false);
       this.setVisible(false);
+      this.destroy();
     }
   }
 }

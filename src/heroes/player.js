@@ -4,7 +4,7 @@ import Phaser from 'phaser';
  * También almacena la puntuación o número de estrellas que ha recogido hasta el momento.
  */
 export default class Player extends Phaser.GameObjects.Sprite {
-  
+  bulletDamage = 2;
   bulletVelocity = 400;
   life = 5;
   /**
@@ -72,7 +72,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
   }
 
   updateBulletVelocity(weapon){
-    bulletVelocity = weapon.bulletVelocity;
+    this.bulletVelocity = weapon.bulletVelocity;
+    this.bulletDamage = weapon.bulletDamage;
   }
 
   loseLife(){

@@ -132,8 +132,8 @@ export default class Level extends Phaser.Scene {
     this.enemies.push(new PhotonDestructor(this, this.player, 1500, 100));
     this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
     
-    // this.weapons.push(new Rifle(this, 200, 510));
-    // this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
+    this.weapons.push(new Rifle(this, 250, 310));
+    this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
 
     // Colisión enemigos con suelo
     this.enemies.forEach((enemy) => {
