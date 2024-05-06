@@ -16,7 +16,7 @@ export default class GameUI extends Phaser.Scene{
         setXY: {
           x: 70,
           y: 38,
-          stepX:17
+          stepX:18
         },
         quantity: 5
       })
