@@ -6,6 +6,7 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
     tickRate = 0.5;
     shootRate = 1000; //milisegundos
     bulletVelocity = 400;
+    textureBullet = "enemy_bullet";
     /**
      * Constructor del enemigo
      * @param {Phaser.Scene} scene Escena a la que pertenece el jugador

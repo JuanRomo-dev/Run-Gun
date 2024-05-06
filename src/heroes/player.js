@@ -10,6 +10,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
   defaultbulletVelocity = 350;
   ammo = undefined;
   weapon = undefined;
+  textureBullet = "bullet"
   life = 5;
   /**
    * Constructor del jugador
@@ -88,6 +89,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
   updateWeapon(weapon){
     this.bulletVelocity = weapon.bulletVelocity;
     this.bulletDamage = weapon.bulletDamage;
+    this.textureBullet = weapon.textureBullet;
     if(this.weapon === undefined || this.weapon.name !== weapon.name)
       this.ammo = weapon.ammo;
     else 
@@ -115,6 +117,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
         this.ammo = undefined;
         this.bulletDamage = this.defaultbulletDamage;
         this.bulletVelocity = this.defaultbulletVelocity
+        this.textureBullet = "bullet";
       }
       this.updateAmmoLabel(this.ammo);
     }

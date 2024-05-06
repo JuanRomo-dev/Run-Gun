@@ -4,8 +4,8 @@ class Bullet extends Phaser.GameObjects.Sprite {
   damage = 0;
   endScreenWidth = 7648;
 
-  constructor(scene, x, y) {
-    super(scene, x, y, "bullet");
+  constructor(scene, x, y, texture) {
+    super(scene, x, y, texture);
     this.scene.physics.add.existing(this);
     this.setScale(3, 3);
   }
@@ -34,15 +34,19 @@ class Bullet extends Phaser.GameObjects.Sprite {
       this.destroy();
     }
   }
+
+  changeTexture(textureKey) {
+    this.setTexture(textureKey);
+  }
 }
 
 export default class Bullets extends Phaser.GameObjects.Group {
-  constructor(scene) {
+  constructor(scene, texture) {
     super(scene);
 
     this.createMultiple({
       frameQuantity: 1000,
-      key: "bullet",
+      key: texture,
       active: false,
       visible: false,
       classType: Bullet,
@@ -53,6 +57,7 @@ export default class Bullets extends Phaser.GameObjects.Group {
     let bullet = this.getFirstDead(false);
 
     if (bullet) {
+      bullet.changeTexture(player.textureBullet); 
       bullet.fire(player);
     }
   }

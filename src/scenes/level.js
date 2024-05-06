@@ -127,8 +127,8 @@ export default class Level extends Phaser.Scene {
     this.physics.add.collider(this.player, this.mesasLayer);
 
     
-    this.bullets = new Bullets(this);
-    this.enemyBullets = new Bullets(this);
+    this.bullets = new Bullets(this, "bullet");
+    this.enemyBullets = new Bullets(this, "enemy_bullet");
 
     // this.enemies.push(new T1000(this, this.player, 450, 100));
     this.enemies.push(new T1000(this, this.player, 1400, 160));

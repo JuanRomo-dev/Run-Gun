@@ -5,6 +5,7 @@ export default class Rifle extends Phaser.GameObjects.Sprite {
   bulletVelocity = 600;
   name = "rifle";
   ammo = 20;
+  textureBullet = "rifle_bullet"
 
   constructor(scene, x, y) {
       super(scene, x, y, "rifle");

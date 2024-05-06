@@ -1,8 +1,11 @@
 import Phaser from 'phaser';
 
+import enemy_bullet from "../../assets/img/enemy_bullet.png";
 import logo_estudio from "../../assets/img/logo_estudio.png";
 import m16 from "../../assets/img/m16.png";
+import m16_bullet from "../../assets/img/m16_bullet.png";
 import rifle from "../../assets/img/rifle.png";
+import rifle_bullet from "../../assets/img/rifle_bullet.png";
 import thunder from "../../assets/img/thunder.png";
 import map from '../../assets/maps/rungun.json';
 import bullet from '../../assets/sprites/bullet.png';
@@ -99,13 +102,18 @@ export default class Boot extends Phaser.Scene {
     this.load.atlas("t1000", t1000_atlas_png, t1000_atlas);
 
 
-    this.load.image("bullet", bullet);
     this.load.image('ui-heart-empty', ui_heart_empty)
 		this.load.image('ui-heart-full', ui_heart_full)
     this.load.image('logo', logo_estudio);
+
+    //Carga de los assets de weapons
     this.load.image('rifle', rifle);
     this.load.image('m16', m16);
     this.load.image('thunder', thunder);
+    this.load.image("bullet", bullet);
+    this.load.image("enemy_bullet", enemy_bullet);
+    this.load.image("m16_bullet", m16_bullet);
+    this.load.image("rifle_bullet", rifle_bullet);
     
   }
 

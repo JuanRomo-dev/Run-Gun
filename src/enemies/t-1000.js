@@ -5,7 +5,8 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
   score = 5;
   tickRate = 0.5;
   shootRate = 1000; //milisegundos
-  bulletVelocity = 400;
+  bulletVelocity = 300;
+  textureBullet = "enemy_bullet";
 
   constructor(scene, player, x, y) {
     super(scene, x, y, "T1000");
