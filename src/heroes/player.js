@@ -4,9 +4,15 @@ import Phaser from 'phaser';
  * También almacena la puntuación o número de estrellas que ha recogido hasta el momento.
  */
 export default class Player extends Phaser.GameObjects.Sprite {
-  
-  bulletVelocity = 400;
+  bulletDamage;
+  bulletVelocity;
+  defaultbulletDamage = 2;
+  defaultbulletVelocity = 350;
+  ammo = undefined;
+  weapon = undefined;
+  textureBullet = "bullet"
   life = 5;
+  isShooting = false;
   /**
    * Constructor del jugador
    * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
@@ -29,6 +35,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
       }
     });
     
+    this.bulletDamage = this.defaultbulletDamage;
+    this.bulletVelocity = this.defaultbulletVelocity;
+
     this.score = 0;
     this.setScale(1.8, 1.8);
     this.scene.add.existing(this);
@@ -49,13 +58,20 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.isInAir = false;
     this.isDashing = false;
     this.canDash = true;
-    
+  
+    this.direction = "right"
+
+
     // Esta label es la UI en la que pondremos la puntuación del jugador
     this.labelScore = this.scene.add.text(10, 10, "Score: 0");
     this.labelScore.setScrollFactor(0);
     this.lifeScore = this.scene.add.text(10, 30, "Life:");
     this.lifeScore.setScrollFactor(0);
-    this.direction = "right"
+
+    //UI ammo
+    this.labelAmmo = this.scene.add.text(10, 50, "Ammo: ∞");
+    this.labelAmmo.setScrollFactor(0);
+
     // Keys
     this.cursors = this.scene.input.keyboard.addKeys({
       spacebar: Phaser.Input.Keyboard.KeyCodes.SPACE,
@@ -71,12 +87,46 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
   }
 
-  updateBulletVelocity(weapon){
-    bulletVelocity = weapon.bulletVelocity;
+  updateWeapon(weapon){
+    this.bulletVelocity = weapon.bulletVelocity;
+    this.bulletDamage = weapon.bulletDamage;
+    this.textureBullet = weapon.textureBullet;
+    if(this.weapon === undefined || this.weapon.name !== weapon.name)
+      this.ammo = weapon.ammo;
+    else 
+      this.ammo += weapon.ammo;
+    this.weapon = weapon;
+    this.updateAmmoLabel(this.ammo);
   }
 
   loseLife(){
     --this.life;
+  }
+
+  updateAmmoLabel(ammo){
+    if(this.weapon !== undefined)
+      this.labelAmmo.text = "Ammo: " + ammo;
+    else
+      this.labelAmmo.text = "Ammo: ∞";
+  }
+
+  restAmmo(){
+    if(this.weapon != undefined){
+      this.ammo--;
+      if(this.ammo === 0){
+        this.weapon = undefined;
+        this.ammo = undefined;
+        this.bulletDamage = this.defaultbulletDamage;
+        this.bulletVelocity = this.defaultbulletVelocity
+        this.textureBullet = "bullet";
+      }
+      this.updateAmmoLabel(this.ammo);
+    }
+  }
+
+  shootAnimation(){
+    this.anims.play('mike_idle_shoot', true).setFlipX(false);
+
   }
 
   updateScore(enemyScore) {
@@ -84,13 +134,22 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.labelScore.text = "Score: " + this.score;
   }
 
+
   // Para el movimiento del jugador
   handleControls() {
     this.keyboardControls = {
       movementControl: () => {
         if (this.body.onFloor()) { // Si está en el suelo
           if (this.cursors.down.isDown) { // Y está agachado
-            this.anims.play('mikeIsDown', true);
+            this.body.setVelocityX(0);
+            if(!this.isShooting)
+              this.anims.play('mikeIsDown', true);
+            else{
+              this.anims.play('mikeIsDownShoot', true);
+              this.once('animationcomplete', () =>{ 
+                this.isShooting = false;
+              });
+            }
           } else if (this.cursors.right.isDown) { // Player se mueve a la derecha
             this.direction = "right";
             this.body.setVelocityX(this.speed);
@@ -101,7 +160,14 @@ export default class Player extends Phaser.GameObjects.Sprite {
             this.anims.play('mike_run', true).setFlipX(true);
           } else { // Player está quieto
             this.body.setVelocityX(0);
-            this.anims.play('mike_idle', true);
+            if(!this.isShooting)
+              this.anims.play('mike_idle', true);
+            else{
+              this.anims.play('mike_idle_shoot', true);
+              this.once('animationcomplete', () =>{ 
+                this.isShooting = false;
+              });
+            }
           }
           // Control de salto
           if (Phaser.Input.Keyboard.JustDown(this.cursors.spacebar)) { // Si la tecla de espacio se presiona
@@ -148,7 +214,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.controls.movementControl();
       this.controls.dashControl();
     }
-
   }
 
   initDash() {

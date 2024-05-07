@@ -6,6 +6,7 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
     tickRate = 0.5;
     shootRate = 1000; //milisegundos
     bulletVelocity = 400;
+    textureBullet = "enemy_bullet";
     /**
      * Constructor del enemigo
      * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
@@ -89,7 +90,6 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
             }else{
                 this.body.setVelocityX(0);
                 if (this.player.x  < this.x) { //si el jugador está a la izquierda
-                    console.log("izq"); 
                     //this.anims.play('desenfundado', true).setFlipX()
                     this.anims.play('photondestructor_shoot', true).setFlipX(true);
                     this.body.setSize(23,34); // Mantener el mismo tamaño del colisionador

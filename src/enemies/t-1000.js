@@ -5,7 +5,8 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
   score = 5;
   tickRate = 0.5;
   shootRate = 1000; //milisegundos
-  bulletVelocity = 400;
+  bulletVelocity = 300;
+  textureBullet = "enemy_bullet";
 
   constructor(scene, player, x, y, suelo, plataforma) {
     super(scene, x, y, "T1000");
@@ -58,7 +59,6 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
 
     if(this.player.y < this.y || !bordeIzq || !bordeDer){ //si el jugador esta arriba
         this.body.setVelocityX(0);
-        console.log("arriba");
         this.anims.play('t1000_idle', true);
     }else{
         if(Math.abs(this.player.x - this.x) > 350){ //Si esta demasiado lejos del jugador
@@ -75,7 +75,6 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
         }else{
             this.body.setVelocityX(0);
             if (this.player.x  < this.x) { //si el jugador está a la izquierda
-                console.log("izq"); 
                 this.anims.play('t1000_attack', true).setFlipX(true);
                 this.body.setSize(23,34); // Mantener el mismo tamaño del colisionador
                 this.body.setOffset(21.5,0); // Mantener el mismo desplazamiento del colisionador
