@@ -149,11 +149,9 @@ export default class Level extends Phaser.Scene {
     this.enemyBullets = new Bullets(this, "enemy_bullet");
 
 
-    // this.enemies.push(new T1000(this, this.player, 450, 100));
-    //this.enemies.push(new T1000(this, this.player, 1400, 160));
+  
     this.enemies.push(new PhotonDestructor(this, this.player, 700, 100, this.sueloLayer, this.plataformasLayer));
-    
-    //this.enemies.push(new Cook(this, this.player, 500, 100));
+  
     this.enemies.push(new Cook(this, this.player, 8500, 100));
     this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
 
@@ -161,8 +159,6 @@ export default class Level extends Phaser.Scene {
     this.weapons.push(new Rifle(this, 3142, 225));
     this.weapons.push(new M16(this, 6209, 226));
     this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
-    // this.weapons.push(new Rifle(this, 200, 510));
-    // this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
 
     // Colisión enemigos con suelo
     this.enemies.forEach((enemy) => {
