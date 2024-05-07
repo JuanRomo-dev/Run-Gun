@@ -104,15 +104,15 @@ export default class Level extends Phaser.Scene {
 
     // Cargar mapa
     const mapa = this.map = this.make.tilemap({
-        key: 'rungun'
-    });  
+      key: 'rungun'
+    });
     // Cargar tilesets y capas
     const pared = mapa.addTilesetImage('escenario', 'tiles1');
     const suelo = mapa.addTilesetImage('fondo', 'tiles2');
     const decorations = mapa.addTilesetImage('decorations', 'tiles3');
     const utensilios = mapa.addTilesetImage('muebles', 'tiles4');
     const mesas = mapa.addTilesetImage('mesas', 'tiles5');
-
+    
     
     this.paredLayer = this.map.createLayer('fondo', pared);
     this.sueloLayer = this.map.createLayer('suelo', [suelo, pared]);
@@ -120,9 +120,13 @@ export default class Level extends Phaser.Scene {
     this.plataformasLayer = this.map.createLayer('plataformas', [utensilios, decorations]);
     this.mueblesLayer = this.map.createLayer('muebles', [mesas, utensilios]);
     this.mesasLayer = this.map.createLayer('mesas', mesas);
-
+    this.spawnerLayer = this.map.getObjectLayer('spawnerLayer');
+    
+    console.log(this.spawnerLayer);
+   
     this.player = new Player(this, 100, 510);
-
+    
+    
     // Movimiento cámara sobre el jugador
     this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
     this.cameras.main.startFollow(this.player)
@@ -137,6 +141,7 @@ export default class Level extends Phaser.Scene {
     // Colisión con las plataformas
     this.plataformasLayer.setCollisionBetween(0, 1000);
     this.physics.add.collider(this.player, this.plataformasLayer);
+    this.physics.add.collider(this.enemies, this.plataformasLayer);
     
     // Colisión con las mesas
     this.plataformasLayer.setCollisionBetween(0, 1000);
@@ -144,6 +149,25 @@ export default class Level extends Phaser.Scene {
 
     this.bullets = new Bullets(this);
     this.enemyBullets = new Bullets(this);
+
+    // this.enemies.push(new T1000(this, this.player, 450, 100));
+    this.enemies.push(new T1000(this, this.player, 1400, 160));
+    this.enemies.push(new PhotonDestructor(this, this.player, 1500, 100));
+    
+    
+    this.spawnerLayer.objects.forEach((spawnerObject) => {
+      console.log("spawn:", spawnerObject.properties[0].value);
+      if (spawnerObject.properties[0].value === 'PhotonDestructor') {
+        console.log("posicion nuevo", spawnerObject.x, spawnerObject.y);
+        this.enemies.push(new PhotonDestructor(this, this.player, spawnerObject.x, spawnerObject.y));
+      }
+      else if (spawnerObject.properties[0].value === 'T-1000') {
+        console.log("posicion nuevo", spawnerObject.x, spawnerObject.y);
+        this.enemies.push(new T1000(this, this.player, spawnerObject.x, spawnerObject.y));
+      }
+    });
+
+    this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
     
     this.bullets = new Bullets(this, "bullet");
     this.enemyBullets = new Bullets(this, "enemy_bullet");
