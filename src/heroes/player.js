@@ -50,7 +50,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     
     // Datos del jugador
     this.speed = 300;
-    this.fallSpeed = 220;
+    this.fallSpeed = 270;
     this.jumpSpeed = -350;
     this.dashSpeed = 500;
     
@@ -182,10 +182,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
           }
         } else { // Si ha terminado el salto (bajando verticalmente)
           this.anims.play('mike_fall', true);
+          const airResistance = 0.989; // Factor de resistencia del aire
           if (this.cursors.right.isDown) {
-            this.body.setVelocityX(this.fallSpeed);
+            this.body.setVelocityX(this.fallSpeed * airResistance);
           } else if (this.cursors.left.isDown) {
-            this.body.setVelocityX(-this.fallSpeed);
+            this.body.setVelocityX(-this.fallSpeed *  airResistance);
           }
         }
       },

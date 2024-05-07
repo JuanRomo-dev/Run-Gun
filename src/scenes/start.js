@@ -6,7 +6,7 @@ export default class Start extends Phaser.Scene{
   }
 
   create(){
-    this.startButton = this.add.sprite(500,320,'btn_start').setInteractive().setScale(0.5);
+    this.startButton = this.add.sprite(550,320,'btn_start').setInteractive().setScale(0.5);
 
     this.startButton.on('pointerdown', () =>{
       this.scene.start("level");
