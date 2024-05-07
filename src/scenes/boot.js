@@ -10,17 +10,20 @@ import thunder from "../../assets/img/thunder.png";
 import map from '../../assets/maps/rungun.json';
 import bullet from '../../assets/sprites/bullet.png';
 import mike_dash from '../../assets/sprites/Dash.png';
+import mike_idle_shoot from "../../assets/sprites/idle_shooting.png";
 import mike_down from '../../assets/sprites/mike_down.png';
 import mike_fall from '../../assets/sprites/mike_fall.png';
 import mike_idle from '../../assets/sprites/mike_idle.png';
 import mike_idle2 from '../../assets/sprites/mike_idle2.png';
 import mike_jump from '../../assets/sprites/mike_jump.png';
 import mike_running from '../../assets/sprites/mike_running.png';
+import mike_running_shoot from "../../assets/sprites/mike_running_shooting.png";
 import mike_is_down from '../../assets/sprites/mikeIsDown.png';
 import photonDestructor from '../../assets/sprites/photonDestructor.png';
 import photonDestructor_atlas_png from '../../assets/sprites/photondestructor/photondestructor.png';
 import photonDestructor_animacion from '../../assets/sprites/photondestructor/photondestructor_anim.json';
 import photonDestructor_atlas from '../../assets/sprites/photondestructor/photondestructor_atlas.json';
+import mike_is_down_shoot from "../../assets/sprites/Sitdown_shooting.png";
 import spiderdron from '../../assets/sprites/spiderdron.png';
 import spiderdron_atlas_png from '../../assets/sprites/spiderdron/spiderdron.png';
 import spiderdron_animacion from '../../assets/sprites/spiderdron/spiderdron_anim.json';
@@ -73,9 +76,13 @@ export default class Boot extends Phaser.Scene {
     // Cargar spritesheet
     this.load.spritesheet('mikeIdle', mike_idle, { frameWidth: 33, frameHeight: 35 });    // Spritesheet de Mike quieto
 
+    this.load.spritesheet('mikeIdleShoot', mike_idle_shoot, { frameWidth: 33, frameHeight: 35 })
+
     this.load.spritesheet('mikeJump', mike_jump, { frameWidth: 33, frameHeight: 35 });    // Spritesheet de Mike saltando
 
     this.load.spritesheet('mike', mike_running, { frameWidth: 33, frameHeight: 35 }); // Spritesheet de Mike corriendo
+
+    this.load.spritesheet('mikeRunShot', mike_running_shoot, { frameWidth: 33, frameHeight: 35 })
 
     this.load.spritesheet('mikeIdle2', mike_idle2, { frameWidth: 33, frameHeight: 35 });  
 
@@ -84,6 +91,8 @@ export default class Boot extends Phaser.Scene {
     this.load.spritesheet('mikeDown', mike_down, { frameWidth: 33, frameHeight: 35 });    // Spritesheet de Mike agachandose
 
     this.load.spritesheet('mikeIsDown', mike_is_down, { frameWidth: 33, frameHeight: 35 });    // Spritesheet de Mike ya agachado
+
+    this.load.spritesheet("mikeIsDownShoot", mike_is_down_shoot, { frameWidth: 33, frameHeight: 35 })
 
     this.load.spritesheet('mikeDash', mike_dash, { frameWidth: 33, frameHeight: 35 });
     

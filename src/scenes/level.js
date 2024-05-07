@@ -47,6 +47,12 @@ export default class Level extends Phaser.Scene {
       repeat: -1
     })
 
+    this.anims.create({     // Animación de Mike quieto
+      key: 'mike_idle_shoot',
+      frames: this.anims.generateFrameNumbers('mikeIdleShoot', { start: 0, end: 2 }),
+      frameRate: 9,
+    })
+
     this.anims.create({
       key: 'mike_jump',
       frames: this.anims.generateFrameNumbers('mikeJump', { start: 0, end: 3 }),
@@ -62,7 +68,7 @@ export default class Level extends Phaser.Scene {
 
     this.anims.create({           // Animación de Mike corriendo
       key: 'mike_run',
-      frames: this.anims.generateFrameNumbers('mike', { start: 0, end: 5 }),
+      frames: this.anims.generateFrameNumbers('mikeRunShot', { start: 0, end: 5 }),
       frameRate: 9,
       repeat: -1    // Para que se repita el ciclo;
     })
@@ -85,7 +91,13 @@ export default class Level extends Phaser.Scene {
       key: 'mikeIsDown',
       frames: this.anims.generateFrameNames('mikeIsDown', { start: 0, end: 0 })
     })
- 
+
+    this.anims.create({
+      key: 'mikeIsDownShoot',
+      frames: this.anims.generateFrameNames('mikeIsDownShoot', { start: 0, end: 2 }),
+      frameRate: 11,
+    })
+
     // Cargar mapa
     const mapa = this.map = this.make.tilemap({
         key: 'rungun'
@@ -158,8 +170,16 @@ export default class Level extends Phaser.Scene {
     this.input.on(
       "pointerdown",
       function () {
-        this.bullets.fireBullet(this.player);
-        this.player.restAmmo();
+        if(!this.player.isDashing){
+          this.player.isShooting = true;
+          this.time.addEvent({
+            delay: 220, // in ms
+            callback: () => {
+              this.bullets.fireBullet(this.player);
+            }
+          })
+          this.player.restAmmo();
+        }
       },
       this
     );

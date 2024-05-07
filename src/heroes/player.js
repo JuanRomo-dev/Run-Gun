@@ -12,6 +12,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
   weapon = undefined;
   textureBullet = "bullet"
   life = 5;
+  isShooting = false;
   /**
    * Constructor del jugador
    * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
@@ -123,11 +124,15 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
   }
 
+  shootAnimation(){
+    this.anims.play('mike_idle_shoot', true).setFlipX(false);
+
+  }
+
   updateScore(enemyScore) {
     this.score += enemyScore;
     this.labelScore.text = "Score: " + this.score;
   }
-
 
 
   // Para el movimiento del jugador
@@ -136,7 +141,14 @@ export default class Player extends Phaser.GameObjects.Sprite {
       movementControl: () => {
         if (this.body.onFloor()) { // Si está en el suelo
           if (this.cursors.down.isDown) { // Y está agachado
-            this.anims.play('mikeIsDown', true);
+            if(!this.isShooting)
+              this.anims.play('mikeIsDown', true);
+            else{
+              this.anims.play('mikeIsDownShoot', true);
+              this.once('animationcomplete', () =>{ 
+                this.isShooting = false;
+              });
+            }
           } else if (this.cursors.right.isDown) { // Player se mueve a la derecha
             this.direction = "right";
             this.body.setVelocityX(this.speed);
@@ -147,7 +159,14 @@ export default class Player extends Phaser.GameObjects.Sprite {
             this.anims.play('mike_run', true).setFlipX(true);
           } else { // Player está quieto
             this.body.setVelocityX(0);
-            this.anims.play('mike_idle', true);
+            if(!this.isShooting)
+              this.anims.play('mike_idle', true);
+            else{
+              this.anims.play('mike_idle_shoot', true);
+              this.once('animationcomplete', () =>{ 
+                this.isShooting = false;
+              });
+            }
           }
           // Control de salto
           if (Phaser.Input.Keyboard.JustDown(this.cursors.spacebar)) { // Si la tecla de espacio se presiona
@@ -194,7 +213,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
       this.controls.movementControl();
       this.controls.dashControl();
     }
-
   }
 
   initDash() {
