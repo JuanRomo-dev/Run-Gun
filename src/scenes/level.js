@@ -3,12 +3,15 @@ import Phaser from 'phaser';
 import Bullets from '../bullet.js';
 import EnemyGruop from '../enemies/enemyGroup.js';
 import PhotonDestructor from '../enemies/photonDestructor.js';
+import DeathZone from '../deathZones/deathZone.js';
+import DeathZoneGroup from '../deathZones/deathZoneGroup.js';
 import T1000 from '../enemies/t-1000.js';
 import { sceneEvents } from "../events/eventsCenter.js";
 import Player from '../heroes/player.js';
 export default class Level extends Phaser.Scene {
   enemies = [];
   weapons = [];
+  deathZones = [];
   /**
    * Constructor de la escena
    */
@@ -102,6 +105,7 @@ export default class Level extends Phaser.Scene {
     this.mueblesLayer = this.map.createLayer('muebles', [mesas, utensilios]);
     this.mesasLayer = this.map.createLayer('mesas', mesas);
     this.spawnerLayer = this.map.getObjectLayer('spawnerLayer');
+    this.deathLayer = this.map.getObjectLayer('deathLayer');
     
     console.log(this.spawnerLayer);
    
@@ -148,8 +152,15 @@ export default class Level extends Phaser.Scene {
         this.enemies.push(new T1000(this, this.player, spawnerObject.x, spawnerObject.y));
       }
     });
-
+    
+    // Cargar deathZones
+    this.deathLayer.objects.forEach((deathObject) => {
+      console.log("death object:", deathObject);
+      this.deathZones.push(new DeathZone(this, this.player, deathObject.x, deathObject.y, deathObject.width, deathObject.height));
+    });
+    
     this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
+    this.deathZoneGroup = new DeathZoneGroup(this, this.deathZones, this.player);
     
     // this.weapons.push(new Rifle(this, 200, 510));
     // this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
@@ -198,6 +209,12 @@ export default class Level extends Phaser.Scene {
     weapon.destroy();
     return false;
   }
+  
+  playerDeath(player, deathZone) {
+    player.destroy();
+    this.scene.start("end");
+  }
+  
 
   initMap() {
     // Crear tilemap
