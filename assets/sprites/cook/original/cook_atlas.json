@@ -1,0 +1,242 @@
+{
+    "frames": [
+        {
+            "filename": "chefsheet_0",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_1",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 48,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_2",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 0,
+                "y": 51
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_3",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 48,
+                "y": 51
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_4",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 96,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_5",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 96,
+                "y": 51
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_6",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 0,
+                "y": 102
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_7",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 48,
+                "y": 102
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_8",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 96,
+                "y": 102
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_9",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 144,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_10",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 144,
+                "y": 51
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_11",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 144,
+                "y": 102
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_12",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 0,
+                "y": 153
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_13",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 48,
+                "y": 153
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_14",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 96,
+                "y": 153
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_15",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 144,
+                "y": 153
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_16",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 192,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chefsheet_17",
+            "frame": {
+                "w": 48,
+                "h": 51,
+                "x": 192,
+                "y": 51
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}

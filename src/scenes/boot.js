@@ -33,6 +33,10 @@ import tables from '../../assets/tilesets/Living Room.png';
 import fondos from '../../assets/tilesets/Terrain.png';
 import ui_heart_empty from "../../assets/ui/ui_heart_empty.png";
 import ui_heart_full from "../../assets/ui/ui_heart_full.png";
+import cook from '../../assets/sprites/cook.png';
+import cook_atlas_png from '../../assets/sprites/cook/cook.png';
+import cook_animacion from '../../assets/sprites/cook/cook_anim.json';
+import cook_atlas from '../../assets/sprites/cook/cook_atlas.json';
 
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
@@ -98,6 +102,10 @@ export default class Boot extends Phaser.Scene {
     this.load.json("t1000_anim", t1000_animacion);
     this.load.atlas("t1000", t1000_atlas_png, t1000_atlas);
 
+    // Carga de los assets del cook
+    this.load.image("Cook", cook);
+    this.load.json("cook_anim", cook_animacion);
+    this.load.atlas("cook", cook_atlas_png, cook_atlas);
 
     this.load.image("bullet", bullet);
     this.load.image('ui-heart-empty', ui_heart_empty)

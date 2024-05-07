@@ -1,0 +1,124 @@
+{
+    "anims": [
+        {
+            "key": "cook_atack",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 8,
+            "frames": [
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_12"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_13"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_14"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_15"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_16"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_17"
+                }
+            ]
+        },
+        {
+            "key": "cook_jump",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 10,
+            "frames": [
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_7"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_8"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_9"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_10"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_11"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_12"
+                }
+            ]
+        },
+        {
+            "key": "cook_idle",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 8,
+            "frames": [
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_1"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_2"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_3"
+                }
+            ]
+        },
+        {
+            "key": "cook_run",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 10,
+            "frames": [
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_4"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_5"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_6"
+                },
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_7"
+                }
+            ]
+        },
+        {
+            "key": "cook_front",
+            "type": "frames",
+            "repeat": -1,
+            "frameRate": 12,
+            "frames": [
+                {
+                    "key": "cook",
+                    "frame": "chefsheet_0"
+                }
+            ]
+        }
+    ]
+}

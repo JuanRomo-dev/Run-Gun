@@ -4,8 +4,10 @@ import Bullets from '../bullet.js';
 import EnemyGruop from '../enemies/enemyGroup.js';
 import PhotonDestructor from '../enemies/photonDestructor.js';
 import T1000 from '../enemies/t-1000.js';
+import Cook from '../enemies/cook.js';
 import { sceneEvents } from "../events/eventsCenter.js";
 import Player from '../heroes/player.js';
+import Spiderdron from '../enemies/spiderdron.js';
 export default class Level extends Phaser.Scene {
   enemies = [];
   weapons = [];
@@ -32,6 +34,10 @@ export default class Level extends Phaser.Scene {
     // Animaciones del t-1000
     this.t1000_anim = this.cache.json.get("t1000_anim");
     this.anims.fromJSON(this.t1000_anim);
+
+    // Animaciones del cook
+    this.cook_anim = this.cache.json.get("cook_anim");
+    this.anims.fromJSON(this.cook_anim);
 
     this.stars = 10;
 
@@ -123,15 +129,16 @@ export default class Level extends Phaser.Scene {
     this.plataformasLayer.setCollisionBetween(0, 1000);
     this.physics.add.collider(this.player, this.mesasLayer);
 
-    
     this.bullets = new Bullets(this);
     this.enemyBullets = new Bullets(this);
 
     // this.enemies.push(new T1000(this, this.player, 450, 100));
-    this.enemies.push(new T1000(this, this.player, 1400, 160));
-    this.enemies.push(new PhotonDestructor(this, this.player, 1500, 100));
-    this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
+    //this.enemies.push(new T1000(this, this.player, 1400, 160));
+    //this.enemies.push(new PhotonDestructor(this, this.player, 900, 100, this.sueloLayer));
     
+    //this.enemies.push(new Cook(this, this.player, 500, 100));
+    this.enemies.push(new Cook(this, this.player, 8500, 100));
+    this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
     // this.weapons.push(new Rifle(this, 200, 510));
     // this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
 
