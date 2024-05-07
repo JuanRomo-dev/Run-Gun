@@ -184,6 +184,7 @@ export default class Level extends Phaser.Scene {
     sceneEvents.emit('player-health-changed', player.life)
     if (player.life <= 0){
       player.destroy();
+      sceneEvents.emit('game-over')
       this.scene.start("end");
     }
     bullets.destroy();

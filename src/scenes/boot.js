@@ -34,9 +34,11 @@ import decorations from '../../assets/tilesets/Decorations.png';
 import ware from '../../assets/tilesets/House-kitchen.png';
 import tables from '../../assets/tilesets/Living Room.png';
 import fondos from '../../assets/tilesets/Terrain.png';
+import btn_restart from "../../assets/ui/btn_restart.png";
 import btn_start from "../../assets/ui/btn_start.png";
 import ui_heart_empty from "../../assets/ui/ui_heart_empty.png";
 import ui_heart_full from "../../assets/ui/ui_heart_full.png";
+
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
  * Esta escena se puede mejorar añadiendo una imagen del juego y una
@@ -106,6 +108,7 @@ export default class Boot extends Phaser.Scene {
 		this.load.image('ui-heart-full', ui_heart_full)
     this.load.image('logo', logo_estudio);
     this.load.image("btn_start",btn_start)
+    this.load.image("btn_restart", btn_restart)
 
     //Carga de los assets de weapons
     this.load.image('rifle', rifle);
