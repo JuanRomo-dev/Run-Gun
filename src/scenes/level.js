@@ -146,15 +146,16 @@ export default class Level extends Phaser.Scene {
     this.enemies.push(new T1000(this, this.player, 1400, 160));
     this.enemies.push(new PhotonDestructor(this, this.player, 1500, 100));
     this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
+    
     this.weapons.push(new Rifle(this, 4147, 226));
     this.weapons.push(new Rifle(this, 3142, 225));
     this.weapons.push(new M16(this, 6209, 226));
-
     this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
 
     // Colisión enemigos con suelo
     this.enemies.forEach((enemy) => {
       this.physics.add.collider(enemy, this.sueloLayer);
+      this.physics.add.collider(enemy, this.plataformasLayer);
     })
     
     // Colisión armas
@@ -162,7 +163,6 @@ export default class Level extends Phaser.Scene {
       this.physics.add.collider(weapon, this.sueloLayer);
       this.physics.add.collider(weapon, this.plataformasLayer);
       this.physics.add.collider(weapon, this.mesasLayer);
-
     })
     
 
