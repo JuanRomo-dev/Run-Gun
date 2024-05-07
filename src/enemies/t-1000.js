@@ -5,9 +5,10 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
   score = 5;
   tickRate = 0.5;
   shootRate = 1000; //milisegundos
-  bulletVelocity = 400;
+  bulletVelocity = 300;
+  textureBullet = "enemy_bullet";
 
-  constructor(scene, player, x, y) {
+  constructor(scene, player, x, y, suelo, plataforma) {
     super(scene, x, y, "T1000");
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
@@ -18,6 +19,22 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
     this.player = player;
     this.direction = "left";
     this.setScale(2.1, 2.1);
+
+    this.limitRight = scene.physics.add.sprite(x, y, null);
+    this.limitLeft.setSize(5,1);
+    this.limitRight.setSize(5,1);
+    this.scene.add.existing(this.limitLeft);
+    this.scene.add.existing(this.limitRight);
+    this.scene.physics.add.existing(this.limitLeft);
+    this.scene.physics.add.existing(this.limitRight);  
+    this.limitLeft.setVisible(false);
+    this.limitRight.setVisible(false);
+    this.limitLeft.body.setCollideWorldBounds();
+    this.limitRight.body.setCollideWorldBounds();
+    this.scene.physics.add.collider(this.limitLeft, suelo);
+    this.scene.physics.add.collider(this.limitRight, suelo);
+    this.scene.physics.add.collider(this.limitLeft, plataforma);
+    this.scene.physics.add.collider(this.limitRight, plataforma);
   }
 
 
@@ -27,9 +44,21 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
     this.body.setOffset(4,0); // Mantener el mismo desplazamiento del colisionador
     this.setTint(0xffffff);
 
-    if(this.player.y < this.y){ //si el jugador esta arriba
+    let bordeIzq = this.limitLeft.body.blocked.down;
+    let bordeDer = this.limitRight.body.blocked.down;
+    this.limitLeft.setGravityY(10000);
+    this.sensorIzq();
+    this.sensorDer();
+    if(!bordeIzq){
+        this.x = this.x+0.05;
+    }
+    if(!bordeDer){
+        this.x = this.x-0.05;
+    }
+
+
+    if(this.player.y < this.y || !bordeIzq || !bordeDer){ //si el jugador esta arriba
         this.body.setVelocityX(0);
-        console.log("arriba");
         this.anims.play('t1000_idle', true);
     }else{
         if(Math.abs(this.player.x - this.x) > 350){ //Si esta demasiado lejos del jugador
@@ -46,7 +75,6 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
         }else{
             this.body.setVelocityX(0);
             if (this.player.x  < this.x) { //si el jugador está a la izquierda
-                console.log("izq"); 
                 this.anims.play('t1000_attack', true).setFlipX(true);
                 this.body.setSize(23,34); // Mantener el mismo tamaño del colisionador
                 this.body.setOffset(21.5,0); // Mantener el mismo desplazamiento del colisionador
@@ -62,16 +90,26 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
     }   
 }
 
-initBullets(bullets){
-    this.bullets = bullets;
-}
-
-fire(time){
-    if(time > this.tickRate){
-        this.bullets.fireBullet(this);
-        this.tickRate = time + this.shootRate;
+    initBullets(bullets){
+        this.bullets = bullets;
     }
-}
 
+    fire(time){
+        if(time > this.tickRate){
+            this.bullets.fireBullet(this);
+            this.tickRate = time + this.shootRate;
+        }
+    }
 
+    sensorIzq(){
+        this.limitLeft.setPosition(this.x-(this.body.width/2), this.body.bottom);
+    }
+
+    sensorDer(){
+        this.limitRight.setPosition(this.x+(this.body.width/2) +1, this.body.bottom);
+    }
+
+    dead(){
+        this.destroy();
+    }
 }

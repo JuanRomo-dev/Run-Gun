@@ -1,13 +1,18 @@
 import Phaser from 'phaser';
 
 import Bullets from '../bullet.js';
+import Cook from '../enemies/cook.js';
 import EnemyGruop from '../enemies/enemyGroup.js';
 import PhotonDestructor from '../enemies/photonDestructor.js';
 import DeathZone from '../deathZones/deathZone.js';
 import DeathZoneGroup from '../deathZones/deathZoneGroup.js';
 import T1000 from '../enemies/t-1000.js';
+import PhotonDestructor from "../enemies/photonDestructor.js";
 import { sceneEvents } from "../events/eventsCenter.js";
 import Player from '../heroes/player.js';
+import M16 from '../weapons/m16.js';
+import Rifle from "../weapons/rifle.js";
+import WeaponsGroup from "../weapons/weaponsGroup.js";
 export default class Level extends Phaser.Scene {
   enemies = [];
   weapons = [];
@@ -36,6 +41,10 @@ export default class Level extends Phaser.Scene {
     this.t1000_anim = this.cache.json.get("t1000_anim");
     this.anims.fromJSON(this.t1000_anim);
 
+    // Animaciones del cook
+    this.cook_anim = this.cache.json.get("cook_anim");
+    this.anims.fromJSON(this.cook_anim);
+
     this.stars = 10;
 
     // Establecer ciclos de animación
@@ -45,6 +54,12 @@ export default class Level extends Phaser.Scene {
       frames: this.anims.generateFrameNumbers('mikeIdle', { start: 0, end: 4 }),
       frameRate: 6,
       repeat: -1
+    })
+
+    this.anims.create({     // Animación de Mike quieto
+      key: 'mike_idle_shoot',
+      frames: this.anims.generateFrameNumbers('mikeIdleShoot', { start: 0, end: 2 }),
+      frameRate: 9,
     })
 
     this.anims.create({
@@ -62,7 +77,7 @@ export default class Level extends Phaser.Scene {
 
     this.anims.create({           // Animación de Mike corriendo
       key: 'mike_run',
-      frames: this.anims.generateFrameNumbers('mike', { start: 0, end: 5 }),
+      frames: this.anims.generateFrameNumbers('mikeRunShot', { start: 0, end: 5 }),
       frameRate: 9,
       repeat: -1    // Para que se repita el ciclo;
     })
@@ -85,7 +100,13 @@ export default class Level extends Phaser.Scene {
       key: 'mikeIsDown',
       frames: this.anims.generateFrameNames('mikeIsDown', { start: 0, end: 0 })
     })
- 
+
+    this.anims.create({
+      key: 'mikeIsDownShoot',
+      frames: this.anims.generateFrameNames('mikeIsDownShoot', { start: 0, end: 2 }),
+      frameRate: 11,
+    })
+
     // Cargar mapa
     const mapa = this.map = this.make.tilemap({
       key: 'rungun'
@@ -132,7 +153,6 @@ export default class Level extends Phaser.Scene {
     this.plataformasLayer.setCollisionBetween(0, 1000);
     this.physics.add.collider(this.player, this.mesasLayer);
 
-    
     this.bullets = new Bullets(this);
     this.enemyBullets = new Bullets(this);
 
@@ -162,19 +182,49 @@ export default class Level extends Phaser.Scene {
     this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
     this.deathZoneGroup = new DeathZoneGroup(this, this.deathZones, this.player);
     
-    // this.weapons.push(new Rifle(this, 200, 510));
-    // this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
+    this.bullets = new Bullets(this, "bullet");
+    this.enemyBullets = new Bullets(this, "enemy_bullet");
+
+
+  
+    this.enemies.push(new PhotonDestructor(this, this.player, 700, 100, this.sueloLayer, this.plataformasLayer));
+  
+    this.enemies.push(new Cook(this, this.player, 8500, 100));
+    this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
+
+    this.weapons.push(new Rifle(this, 4147, 226));
+    this.weapons.push(new Rifle(this, 3142, 225));
+    this.weapons.push(new M16(this, 6209, 226));
+    this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
 
     // Colisión enemigos con suelo
     this.enemies.forEach((enemy) => {
       this.physics.add.collider(enemy, this.sueloLayer);
+      this.physics.add.collider(enemy, this.plataformasLayer);
     })
     
+    // Colisión armas
+    this.weapons.forEach((weapon) => {
+      this.physics.add.collider(weapon, this.sueloLayer);
+      this.physics.add.collider(weapon, this.plataformasLayer);
+      this.physics.add.collider(weapon, this.mesasLayer);
+    })
+    
+
 
     this.input.on(
       "pointerdown",
       function () {
-        this.bullets.fireBullet(this.player);
+        if(!this.player.isDashing){
+          this.player.isShooting = true;
+          this.time.addEvent({
+            delay: 220, // in ms
+            callback: () => {
+              this.bullets.fireBullet(this.player);
+            }
+          })
+          this.player.restAmmo();
+        }
       },
       this
     );
@@ -183,10 +233,11 @@ export default class Level extends Phaser.Scene {
 
   hitEnemy(bullets, enemy) {
     enemy.life -= bullets.damage;
+    
     enemy.setTint(0xff0000);
     if (enemy.life <= 0) {
       this.player.updateScore(enemy.score)
-      enemy.destroy();
+      enemy.dead(this)
     }
     bullets.destroy();
     return false;  
@@ -198,6 +249,7 @@ export default class Level extends Phaser.Scene {
     sceneEvents.emit('player-health-changed', player.life)
     if (player.life <= 0){
       player.destroy();
+      sceneEvents.emit('game-over')
       this.scene.start("end");
     }
     bullets.destroy();
@@ -205,7 +257,7 @@ export default class Level extends Phaser.Scene {
   }
   
   hitWeapon(weapon, player) {
-    player.updateBulletVelocity(weapon);
+    player.updateWeapon(weapon);
     weapon.destroy();
     return false;
   }

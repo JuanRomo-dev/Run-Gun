@@ -1,3 +1,27 @@
-h1 {
+.gameSection {
   text-align: center;
+}
+
+body{
+  background-color: #b1dce4;
+  margin: 0; /* Elimina el margen predeterminado del body */
+}
+
+nav {
+  background-color: rgb(56, 8, 88);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  width: 100%; /* Hace que el nav ocupe todo el ancho */
+}
+
+.logo img {
+  display: block;
+  max-width: 4rem;
+  height: auto;
+}
+
+#logo_github {
+  margin-left: auto;
 }

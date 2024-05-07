@@ -1,4 +1,4 @@
-import Phaser from 'phaser'
+import Phaser from 'phaser';
 
 /**
  * Escena de fin de juego. Cuando se han recogido todas las estrellas, se presenta un
@@ -17,17 +17,24 @@ export default class End extends Phaser.Scene {
    * Creación de la escena. Tan solo contiene el texto que indica que el juego se ha acabado
    */
   create() {
-    this.add.text(500, 250, 'Se acabó!\nPulsa cualquier tecla para volver a jugar')
+    this.add.text(550, 250, 'Se acabó!\nHaz click en la imagen para volver a jugar')
         .setOrigin(0.5, 0.5)  // Colocamos el pivote en el centro de cuadro de texto 
         .setAlign('center');  // Centramos el texto dentro del cuadro de texto
 
-    // Añadimos el listener para cuando se haya pulsado una tecla. Es probable que no
-    // lleguemos a ver el mensaje porque veníamos con una tecla pulsada del juego (al 
-    // ir moviendo al jugador). Se puede mejorar añadiendo un temporizador que 
-    // añada este listener pasado un segundo
-    this.input.keyboard.on('keydown', function (event) { 
-      this.scene.start('level');
-    }, this);
+    this.restartBtn = this.add.sprite(550,420,'btn_restart').setInteractive().setScale(4);
+
+    this.restartBtn.on('pointerdown', () =>{
+      this.scene.start("start");
+    })
+
+    this.restartBtn.on('pointerover', () =>{
+      this.restartBtn.setScale(5); // Restaura la escala al 50% de su tamaño original
+    });
+
+    this.restartBtn.on('pointerout', () =>{
+      this.restartBtn.setScale(4); // Restaura la escala al 50% de su tamaño original
+    });
+    
   }
 
 }
