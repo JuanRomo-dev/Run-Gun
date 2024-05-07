@@ -11,7 +11,7 @@ import Start from "./scenes/start.js";
  */
 let config = {
   type: Phaser.AUTO,
-  width: 1000,
+  width: 1100,
   height: 640,
   scale: {
     // mode: Phaser.Scale.FIT,

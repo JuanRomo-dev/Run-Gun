@@ -141,6 +141,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       movementControl: () => {
         if (this.body.onFloor()) { // Si está en el suelo
           if (this.cursors.down.isDown) { // Y está agachado
+            this.body.setVelocityX(0);
             if(!this.isShooting)
               this.anims.play('mikeIsDown', true);
             else{
