@@ -134,7 +134,7 @@ export default class Level extends Phaser.Scene {
 
     // this.enemies.push(new T1000(this, this.player, 450, 100));
     //this.enemies.push(new T1000(this, this.player, 1400, 160));
-    //this.enemies.push(new PhotonDestructor(this, this.player, 900, 100, this.sueloLayer));
+    this.enemies.push(new PhotonDestructor(this, this.player, 700, 100, this.sueloLayer, this.plataformasLayer));
     
     //this.enemies.push(new Cook(this, this.player, 500, 100));
     this.enemies.push(new Cook(this, this.player, 8500, 100));
@@ -145,6 +145,7 @@ export default class Level extends Phaser.Scene {
     // Colisión enemigos con suelo
     this.enemies.forEach((enemy) => {
       this.physics.add.collider(enemy, this.sueloLayer);
+      this.physics.add.collider(enemy, this.plataformasLayer);
     })
     
 

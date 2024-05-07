@@ -7,7 +7,7 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
   shootRate = 1000; //milisegundos
   bulletVelocity = 400;
 
-  constructor(scene, player, x, y, suelo) {
+  constructor(scene, player, x, y, suelo, plataforma) {
     super(scene, x, y, "T1000");
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
@@ -32,6 +32,8 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
     this.limitRight.body.setCollideWorldBounds();
     this.scene.physics.add.collider(this.limitLeft, suelo);
     this.scene.physics.add.collider(this.limitRight, suelo);
+    this.scene.physics.add.collider(this.limitLeft, plataforma);
+    this.scene.physics.add.collider(this.limitRight, plataforma);
   }
 
 
