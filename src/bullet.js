@@ -27,7 +27,14 @@ class Bullet extends Phaser.GameObjects.Sprite {
 
   preUpdate(time, delta) {
     super.preUpdate(time, delta);
-    if (this.x > this.endScreenWidth || this.x < 50) {
+
+//    this.scene.cameras.main.centerX
+    const cameraX = this.scene.cameras.main.scrollX;
+    const cameraY = this.scene.cameras.main.scrollY;
+
+    const cameraWidth = this.scene.cameras.main.width;
+
+    if (this.x > cameraX + cameraWidth || this.x < cameraX) {
       this.setActive(false);
       this.setVisible(false);
       this.destroy();

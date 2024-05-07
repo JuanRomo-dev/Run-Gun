@@ -1,7 +1,8 @@
 import Phaser from 'phaser';
+import { sceneEvents } from "../events/eventsCenter.js";
 
 export default class Cook extends Phaser.GameObjects.Sprite {
-    life = 15;
+    life = 20;
     score = 20;
     tickRate = 0.5;
     shootRate = 1000; //milisegundos
@@ -15,6 +16,7 @@ export default class Cook extends Phaser.GameObjects.Sprite {
      */
     constructor(scene, player, x, y) {
         super(scene, x, y, "Cook");
+        this.scene = scene;
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.scene.physics.add.collider(this, player);
@@ -79,6 +81,12 @@ export default class Cook extends Phaser.GameObjects.Sprite {
             this.bullets.fireBullet(this);
             this.tickRate = time + this.shootRate;
         }
+    }
+
+    dead(scene){
+        sceneEvents.emit('game-over')
+        scene.scene.start("end")
+        this.destroy();
     }
 
 }

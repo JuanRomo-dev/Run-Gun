@@ -126,4 +126,8 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
         this.limitRight.setPosition(this.x+(this.body.width/2) +1, this.body.bottom);
     }
 
+    dead(){
+        this.destroy();
+    }
+    
 }
