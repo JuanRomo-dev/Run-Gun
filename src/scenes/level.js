@@ -161,6 +161,8 @@ export default class Level extends Phaser.Scene {
     this.weapons.push(new Rifle(this, 3142, 225));
     this.weapons.push(new M16(this, 6209, 226));
     this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
+    // this.weapons.push(new Rifle(this, 200, 510));
+    // this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
 
     // Colisión enemigos con suelo
     this.enemies.forEach((enemy) => {
