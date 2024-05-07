@@ -14,7 +14,7 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
      * @param {number} y Coordenada Y
      * @param {Phaser.GameObjects.Sprite} player jugador
      */
-    constructor(scene, player, x, y, suelo) {
+    constructor(scene, player, x, y, suelo, plataforma) {
         super(scene, x, y, "photonDestructor");
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
@@ -43,7 +43,8 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
         this.limitRight.body.setCollideWorldBounds();
         this.scene.physics.add.collider(this.limitLeft, suelo);
         this.scene.physics.add.collider(this.limitRight, suelo);
-
+        this.scene.physics.add.collider(this.limitLeft, plataforma);
+        this.scene.physics.add.collider(this.limitRight, plataforma);
     }
 /**
    * Métodos preUpdate de Phaser. En este caso solo se encarga del movimiento del enemigo.
