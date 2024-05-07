@@ -14,27 +14,11 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
     this.scene.physics.add.existing(this);
     this.scene.physics.add.collider(this, player);
     this.body.setCollideWorldBounds();
-    this.speed = 100;
+    this.speed = 0;
     this.jumpSpeed = -100;
     this.player = player;
     this.direction = "left";
     this.setScale(2.1, 2.1);
-
-    this.limitRight = scene.physics.add.sprite(x, y, null);
-    this.limitLeft.setSize(5,1);
-    this.limitRight.setSize(5,1);
-    this.scene.add.existing(this.limitLeft);
-    this.scene.add.existing(this.limitRight);
-    this.scene.physics.add.existing(this.limitLeft);
-    this.scene.physics.add.existing(this.limitRight);  
-    this.limitLeft.setVisible(false);
-    this.limitRight.setVisible(false);
-    this.limitLeft.body.setCollideWorldBounds();
-    this.limitRight.body.setCollideWorldBounds();
-    this.scene.physics.add.collider(this.limitLeft, suelo);
-    this.scene.physics.add.collider(this.limitRight, suelo);
-    this.scene.physics.add.collider(this.limitLeft, plataforma);
-    this.scene.physics.add.collider(this.limitRight, plataforma);
   }
 
 
@@ -44,20 +28,8 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
     this.body.setOffset(4,0); // Mantener el mismo desplazamiento del colisionador
     this.setTint(0xffffff);
 
-    let bordeIzq = this.limitLeft.body.blocked.down;
-    let bordeDer = this.limitRight.body.blocked.down;
-    this.limitLeft.setGravityY(10000);
-    this.sensorIzq();
-    this.sensorDer();
-    if(!bordeIzq){
-        this.x = this.x+0.05;
-    }
-    if(!bordeDer){
-        this.x = this.x-0.05;
-    }
 
-
-    if(this.player.y < this.y || !bordeIzq || !bordeDer){ //si el jugador esta arriba
+    if(this.player.y < this.y){ //si el jugador esta arriba
         this.body.setVelocityX(0);
         this.anims.play('t1000_idle', true);
     }else{
@@ -99,14 +71,6 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
             this.bullets.fireBullet(this);
             this.tickRate = time + this.shootRate;
         }
-    }
-
-    sensorIzq(){
-        this.limitLeft.setPosition(this.x-(this.body.width/2), this.body.bottom);
-    }
-
-    sensorDer(){
-        this.limitRight.setPosition(this.x+(this.body.width/2) +1, this.body.bottom);
     }
 
     dead(){

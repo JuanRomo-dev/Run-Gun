@@ -12,10 +12,12 @@ import Player from '../heroes/player.js';
 import M16 from '../weapons/m16.js';
 import Rifle from "../weapons/rifle.js";
 import WeaponsGroup from "../weapons/weaponsGroup.js";
+import Wall from "../walls/walls.js";
 export default class Level extends Phaser.Scene {
   enemies = [];
   weapons = [];
   deathZones = [];
+  walls = [];
   /**
    * Constructor de la escena
    */
@@ -126,6 +128,7 @@ export default class Level extends Phaser.Scene {
     this.mesasLayer = this.map.createLayer('mesas', mesas);
     this.spawnerLayer = this.map.getObjectLayer('spawnerLayer');
     this.deathLayer = this.map.getObjectLayer('deathLayer');
+    this.wallsLayer = this.map.getObjectLayer('wallsLayer');
     
     console.log(this.spawnerLayer);
    
@@ -154,10 +157,6 @@ export default class Level extends Phaser.Scene {
 
     this.bullets = new Bullets(this);
     this.enemyBullets = new Bullets(this);
-
-    // this.enemies.push(new T1000(this, this.player, 450, 100));
-    this.enemies.push(new T1000(this, this.player, 1400, 160));
-    this.enemies.push(new PhotonDestructor(this, this.player, 1500, 100));
     
     
     this.spawnerLayer.objects.forEach((spawnerObject) => {
@@ -178,6 +177,10 @@ export default class Level extends Phaser.Scene {
       this.deathZones.push(new DeathZone(this, this.player, deathObject.x, deathObject.y, deathObject.width, deathObject.height));
     });
     
+    this.wallsLayer.objects.forEach((wallObject) => {
+      this.walls.push(new Wall(this, this.enemies, wallObject.x, wallObject.y, wallObject.width, wallObject.height));
+    });
+    
     this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
     this.deathZoneGroup = new DeathZoneGroup(this, this.deathZones, this.player);
     
@@ -185,8 +188,6 @@ export default class Level extends Phaser.Scene {
     this.enemyBullets = new Bullets(this, "enemy_bullet");
 
 
-  
-    this.enemies.push(new PhotonDestructor(this, this.player, 700, 100, this.sueloLayer, this.plataformasLayer));
   
     this.enemies.push(new Cook(this, this.player, 8500, 100));
     this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
@@ -200,6 +201,7 @@ export default class Level extends Phaser.Scene {
     this.enemies.forEach((enemy) => {
       this.physics.add.collider(enemy, this.sueloLayer);
       this.physics.add.collider(enemy, this.plataformasLayer);
+      this.physics.add.collider(enemy, this.wallLayer);
     })
     
     // Colisión armas

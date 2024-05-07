@@ -6,7 +6,7 @@ import Phaser from 'phaser';
 export default class Player extends Phaser.GameObjects.Sprite {
   bulletDamage;
   bulletVelocity;
-  defaultbulletDamage = 2;
+  defaultbulletDamage = 4;
   defaultbulletVelocity = 350;
   ammo = undefined;
   weapon = undefined;
