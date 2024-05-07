@@ -200,7 +200,7 @@ export default class Level extends Phaser.Scene {
     enemy.setTint(0xff0000);
     if (enemy.life <= 0) {
       this.player.updateScore(enemy.score)
-      enemy.destroy();
+      enemy.dead(this)
     }
     bullets.destroy();
     return false;  

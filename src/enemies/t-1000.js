@@ -90,24 +90,26 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
     }   
 }
 
-initBullets(bullets){
-    this.bullets = bullets;
-}
-
-fire(time){
-    if(time > this.tickRate){
-        this.bullets.fireBullet(this);
-        this.tickRate = time + this.shootRate;
+    initBullets(bullets){
+        this.bullets = bullets;
     }
-}
 
-sensorIzq(){
-    this.limitLeft.setPosition(this.x-(this.body.width/2), this.body.bottom);
-}
+    fire(time){
+        if(time > this.tickRate){
+            this.bullets.fireBullet(this);
+            this.tickRate = time + this.shootRate;
+        }
+    }
 
-sensorDer(){
-    this.limitRight.setPosition(this.x+(this.body.width/2) +1, this.body.bottom);
-}
+    sensorIzq(){
+        this.limitLeft.setPosition(this.x-(this.body.width/2), this.body.bottom);
+    }
 
+    sensorDer(){
+        this.limitRight.setPosition(this.x+(this.body.width/2) +1, this.body.bottom);
+    }
 
+    dead(){
+        this.destroy();
+    }
 }
