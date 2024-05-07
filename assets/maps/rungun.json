@@ -158,7 +158,7 @@
                  "width":64,
                  "x":2091,
                  "y":255
-                }, 
+                },  
                 {
                  "height":64,
                  "id":19,
@@ -434,7 +434,7 @@
                 {
                  "height":64,
                  "id":44,
-                 "name":"",
+                 "name":"Spawner",
                  "properties":[
                         {
                          "name":"ObjectType",
@@ -453,9 +453,97 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":11,
+         "name":"deathLayer",
+         "objects":[
+                {
+                 "height":27,
+                 "id":45,
+                 "name":"Death",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":292.5,
+                 "x":413.5,
+                 "y":614
+                }, 
+                {
+                 "height":28.5,
+                 "id":46,
+                 "name":"Death",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":363,
+                 "x":1947,
+                 "y":611.5
+                }, 
+                {
+                 "height":26,
+                 "id":47,
+                 "name":"Death",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":276.666666666667,
+                 "x":2841.33333333333,
+                 "y":613.333333333333
+                }, 
+                {
+                 "height":26,
+                 "id":48,
+                 "name":"Death",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":300.666666666667,
+                 "x":3354,
+                 "y":614.666666666667
+                }, 
+                {
+                 "height":21.3333333333334,
+                 "id":49,
+                 "name":"Death",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":239.333333333333,
+                 "x":3738,
+                 "y":618.666666666667
+                }, 
+                {
+                 "height":30,
+                 "id":51,
+                 "name":"Death",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":401.333333333333,
+                 "x":5336,
+                 "y":610
+                }, 
+                {
+                 "height":33.3333333333334,
+                 "id":52,
+                 "name":"Death",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":478,
+                 "x":5808.66666666667,
+                 "y":607.333333333333
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":11,
- "nextobjectid":45,
+ "nextlayerid":12,
+ "nextobjectid":53,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
