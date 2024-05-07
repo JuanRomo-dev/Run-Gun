@@ -1,9 +1,8 @@
 import Phaser from 'phaser';
 
 import Bullets from '../bullet.js';
+import Cook from '../enemies/cook.js';
 import EnemyGruop from '../enemies/enemyGroup.js';
-import PhotonDestructor from '../enemies/photonDestructor.js';
-import T1000 from '../enemies/t-1000.js';
 import { sceneEvents } from "../events/eventsCenter.js";
 import Player from '../heroes/player.js';
 import M16 from '../weapons/m16.js';
@@ -35,6 +34,10 @@ export default class Level extends Phaser.Scene {
     // Animaciones del t-1000
     this.t1000_anim = this.cache.json.get("t1000_anim");
     this.anims.fromJSON(this.t1000_anim);
+
+    // Animaciones del cook
+    this.cook_anim = this.cache.json.get("cook_anim");
+    this.anims.fromJSON(this.cook_anim);
 
     this.stars = 10;
 
@@ -138,15 +141,15 @@ export default class Level extends Phaser.Scene {
     this.plataformasLayer.setCollisionBetween(0, 1000);
     this.physics.add.collider(this.player, this.mesasLayer);
 
+    this.bullets = new Bullets(this);
+    this.enemyBullets = new Bullets(this);
     
     this.bullets = new Bullets(this, "bullet");
     this.enemyBullets = new Bullets(this, "enemy_bullet");
 
-    // this.enemies.push(new T1000(this, this.player, 450, 100));
-    this.enemies.push(new T1000(this, this.player, 1400, 160));
-    this.enemies.push(new PhotonDestructor(this, this.player, 1500, 100));
+    this.enemies.push(new Cook(this, this.player, 8500, 100));
     this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
-    
+
     this.weapons.push(new Rifle(this, 4147, 226));
     this.weapons.push(new Rifle(this, 3142, 225));
     this.weapons.push(new M16(this, 6209, 226));

@@ -10,7 +10,7 @@ export default class Spiderdron extends Phaser.GameObjects.Sprite {
      * @param {number} y Coordenada Y
      * @param {Phaser.GameObjects.Sprite} player jugador
      */
-    constructor(scene, player, x, y) {
+    constructor(scene, player, x, y, techo) {
         super(scene, x, y, "spiderDron");
         this.setScale(1,1);
         this.scene.add.existing(this);
@@ -21,11 +21,14 @@ export default class Spiderdron extends Phaser.GameObjects.Sprite {
         this.player = player;
         this.direccion = false;
 
+        this.techo = techo;
+        if(this.techo){
+            this.body.rotation = Math.PI / 2;
+            this.body.setGravityY(-this.body.gravity);
+        }
+
     }
 
-
-
-    
 
 /**
    * Métodos preUpdate de Phaser. En este caso solo se encarga del movimiento del enemigo.
