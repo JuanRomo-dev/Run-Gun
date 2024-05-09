@@ -11,10 +11,11 @@ import Start from "./scenes/start.js";
  */
 let config = {
   type: Phaser.AUTO,
-  width: 1100,
-  height: 640,
   scale: {
-    autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+    width: 1100,
+    height: 640
   },
   pixelArt: true,
   scene: [Boot, Level, End, GameUI,  Start],

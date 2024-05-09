@@ -1,21 +1,21 @@
 import Phaser from 'phaser';
 
 import Bullets from '../bullet.js';
+import { FullSizeBtn } from '../components/fullSizeBtn.js';
+import ConsumiblesGroup from '../consumibles/consumiblesGroup.js';
+import Heart from '../consumibles/heart.js';
+import DeathZone from '../deathZones/deathZone.js';
+import DeathZoneGroup from '../deathZones/deathZoneGroup.js';
 import Cook from '../enemies/cook.js';
 import EnemyGruop from '../enemies/enemyGroup.js';
 import PhotonDestructor from '../enemies/photonDestructor.js';
-import DeathZone from '../deathZones/deathZone.js';
-import DeathZoneGroup from '../deathZones/deathZoneGroup.js';
 import T1000 from '../enemies/t-1000.js';
-import PhotonDestructor from "../enemies/photonDestructor.js";
 import { sceneEvents } from "../events/eventsCenter.js";
 import Player from '../heroes/player.js';
+import Wall from "../walls/walls.js";
 import M16 from '../weapons/m16.js';
 import Rifle from "../weapons/rifle.js";
 import WeaponsGroup from "../weapons/weaponsGroup.js";
-import ConsumiblesGroup from '../consumibles/consumiblesGroup.js';
-import Heart from '../consumibles/heart.js';
-import Wall from "../walls/walls.js";
 export default class Level extends Phaser.Scene {
   enemies = [];
   weapons = [];
@@ -27,6 +27,7 @@ export default class Level extends Phaser.Scene {
    */
   constructor() {
     super({ key: "level" });
+    this.fullSizeBtn = new FullSizeBtn(this);
   }
 
   /**
@@ -230,7 +231,7 @@ export default class Level extends Phaser.Scene {
       this.physics.add.collider(consumible, this.mesasLayer);
     })
 
-
+    this.fullSizeBtn.create();
     this.input.on(
       "pointerdown",
       function () {
@@ -312,6 +313,7 @@ export default class Level extends Phaser.Scene {
 
   playerDeath(player, deathZone) {
     player.destroy();
+    sceneEvents.emit('game-over')
     this.scene.start("end");
   }
   
