@@ -28,7 +28,7 @@ export default class Cook extends Phaser.GameObjects.Sprite {
         this.setScale(2, 2);
         this.activo = false;
 
-
+        //Crea el puerta
         this.door = scene.physics.add.sprite(6505, 500, "doorOpen"); 
         this.door.setScale(1.5,2); 
         this.door.setSize(25,200);
@@ -48,11 +48,11 @@ export default class Cook extends Phaser.GameObjects.Sprite {
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
         this.body.setSize(28,51); // Mantener el mismo tamaño del colisionador
-        //this.body.setOffset(4,0); // Mantener el mismo desplazamiento del colisionador
         this.setTint(0xffffff);
 
-        if(Math.abs(this.player.x - this.x) < 400){
+        if(Math.abs(this.player.x - this.x) < 400){ 
             this.activo = true;
+            //cierra la puerta 
             this.scene.physics.add.collider(this.door, this.player);
             this.door.setTexture('doorClosed');
             this.door.setOffset(30, -90);
@@ -78,14 +78,10 @@ export default class Cook extends Phaser.GameObjects.Sprite {
                 this.body.setVelocityX(0);
                 if (this.player.x  < this.x) { //si el jugador está a la izquierda
                     this.anims.play('cook_atack', true).setFlipX(true);
-                    //this.body.setSize(23,34); // Mantener el mismo tamaño del colisionador
-                    //this.body.setOffset(21.5,0); // Mantener el mismo desplazamiento del colisionador
                     this.fire(t)
                 }else{ //si el jugador está a la derecha
                     this.direction = "right"
                     this.anims.play('cook_atack', true).setFlipX(false);
-                    //this.body.setSize(23,34); // Mantener el mismo tamaño del colisionador
-                    //this.body.setOffset(6,0); // Mantener el mismo desplazamiento del colisionador
                     this.fire(t)
                 }
             }
