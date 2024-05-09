@@ -104,8 +104,8 @@ export default class Cook extends Phaser.GameObjects.Sprite {
     }
 
     dead(scene){
-        sceneEvents.emit('game-over')
-        scene.scene.start("end")
+        sceneEvents.emit('game-over');
+        scene.scene.start("end");
         this.destroy();
     }
 

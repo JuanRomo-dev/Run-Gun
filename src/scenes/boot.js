@@ -47,7 +47,11 @@ import cook_animacion from '../../assets/sprites/cook/cook_anim.json';
 import cook_atlas from '../../assets/sprites/cook/cook_atlas.json';
 import doorOpen from '../../assets/sprites/doorOpen.png';
 import doorClosed from '../../assets/sprites/doorClosed.png';
-
+const level1 = require("url:../../assets/music/level1.wav");
+const photonDeath = require("url:../../assets/sounds/photonDeath.mp3");
+const t1000Death = require("url:../../assets/sounds/t-1000Death.wav");
+const disparoPistola = require("url:../../assets/sounds/disparoPistola.mp3");
+const disparoM16 = require("url:../../assets/sounds/disparoM16.wav");
 
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
@@ -103,6 +107,15 @@ export default class Boot extends Phaser.Scene {
 
     this.load.spritesheet('mikeDash', mike_dash, { frameWidth: 33, frameHeight: 35 });
     
+    this.load.audio('level1', level1);
+    
+    this.load.audio('photonDeath', photonDeath);
+    
+    this.load.audio('t1000Death', t1000Death);
+    
+    this.load.audio('disparoPistola', disparoPistola);
+    
+    this.load.audio('disparoM16', disparoM16);
     
     // Carga de los assets del photon destructor
     this.load.image("photonDestructor", photonDestructor);

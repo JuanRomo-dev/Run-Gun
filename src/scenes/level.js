@@ -197,6 +197,8 @@ export default class Level extends Phaser.Scene {
     this.weapons.push(new M16(this, 6209, 226));
     this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
 
+    this.sound.add('level1', {volume: 0.3, loop: true}).play();
+    
     // Colisión enemigos con suelo
     this.enemies.forEach((enemy) => {
       this.physics.add.collider(enemy, this.sueloLayer);
@@ -239,6 +241,15 @@ export default class Level extends Phaser.Scene {
     if (enemy.life <= 0) {
       this.player.updateScore(enemy.score)
       enemy.dead(this)
+      if (enemy instanceof Cook) {
+        this.sound.stopAll();
+      }
+      else if (enemy instanceof PhotonDestructor) {
+        this.sound.add('photonDeath', { volume: 0.2, loop: false }).play();
+      }
+      else if (enemy instanceof T1000) {
+        this.sound.add('t1000Death', { volume: 0.2, loop: false }).play();
+      }
     }
     bullets.destroy();
     return false;  
@@ -251,6 +262,7 @@ export default class Level extends Phaser.Scene {
     if (player.life <= 0){
       player.destroy();
       sceneEvents.emit('game-over')
+      this.sound.stopAll();
       this.scene.start("end");
     }
     bullets.destroy();
@@ -265,6 +277,7 @@ export default class Level extends Phaser.Scene {
   
   playerDeath(player, deathZone) {
     player.destroy();
+    this.sound.stopAll();
     this.scene.start("end");
   }
   

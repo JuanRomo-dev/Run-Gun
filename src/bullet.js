@@ -43,6 +43,7 @@ class Bullet extends Phaser.GameObjects.Sprite {
 
   changeTexture(textureKey) {
     this.setTexture(textureKey);
+    console.log("textura actual", this.texture.key);
   }
 }
 
@@ -61,9 +62,16 @@ export default class Bullets extends Phaser.GameObjects.Group {
 
   fireBullet(player) {
     let bullet = this.getFirstDead(false);
-
+    console.log(bullet.texture.key);
+    
     if (bullet) {
       bullet.changeTexture(player.textureBullet); 
+      if (bullet.texture.key === "bullet") {
+        this.scene.sound.play("disparoPistola");
+      }
+      else if (bullet.texture.key === "m16_bullet") {
+        this.scene.sound.play("disparoM16");
+      }
       bullet.fire(player);
     }
   }
