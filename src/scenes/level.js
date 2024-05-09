@@ -259,8 +259,7 @@ export default class Level extends Phaser.Scene {
     if (enemy.life <= 0) {
       this.player.updateScore(enemy.score)
       enemy.dead(this)
-      let random = Math.floor(Math.random() * 10) + 1;
-      console.log(random);
+      let random = Math.floor(Math.random() * 10) + 1; //Probabilidad de aparecer consumible
       if(random === 1){
         this.consumibles.push(new Heart(this, enemy.x, enemy.y));
         this.consumibleGroup = new ConsumiblesGroup(this, this.consumibles, this.player)
@@ -268,7 +267,17 @@ export default class Level extends Phaser.Scene {
           this.physics.add.collider(consumible, this.sueloLayer);
           this.physics.add.collider(consumible, this.plataformasLayer);
           this.physics.add.collider(consumible, this.mesasLayer);
+          this.tweens.add({ //efecto rebote
+            targets: consumible,
+            duration: 800,
+            ease: 'power1',
+            y: consumible.y - 10,
+            repeat: -1,
+            yoyo: true,
+          })
         })
+
+        
     }
 
     }
