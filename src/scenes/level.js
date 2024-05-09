@@ -189,8 +189,7 @@ export default class Level extends Phaser.Scene {
     this.enemyBullets = new Bullets(this, "enemy_bullet");
 
 
-  
-    this.enemies.push(new Cook(this, this.player, 8500, 100));
+    this.enemies.push(new Cook(this, this.player, 7500, 150));
     this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
 
     this.weapons.push(new Rifle(this, 4147, 226));

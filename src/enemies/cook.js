@@ -26,6 +26,8 @@ export default class Cook extends Phaser.GameObjects.Sprite {
         this.player = player;
         this.direction = "left";
         this.setScale(2, 2);
+        this.activo = false;
+
     }
 
 /**
@@ -38,7 +40,16 @@ export default class Cook extends Phaser.GameObjects.Sprite {
         //this.body.setOffset(4,0); // Mantener el mismo desplazamiento del colisionador
         //this.setTint(0xffffff);
 
-        if(this.player.y < this.y){ //si el jugador esta arriba
+        if(Math.abs(this.player.x - this.x) < 400){
+            this.activo = true;
+            
+
+
+
+        }
+
+
+        if(!this.activo){ //si el boss no esta activo
             this.body.setVelocityX(0);
             this.anims.play('cook_idle', true);
         }else{
