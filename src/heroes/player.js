@@ -99,6 +99,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.updateAmmoLabel(this.ammo);
   }
 
+  updateConsumible(consumable){
+      if(this.life<5){
+        this.life += consumable.life;
+      }
+  }
   loseLife(){
     --this.life;
   }

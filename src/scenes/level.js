@@ -2,6 +2,8 @@ import Phaser from 'phaser';
 
 import Bullets from '../bullet.js';
 import { FullSizeBtn } from '../components/fullSizeBtn.js';
+import ConsumiblesGroup from '../consumibles/consumiblesGroup.js';
+import Heart from '../consumibles/heart.js';
 import DeathZone from '../deathZones/deathZone.js';
 import DeathZoneGroup from '../deathZones/deathZoneGroup.js';
 import Cook from '../enemies/cook.js';
@@ -14,10 +16,10 @@ import Wall from "../walls/walls.js";
 import M16 from '../weapons/m16.js';
 import Rifle from "../weapons/rifle.js";
 import WeaponsGroup from "../weapons/weaponsGroup.js";
-
 export default class Level extends Phaser.Scene {
   enemies = [];
   weapons = [];
+  consumibles = [];
   deathZones = [];
   walls = [];
   /**
@@ -199,6 +201,7 @@ export default class Level extends Phaser.Scene {
     this.weapons.push(new M16(this, 6209, 226));
     this.weaponsGroup = new WeaponsGroup(this, this.weapons, this.player)
 
+
     // Colisión enemigos con suelo
     this.enemies.forEach((enemy) => {
       this.physics.add.collider(enemy, this.sueloLayer);
@@ -211,9 +214,22 @@ export default class Level extends Phaser.Scene {
       this.physics.add.collider(weapon, this.sueloLayer);
       this.physics.add.collider(weapon, this.plataformasLayer);
       this.physics.add.collider(weapon, this.mesasLayer);
+      this.tweens.add({//efecto rebote
+        targets: weapon,
+        duration: 800,
+        ease: 'quad',
+        y: weapon.y - 10,
+        repeat: -1,
+        yoyo: true,
+      })
     })
     
-    this.fullSizeBtn.create();
+    // Colisión consumibles
+    this.consumibles.forEach((consumible) => {
+      this.physics.add.collider(consumible, this.sueloLayer);
+      this.physics.add.collider(consumible, this.plataformasLayer);
+      this.physics.add.collider(consumible, this.mesasLayer);
+    })
 
 
     this.input.on(
@@ -242,6 +258,27 @@ export default class Level extends Phaser.Scene {
     if (enemy.life <= 0) {
       this.player.updateScore(enemy.score)
       enemy.dead(this)
+      let random = Math.floor(Math.random() * 10) + 1; //Probabilidad de aparecer consumible
+      if(random === 1){
+        this.consumibles.push(new Heart(this, enemy.x, enemy.y));
+        this.consumibleGroup = new ConsumiblesGroup(this, this.consumibles, this.player)
+        this.consumibles.forEach((consumible) => {
+          this.physics.add.collider(consumible, this.sueloLayer);
+          this.physics.add.collider(consumible, this.plataformasLayer);
+          this.physics.add.collider(consumible, this.mesasLayer);
+          this.tweens.add({ //efecto rebote
+            targets: consumible,
+            duration: 800,
+            ease: 'power1',
+            y: consumible.y - 10,
+            repeat: -1,
+            yoyo: true,
+          })
+        })
+
+        
+    }
+
     }
     bullets.destroy();
     return false;  
@@ -261,11 +298,19 @@ export default class Level extends Phaser.Scene {
   }
   
   hitWeapon(weapon, player) {
+
     player.updateWeapon(weapon);
     weapon.destroy();
     return false;
   }
   
+  hitConsumible(consumible, player) {
+    player.updateConsumible(consumible);
+    sceneEvents.emit('player-health-changed', player.life)
+    consumible.destroy();
+    return false;
+  }
+
   playerDeath(player, deathZone) {
     player.destroy();
     this.scene.start("end");
