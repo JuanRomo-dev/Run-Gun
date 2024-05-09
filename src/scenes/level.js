@@ -13,10 +13,13 @@ import Player from '../heroes/player.js';
 import M16 from '../weapons/m16.js';
 import Rifle from "../weapons/rifle.js";
 import WeaponsGroup from "../weapons/weaponsGroup.js";
+import ConsumiblesGroup from '../consumibles/consumiblesGroup.js';
+import Heart from '../consumibles/heart.js';
 import Wall from "../walls/walls.js";
 export default class Level extends Phaser.Scene {
   enemies = [];
   weapons = [];
+  consumibles = [];
   deathZones = [];
   walls = [];
   /**
@@ -211,6 +214,12 @@ export default class Level extends Phaser.Scene {
       this.physics.add.collider(weapon, this.mesasLayer);
     })
     
+    // Colisión consumibles
+    this.consumibles.forEach((consumible) => {
+      this.physics.add.collider(consumible, this.sueloLayer);
+      this.physics.add.collider(consumible, this.plataformasLayer);
+      this.physics.add.collider(consumible, this.mesasLayer);
+    })
 
 
     this.input.on(
@@ -239,6 +248,18 @@ export default class Level extends Phaser.Scene {
     if (enemy.life <= 0) {
       this.player.updateScore(enemy.score)
       enemy.dead(this)
+      let random = Math.floor(Math.random() * 10) + 1;
+      console.log(random);
+      if(random === 1){
+        this.consumibles.push(new Heart(this, enemy.x, enemy.y));
+        this.consumibleGroup = new ConsumiblesGroup(this, this.consumibles, this.player)
+        this.consumibles.forEach((consumible) => {
+          this.physics.add.collider(consumible, this.sueloLayer);
+          this.physics.add.collider(consumible, this.plataformasLayer);
+          this.physics.add.collider(consumible, this.mesasLayer);
+        })
+    }
+
     }
     bullets.destroy();
     return false;  
@@ -258,11 +279,19 @@ export default class Level extends Phaser.Scene {
   }
   
   hitWeapon(weapon, player) {
+
     player.updateWeapon(weapon);
     weapon.destroy();
     return false;
   }
   
+  hitConsumible(consumible, player) {
+    player.updateConsumible(consumible);
+    sceneEvents.emit('player-health-changed', player.life)
+    consumible.destroy();
+    return false;
+  }
+
   playerDeath(player, deathZone) {
     player.destroy();
     this.scene.start("end");
