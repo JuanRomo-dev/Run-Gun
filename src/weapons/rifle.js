@@ -13,6 +13,7 @@ export default class Rifle extends Phaser.GameObjects.Sprite {
       this.scene.add.existing(this);
       this.scene.physics.add.existing(this);
       this.body.setCollideWorldBounds();
+      this.body.setAllowGravity(false);
   }       
 
 }
