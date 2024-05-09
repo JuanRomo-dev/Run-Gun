@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 
 import Bullets from '../bullet.js';
+import { FullSizeBtn } from '../components/fullSizeBtn.js';
 import DeathZone from '../deathZones/deathZone.js';
 import DeathZoneGroup from '../deathZones/deathZoneGroup.js';
 import Cook from '../enemies/cook.js';
@@ -13,6 +14,7 @@ import Wall from "../walls/walls.js";
 import M16 from '../weapons/m16.js';
 import Rifle from "../weapons/rifle.js";
 import WeaponsGroup from "../weapons/weaponsGroup.js";
+
 export default class Level extends Phaser.Scene {
   enemies = [];
   weapons = [];
@@ -23,6 +25,7 @@ export default class Level extends Phaser.Scene {
    */
   constructor() {
     super({ key: "level" });
+    this.fullSizeBtn = new FullSizeBtn(this);
   }
 
   /**
@@ -210,6 +213,7 @@ export default class Level extends Phaser.Scene {
       this.physics.add.collider(weapon, this.mesasLayer);
     })
     
+    this.fullSizeBtn.create();
 
 
     this.input.on(

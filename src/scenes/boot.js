@@ -9,7 +9,13 @@ import rifle_bullet from "../../assets/img/rifle_bullet.png";
 import thunder from "../../assets/img/thunder.png";
 import map from '../../assets/maps/rungun.json';
 import bullet from '../../assets/sprites/bullet.png';
+import cook from '../../assets/sprites/cook.png';
+import cook_atlas_png from '../../assets/sprites/cook/cook.png';
+import cook_animacion from '../../assets/sprites/cook/cook_anim.json';
+import cook_atlas from '../../assets/sprites/cook/cook_atlas.json';
 import mike_dash from '../../assets/sprites/Dash.png';
+import doorClosed from '../../assets/sprites/doorClosed.png';
+import doorOpen from '../../assets/sprites/doorOpen.png';
 import mike_idle_shoot from "../../assets/sprites/idle_shooting.png";
 import mike_jump from '../../assets/sprites/Jump2.png';
 import mike_down from '../../assets/sprites/mike_down.png';
@@ -37,18 +43,12 @@ import decorations from '../../assets/tilesets/Decorations.png';
 import ware from '../../assets/tilesets/House-kitchen.png';
 import tables from '../../assets/tilesets/Living Room.png';
 import fondos from '../../assets/tilesets/Terrain.png';
+import btn_full_size from '../../assets/ui/btn_full_size.png';
 import btn_restart from "../../assets/ui/btn_restart.png";
 import btn_start from "../../assets/ui/btn_start.png";
 import ui_heart_empty from "../../assets/ui/ui_heart_empty.png";
 import ui_heart_full from "../../assets/ui/ui_heart_full.png";
-import cook from '../../assets/sprites/cook.png';
-import cook_atlas_png from '../../assets/sprites/cook/cook.png';
-import cook_animacion from '../../assets/sprites/cook/cook_anim.json';
-import cook_atlas from '../../assets/sprites/cook/cook_atlas.json';
-import doorOpen from '../../assets/sprites/doorOpen.png';
-import doorClosed from '../../assets/sprites/doorClosed.png';
-
-
+import { FullSizeBtn } from '../components/fullSizeBtn';
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
  * Esta escena se puede mejorar añadiendo una imagen del juego y una
@@ -62,6 +62,7 @@ export default class Boot extends Phaser.Scene {
    */
   constructor() {
     super({ key: "boot" });
+    this.fullSizeBtn = new FullSizeBtn(this);
   }
 
   /**
@@ -103,7 +104,9 @@ export default class Boot extends Phaser.Scene {
 
     this.load.spritesheet('mikeDash', mike_dash, { frameWidth: 33, frameHeight: 35 });
     
-    
+    //sprites ui
+    this.load.spritesheet('btnFullSize',btn_full_size, {frameWidth: 50, frameHeight:50});
+
     // Carga de los assets del photon destructor
     this.load.image("photonDestructor", photonDestructor);
     this.load.json("photonDestructor_anim", photonDestructor_animacion);
@@ -148,6 +151,7 @@ export default class Boot extends Phaser.Scene {
   }
 
   create() {
+    this.fullSizeBtn.create();
     let image = this.add.image(this.sys.game.canvas.width/2,this.sys.game.canvas.height/2, 'logo');
     image.setAlpha(0); 
     image.setScale(0.5);
