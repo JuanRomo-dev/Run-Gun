@@ -48,6 +48,7 @@ export default class Cook extends Phaser.GameObjects.Sprite {
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
         this.body.setSize(28,51); // Mantener el mismo tamaño del colisionador
+        //this.body.setOffset(4,0); // Mantener el mismo desplazamiento del colisionador
         this.setTint(0xffffff);
 
         if(Math.abs(this.player.x - this.x) < 400){ 
