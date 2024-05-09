@@ -16,7 +16,7 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
      * @param {number} y Coordenada Y
      * @param {Phaser.GameObjects.Sprite} player jugador
      */
-    constructor(scene, player, x, y, suelo, plataforma) {
+    constructor(scene, player, x, y) {
         super(scene, x, y, "photonDestructor");
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
@@ -27,7 +27,6 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
         this.player = player;
         this.direction = "left";
         this.setScale(2.3, 2.3);
-        this.suelo = suelo;
     }
 /**
    * Métodos preUpdate de Phaser. En este caso solo se encarga del movimiento del enemigo.
@@ -44,13 +43,13 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
             if(this.matar){
                 this.body.setVelocityX(0);
             }else{
-                if(this.player.y < this.y){ //si el jugador esta arriba
+                if((this.player.y + 100) < this.y){ //si el jugador esta arriba
                     this.body.setVelocityX(0);
                     this.anims.play('photondestructor_idle', true);
                     
                     
                 }else{
-                    if(Math.abs(this.player.x - this.x) > 350){ //Si esta demasiado lejos del jugador
+                    if(Math.abs(this.player.x - this.x) > 500){ //Si esta demasiado lejos del jugador
 
                         if (this.player.x  < this.x) { //si el jugador está a la izquierda 
                             this.body.setVelocityX(-this.speed);
@@ -96,6 +95,7 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
     dead(){
         this.matar = true;       
         this.body.allowGravity = false;
+        this.body.enable = false;
         this.y = this.y + 10;
         this.anims.play('photondestructor_dead');
         this.once('animationcomplete', () =>{ 
