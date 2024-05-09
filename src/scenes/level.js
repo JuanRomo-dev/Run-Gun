@@ -231,7 +231,7 @@ export default class Level extends Phaser.Scene {
       this.physics.add.collider(consumible, this.mesasLayer);
     })
 
-
+    this.fullSizeBtn.create();
     this.input.on(
       "pointerdown",
       function () {
@@ -313,6 +313,7 @@ export default class Level extends Phaser.Scene {
 
   playerDeath(player, deathZone) {
     player.destroy();
+    sceneEvents.emit('game-over')
     this.scene.start("end");
   }
   
