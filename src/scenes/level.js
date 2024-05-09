@@ -9,10 +9,10 @@ import PhotonDestructor from '../enemies/photonDestructor.js';
 import T1000 from '../enemies/t-1000.js';
 import { sceneEvents } from "../events/eventsCenter.js";
 import Player from '../heroes/player.js';
+import Wall from "../walls/walls.js";
 import M16 from '../weapons/m16.js';
 import Rifle from "../weapons/rifle.js";
 import WeaponsGroup from "../weapons/weaponsGroup.js";
-import Wall from "../walls/walls.js";
 export default class Level extends Phaser.Scene {
   enemies = [];
   weapons = [];
@@ -188,8 +188,7 @@ export default class Level extends Phaser.Scene {
     this.enemyBullets = new Bullets(this, "enemy_bullet");
 
 
-  
-    this.enemies.push(new Cook(this, this.player, 8500, 100));
+    this.enemies.push(new Cook(this, this.player, 7500, 150));
     this.enemyGroup = new EnemyGruop(this, this.enemies, this.player, this.enemyBullets);
 
     this.weapons.push(new Rifle(this, 4147, 226));

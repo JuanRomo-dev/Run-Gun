@@ -26,6 +26,19 @@ export default class Cook extends Phaser.GameObjects.Sprite {
         this.player = player;
         this.direction = "left";
         this.setScale(2, 2);
+        this.activo = false;
+
+
+        this.door = scene.physics.add.sprite(6505, 500, "doorOpen"); 
+        this.door.setScale(1.5,2); 
+        this.door.setSize(25,200);
+        this.door.setOffset(0, -90);
+        this.door.setDepth(0);
+        this.scene.add.existing(this.door);
+        this.scene.physics.add.existing(this.door); 
+        this.door.body.setCollideWorldBounds();
+        this.door.body.allowGravity = false;
+        this.door.body.immovable = true;    
     }
 
 /**
@@ -38,7 +51,15 @@ export default class Cook extends Phaser.GameObjects.Sprite {
         //this.body.setOffset(4,0); // Mantener el mismo desplazamiento del colisionador
         //this.setTint(0xffffff);
 
-        if(this.player.y < this.y){ //si el jugador esta arriba
+        if(Math.abs(this.player.x - this.x) < 400){
+            this.activo = true;
+            this.scene.physics.add.collider(this.door, this.player);
+            this.door.setTexture('doorClosed');
+            this.door.setOffset(30, -90);
+        }
+
+
+        if(!this.activo){ //si el boss no esta activo
             this.body.setVelocityX(0);
             this.anims.play('cook_idle', true);
         }else{
