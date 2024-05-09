@@ -21,7 +21,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
    */
   constructor(scene, x, y) {
     super(scene, x, y, "player");
-    
+    this.setDepth(10);
     this.anims.create({
       key: 'mikeDash',
       frames: this.anims.generateFrameNames('mikeDash', { start: 0, end: 5 }),
