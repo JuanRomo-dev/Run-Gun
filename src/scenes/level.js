@@ -214,17 +214,8 @@ export default class Level extends Phaser.Scene {
       this.physics.add.collider(weapon, this.sueloLayer);
       this.physics.add.collider(weapon, this.plataformasLayer);
       this.physics.add.collider(weapon, this.mesasLayer);
-      this.tweens.add({//efecto rebote
-        targets: weapon,
-        duration: 800,
-        ease: 'quad',
-        y: weapon.y - 10,
-        repeat: -1,
-        yoyo: true,
-      })
     })
     
-    this.fullSizeBtn.create();
     // Colisión consumibles
     this.consumibles.forEach((consumible) => {
       this.physics.add.collider(consumible, this.sueloLayer);
