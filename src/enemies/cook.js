@@ -6,7 +6,8 @@ export default class Cook extends Phaser.GameObjects.Sprite {
     score = 20;
     tickRate = 0.5;
     shootRate = 1000; //milisegundos
-    bulletVelocity = 400;
+    bulletVelocity = 230;
+    textureBullet = "enemy_bullet";
     /**
      * Constructor del enemigo
      * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
@@ -94,7 +95,7 @@ export default class Cook extends Phaser.GameObjects.Sprite {
 
     fire(time){
         if(time > this.tickRate){
-            this.bullets.fireBullet(this);
+            this.bullets.throwKnife(this);
             this.tickRate = time + this.shootRate;
         }
     }
