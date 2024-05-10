@@ -3,7 +3,8 @@ import Phaser from 'phaser';
 class Bullet extends Phaser.GameObjects.Sprite {
   damage = 0;
   endScreenWidth = 7648;
-
+  parabola = false;
+  lanzador;
   constructor(scene, x, y, texture) {
     super(scene, x, y, texture);
     this.scene.physics.add.existing(this);
@@ -19,6 +20,23 @@ class Bullet extends Phaser.GameObjects.Sprite {
     this.setVisible(true);
     if(player.direction == "right"){
       this.body.setVelocityX(player.bulletVelocity);
+    }
+    else if(player.direction == "left"){
+      this.body.setVelocityX(-player.bulletVelocity);
+    }
+  }
+
+  throw(player) {
+    this.damage = player.bulletDamage;
+    this.body.reset(player.x, player.y);
+    this.body.setAllowGravity(true);
+    this.parabola = true;
+    this.lanzador = player;
+    this.setActive(true);
+    this.setVisible(true);
+    this.body.setVelocityY(-300);
+    if(player.direction == "right"){
+      this.body.setVelocityX(player.bulletVelocity); 
     }
     else if(player.direction == "left"){
       this.body.setVelocityX(-player.bulletVelocity);
@@ -67,4 +85,19 @@ export default class Bullets extends Phaser.GameObjects.Group {
       bullet.fire(player);
     }
   }
+
+  throwKnife(player) {
+    let bullet = this.getFirstDead(false);
+
+    if (bullet) {
+      bullet.changeTexture(player.textureBullet); 
+      bullet.throw(player);
+    }
+  }
+
+
+
 }
+
+
+  
