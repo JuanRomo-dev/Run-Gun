@@ -7,6 +7,12 @@ import m16_bullet from "../../assets/img/m16_bullet.png";
 import rifle from "../../assets/img/rifle.png";
 import rifle_bullet from "../../assets/img/rifle_bullet.png";
 import thunder from "../../assets/img/thunder.png";
+import knife1 from "../../assets/img/cuchillo1.png";
+import knife2 from "../../assets/img/cuchillo2.png";
+import knife3 from "../../assets/img/cuchillo3.png";
+import knife4 from "../../assets/img/cuchillo4.png";
+import knife5 from "../../assets/img/cuchillo5.png";
+
 import map from '../../assets/maps/rungun.json';
 import bullet from '../../assets/sprites/bullet.png';
 import mike_dash from '../../assets/sprites/Dash.png';
@@ -144,6 +150,11 @@ export default class Boot extends Phaser.Scene {
     this.load.image("enemy_bullet", enemy_bullet);
     this.load.image("m16_bullet", m16_bullet);
     this.load.image("rifle_bullet", rifle_bullet);
+    this.load.image("knife1", knife1);
+    this.load.image("knife2", knife2);
+    this.load.image("knife3", knife3);
+    this.load.image("knife4", knife4);
+    this.load.image("knife5", knife5);
     
   }
 

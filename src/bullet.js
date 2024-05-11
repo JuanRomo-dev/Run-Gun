@@ -4,6 +4,8 @@ class Bullet extends Phaser.GameObjects.Sprite {
   damage = 0;
   endScreenWidth = 7648;
   parabola = false;
+  rotacion = 0.3;
+  giro = 0;
   lanzador;
   constructor(scene, x, y, texture) {
     super(scene, x, y, texture);
@@ -27,14 +29,19 @@ class Bullet extends Phaser.GameObjects.Sprite {
   }
 
   throw(player) {
+    let random = Math.floor(Math.random() * 5) + 1;
+
+    this.setTexture("knife" + random.toString());
     this.damage = player.bulletDamage;
     this.body.reset(player.x, player.y);
     this.body.setAllowGravity(true);
+    this.body.setOffset(10, 10);
     this.parabola = true;
     this.lanzador = player;
     this.setActive(true);
     this.setVisible(true);
     this.body.setVelocityY(-300);
+    this.setScale(1.5, 1.5);
     if(player.direction == "right"){
       this.body.setVelocityX(player.bulletVelocity); 
     }
@@ -51,6 +58,11 @@ class Bullet extends Phaser.GameObjects.Sprite {
     const cameraY = this.scene.cameras.main.scrollY;
 
     const cameraWidth = this.scene.cameras.main.width;
+
+    if(this.parabola){
+      this.giro = this.giro + this.rotacion;
+      this.setRotation(this.giro);
+    }
 
     if (this.x > cameraX + cameraWidth || this.x < cameraX) {
       this.setActive(false);
