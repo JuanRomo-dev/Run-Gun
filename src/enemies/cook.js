@@ -5,8 +5,9 @@ export default class Cook extends Phaser.GameObjects.Sprite {
     life = 20;
     score = 20;
     tickRate = 0.5;
-    shootRate = 1000; //milisegundos
-    bulletVelocity = 400;
+    shootRate = 500; //milisegundos
+    bulletVelocity = 230;
+    textureBullet = "knife";
     /**
      * Constructor del enemigo
      * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
@@ -21,7 +22,7 @@ export default class Cook extends Phaser.GameObjects.Sprite {
         this.scene.physics.add.existing(this);
         this.scene.physics.add.collider(this, player);
         this.body.setCollideWorldBounds();
-        this.speed = 100;
+        this.speed = 200;
         this.jumpSpeed = -100;
         this.player = player;
         this.direction = "left";
@@ -39,6 +40,7 @@ export default class Cook extends Phaser.GameObjects.Sprite {
         this.door.body.setCollideWorldBounds();
         this.door.body.allowGravity = false;
         this.door.body.immovable = true;    
+        this.scene.physics.add.collider(this.door, this);
     }
 
 /**
@@ -74,9 +76,21 @@ export default class Cook extends Phaser.GameObjects.Sprite {
                 }else{
                     this.body.setVelocityX(0);
                 }
+            }else if(Math.abs(this.player.x - this.x) < 300){ //Si esta demasiado cerca del jugador
+
+                if (this.player.x  < this.x) { //si el jugador está a la izquierda 
+                    this.body.setVelocityX(this.speed);
+                    this.anims.play('cook_run', true).setFlipX(true); 
+                }else if (this.player.x > this.x){ //si el jugador está a la derecha
+                    this.body.setVelocityX(-this.speed);
+                    this.anims.play('cook_run', true).setFlipX(false); 
+                }else{
+                    this.body.setVelocityX(0);
+                }
             }else{
                 this.body.setVelocityX(0);
                 if (this.player.x  < this.x) { //si el jugador está a la izquierda
+                    this.direction = "left"
                     this.anims.play('cook_atack', true).setFlipX(true);
                     this.fire(t)
                 }else{ //si el jugador está a la derecha
@@ -94,7 +108,7 @@ export default class Cook extends Phaser.GameObjects.Sprite {
 
     fire(time){
         if(time > this.tickRate){
-            this.bullets.fireBullet(this);
+            this.bullets.throwKnife(this);
             this.tickRate = time + this.shootRate;
         }
     }

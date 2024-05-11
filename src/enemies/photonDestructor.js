@@ -63,6 +63,7 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
                     }else{
                         this.body.setVelocityX(0);
                         if (this.player.x  < this.x) { //si el jugador está a la izquierda
+                            this.direction = "left"
                             //this.anims.play('desenfundado', true).setFlipX()
                             this.anims.play('photondestructor_shoot', true).setFlipX(true);
                             this.body.setSize(23,34); // Mantener el mismo tamaño del colisionador
