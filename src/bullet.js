@@ -72,6 +72,9 @@ export default class Bullets extends Phaser.GameObjects.Group {
       else if (bullet.texture.key === "m16_bullet") {
         this.scene.sound.play("disparoM16");
       }
+      else if (bullet.texture.key === "rifle_bullet") {
+        this.scene.sound.play("disparoAK47");
+      }
       bullet.fire(player);
     }
   }
