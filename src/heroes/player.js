@@ -87,7 +87,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
   }
 
-  updateWeapon(weapon){
+  updateWeapon(weapon) {
+    this.scene.sound.play('getWeapon');
     this.bulletVelocity = weapon.bulletVelocity;
     this.bulletDamage = weapon.bulletDamage;
     this.textureBullet = weapon.textureBullet;
@@ -172,6 +173,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
           // Control de salto
           if (Phaser.Input.Keyboard.JustDown(this.cursors.spacebar)) { // Si la tecla de espacio se presiona
             this.body.setVelocityY(this.jumpSpeed);
+            this.scene.sound.play('jump', { volume: 0.3 });
             this.anims.play('mike_jump', true);
           }
         } else if (this.body.velocity.y < 0) { // Si está saltando (subiendo verticalmente)
@@ -194,6 +196,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       dashControl: () => {
         if (Phaser.Input.Keyboard.JustDown(this.cursors.shift) && this.canDash) {
           this.initDash();
+          this.scene.sound.play('dash');
           this.play('mikeDash', true);
         }
       },

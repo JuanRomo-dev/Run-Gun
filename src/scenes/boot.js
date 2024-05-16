@@ -53,6 +53,9 @@ const t1000Death = require("url:../../assets/sounds/t-1000Death.wav");
 const disparoPistola = require("url:../../assets/sounds/disparoPistola.mp3");
 const disparoM16 = require("url:../../assets/sounds/disparoM16.wav");
 const disparoAK = require("url:../../assets/sounds/ak47-shot.wav");
+const dash = require("url:../../assets/sounds/dash.wav");
+const getWeapon = require("url:../../assets/sounds/getWeapon.wav");
+const jumpSound = require("url:../../assets/sounds/jump.wav");
 
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
@@ -119,6 +122,12 @@ export default class Boot extends Phaser.Scene {
     this.load.audio('disparoM16', disparoM16);
     
     this.load.audio('disparoAK47', disparoAK);
+    
+    this.load.audio('dash', dash);
+    
+    this.load.audio('getWeapon', getWeapon);
+    
+    this.load.audio('jump', jumpSound);
     
     // Carga de los assets del photon destructor
     this.load.image("photonDestructor", photonDestructor);
