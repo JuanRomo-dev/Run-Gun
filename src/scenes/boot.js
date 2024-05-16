@@ -55,6 +55,22 @@ import btn_start from "../../assets/ui/btn_start.png";
 import ui_heart_empty from "../../assets/ui/ui_heart_empty.png";
 import ui_heart_full from "../../assets/ui/ui_heart_full.png";
 import { FullSizeBtn } from '../components/fullSizeBtn';
+import cook from '../../assets/sprites/cook.png';
+import cook_atlas_png from '../../assets/sprites/cook/cook.png';
+import cook_animacion from '../../assets/sprites/cook/cook_anim.json';
+import cook_atlas from '../../assets/sprites/cook/cook_atlas.json';
+import doorOpen from '../../assets/sprites/doorOpen.png';
+import doorClosed from '../../assets/sprites/doorClosed.png';
+const level1 = require("url:../../assets/music/level1.wav");
+const photonDeath = require("url:../../assets/sounds/photonDeath.mp3");
+const t1000Death = require("url:../../assets/sounds/t-1000Death.wav");
+const disparoPistola = require("url:../../assets/sounds/disparoPistola.mp3");
+const disparoM16 = require("url:../../assets/sounds/disparoM16.wav");
+const disparoAK = require("url:../../assets/sounds/ak47-shot.wav");
+const dash = require("url:../../assets/sounds/dash.wav");
+const getWeapon = require("url:../../assets/sounds/getWeapon.wav");
+const jumpSound = require("url:../../assets/sounds/jump.wav");
+
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
  * Esta escena se puede mejorar añadiendo una imagen del juego y una
@@ -113,6 +129,24 @@ export default class Boot extends Phaser.Scene {
     //sprites ui
     this.load.spritesheet('btnFullSize',btn_full_size, {frameWidth: 50, frameHeight:50});
 
+    this.load.audio('level1', level1);
+    
+    this.load.audio('photonDeath', photonDeath);
+    
+    this.load.audio('t1000Death', t1000Death);
+    
+    this.load.audio('disparoPistola', disparoPistola);
+    
+    this.load.audio('disparoM16', disparoM16);
+    
+    this.load.audio('disparoAK47', disparoAK);
+    
+    this.load.audio('dash', dash);
+    
+    this.load.audio('getWeapon', getWeapon);
+    
+    this.load.audio('jump', jumpSound);
+    
     // Carga de los assets del photon destructor
     this.load.image("photonDestructor", photonDestructor);
     this.load.json("photonDestructor_anim", photonDestructor_animacion);

@@ -99,6 +99,7 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
         this.body.enable = false;
         this.y = this.y + 10;
         this.anims.play('photondestructor_dead');
+        this.body.enable = false;
         this.once('animationcomplete', () =>{ 
             this.muerto = true;
             this.destroy();
