@@ -92,13 +92,13 @@ export default class Cook extends Phaser.GameObjects.Sprite {
                 if (this.player.x  < this.x) { //si el jugador está a la izquierda
                     this.direction = "left"
                     this.anims.play('cook_atack', true).setFlipX(true);
-                    this.fire(t)
                 }else{ //si el jugador está a la derecha
                     this.direction = "right"
                     this.anims.play('cook_atack', true).setFlipX(false);
-                    this.fire(t)
+                    
                 }
             }
+            this.fire(t)
         }   
     }
 
