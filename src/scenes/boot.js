@@ -23,19 +23,27 @@ import mike_dash from '../../assets/sprites/Dash.png';
 import doorClosed from '../../assets/sprites/DoorClosed.png';
 import doorOpen from '../../assets/sprites/DoorOpen.png';
 import mike_idle_shoot from "../../assets/sprites/idle_shooting.png";
+import mike_idle_m16 from "../../assets/sprites/idle_shooting_m16.png";
+import mike_idle_ak from "../../assets/sprites/idle_shootin_ak.png";
 import mike_jump from '../../assets/sprites/Jump2.png';
+import mike_jump_m16 from '../../assets/sprites/mike_jump_m16.png';
+import mike_jump_ak from '../../assets/sprites/mike_jump_ak.png';
 import mike_down from '../../assets/sprites/mike_down.png';
 import mike_fall from '../../assets/sprites/mike_fall.png';
 import mike_idle from '../../assets/sprites/mike_idle.png';
 import mike_idle2 from '../../assets/sprites/mike_idle2.png';
 import mike_running from '../../assets/sprites/mike_running.png';
 import mike_running_shoot from "../../assets/sprites/mike_running_shooting.png";
+import mike_running_m16 from "../../assets/sprites/mike_running_m16.png";
+import mike_running_ak from "../../assets/sprites/mike_running_ak.png";
 import mike_is_down from '../../assets/sprites/mikeIsDown.png';
 import photonDestructor from '../../assets/sprites/photonDestructor.png';
 import photonDestructor_atlas_png from '../../assets/sprites/photondestructor/photondestructor.png';
 import photonDestructor_animacion from '../../assets/sprites/photondestructor/photondestructor_anim.json';
 import photonDestructor_atlas from '../../assets/sprites/photondestructor/photondestructor_atlas.json';
 import mike_is_down_shoot from "../../assets/sprites/Sitdown_shooting.png";
+import mike_is_down_m16 from "../../assets/sprites/Sitdown_shooting_m16.png";
+import mike_is_down_ak from "../../assets/sprites/Sitdown_ak.png";
 import spiderdron from '../../assets/sprites/spiderdron.png';
 import spiderdron_atlas_png from '../../assets/sprites/spiderdron/spiderdron.png';
 import spiderdron_animacion from '../../assets/sprites/spiderdron/spiderdron_anim.json';
@@ -105,21 +113,31 @@ export default class Boot extends Phaser.Scene {
     
     // Cargar spritesheet
     this.load.spritesheet('mikeIdle', mike_idle, { frameWidth: 33, frameHeight: 35 });    // Spritesheet de Mike quieto
-
+    
+    // Spritesheets idle
     this.load.spritesheet('mikeIdleShoot', mike_idle_shoot, { frameWidth: 33, frameHeight: 35 })
+    this.load.spritesheet('mikeIdleM16', mike_idle_m16, { frameWidth: 33, frameHeight: 35 })
+    this.load.spritesheet('mikeIdleAK', mike_idle_ak, { frameWidth: 33, frameHeight: 35 })
 
-    this.load.spritesheet('mikeJump', mike_jump, { frameWidth: 33, frameHeight: 35 });    // Spritesheet de Mike saltando
+    // Spritesheets de Mike saltando
+    this.load.spritesheet('mikeJump', mike_jump, { frameWidth: 33, frameHeight: 35 });    
+    this.load.spritesheet('mikeJumpM16', mike_jump_m16, { frameWidth: 33, frameHeight: 35 });
+    this.load.spritesheet('mikeJumpAK', mike_jump_ak, { frameWidth: 33, frameHeight: 35 });
 
-    this.load.spritesheet('mike', mike_running, { frameWidth: 33, frameHeight: 35 }); // Spritesheet de Mike corriendo
-
+    // Spritesheets de Mike corriendo
+    this.load.spritesheet('mike', mike_running, { frameWidth: 33, frameHeight: 35 }); 
+    this.load.spritesheet('mikeRunningM16', mike_running_m16, { frameWidth: 33, frameHeight: 35 });
+    this.load.spritesheet('mikeRunningAK', mike_running_ak, { frameWidth: 33, frameHeight: 35 });
     this.load.spritesheet('mikeRunShot', mike_running_shoot, { frameWidth: 33, frameHeight: 35 })
 
     this.load.spritesheet('mikeIdle2', mike_idle2, { frameWidth: 33, frameHeight: 35 });  
 
     this.load.spritesheet('mikeFall', mike_fall, { frameWidth: 33, frameHeight: 35 });    // Spritesheet de Mike cayendo
 
-    this.load.spritesheet('mikeDown', mike_down, { frameWidth: 33, frameHeight: 35 });    // Spritesheet de Mike agachandose
-
+    // Spritesheets de Mike agachandose
+    this.load.spritesheet('mikeDown', mike_down, { frameWidth: 33, frameHeight: 35 });    
+    this.load.spritesheet('mikeDownM16', mike_is_down_m16, { frameWidth: 33, frameHeight: 35 });
+    this.load.spritesheet('mikeDownAK', mike_is_down_ak, { frameWidth: 33, frameHeight: 35 });
     this.load.spritesheet('mikeIsDown', mike_is_down, { frameWidth: 33, frameHeight: 35 });    // Spritesheet de Mike ya agachado
 
     this.load.spritesheet("mikeIsDownShoot", mike_is_down_shoot, { frameWidth: 33, frameHeight: 35 })

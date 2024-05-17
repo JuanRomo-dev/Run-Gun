@@ -67,6 +67,18 @@ export default class Level extends Phaser.Scene {
       frames: this.anims.generateFrameNumbers('mikeIdleShoot', { start: 0, end: 2 }),
       frameRate: 9,
     })
+    
+    this.anims.create({     // Animación de Mike quieto
+      key: 'mike_idle_m16',
+      frames: this.anims.generateFrameNumbers('mikeIdleM16', { start: 0, end: 2 }),
+      frameRate: 9,
+    })
+    
+    this.anims.create({     // Animación de Mike quieto
+      key: 'mike_idle_ak',
+      frames: this.anims.generateFrameNumbers('mikeIdleAK', { start: 0, end: 2 }),
+      frameRate: 9,
+    })
 
     this.anims.create({
       key: 'mike_jump',

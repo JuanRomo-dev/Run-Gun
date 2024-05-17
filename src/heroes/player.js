@@ -168,11 +168,28 @@ export default class Player extends Phaser.GameObjects.Sprite {
             this.body.setVelocityX(0);
             if(!this.isShooting)
               this.anims.play('mike_idle', true);
-            else{
-              this.anims.play('mike_idle_shoot', true);
-              this.once('animationcomplete', () =>{ 
+            else {
+              if (this.textureBullet === "bullet") {
+                this.anims.play('mike_idle_shoot', true);
+                this.once('animationcomplete', () =>{ 
                 this.isShooting = false;
               });
+              }
+              else if (this.weapon == "m16") {
+                console.log("m16_bullet");
+                this.anims.play('mike_idle_m16', true);
+                this.once('animationcomplete', () =>{ 
+                this.isShooting = false;
+              });
+              }
+              else if (this.weapon == "rifle") {
+                console.log("Animacionnnnnn riffle_bullet");
+                this.anims.play('mike_idle_ak', true);
+                this.once('animationcomplete', () =>{ 
+                this.isShooting = false;
+              });
+              }
+              
             }
           }
           // Control de salto
