@@ -85,6 +85,19 @@ export default class Level extends Phaser.Scene {
       frames: this.anims.generateFrameNumbers('mikeJump', { start: 0, end: 3 }),
       frameRate: 6
     })
+    
+    this.anims.create({
+      key: 'mike_jump_m16',
+      frames: this.anims.generateFrameNumbers('mikeJumpM16', { start: 0, end: 3 }),
+      frameRate: 6
+    })
+    
+    
+    this.anims.create({
+      key: 'mike_jump_ak',
+      frames: this.anims.generateFrameNumbers('mikeJumpAK', { start: 0, end: 3 }),
+      frameRate: 6
+    })
 
     this.anims.create({
       key: 'mike_idle2',
@@ -97,7 +110,21 @@ export default class Level extends Phaser.Scene {
       key: 'mike_run',
       frames: this.anims.generateFrameNumbers('mikeRunShot', { start: 0, end: 5 }),
       frameRate: 9,
-      repeat: -1    // Para que se repita el ciclo;
+      repeat: -1    
+    })
+    
+    this.anims.create({           // Animación de Mike corriendo
+      key: 'mike_run_m16',
+      frames: this.anims.generateFrameNumbers('mikeRunningM16', { start: 0, end: 5 }),
+      frameRate: 9,
+      repeat: -1    
+    }) 
+    
+    this.anims.create({           // Animación de Mike corriendo    
+      key: 'mike_run_ak',
+      frames: this.anims.generateFrameNumbers('mikeRunningAK', { start: 0, end: 5 }),
+      frameRate: 9,
+      repeat: -1    
     })
 
     this.anims.create({
@@ -122,6 +149,18 @@ export default class Level extends Phaser.Scene {
     this.anims.create({
       key: 'mikeIsDownShoot',
       frames: this.anims.generateFrameNames('mikeIsDownShoot', { start: 0, end: 2 }),
+      frameRate: 11,
+    })
+    
+    this.anims.create({
+      key: 'mikeIsDownM16',
+      frames: this.anims.generateFrameNames('mikeDownM16', { start: 0, end: 2 }),
+      frameRate: 11,
+    })
+    
+    this.anims.create({
+      key: 'mikeIsDownAK',
+      frames: this.anims.generateFrameNames('mikeDownAK', { start: 0, end: 2 }),
       frameRate: 11,
     })
 
