@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 import { sceneEvents } from "../events/eventsCenter.js";
 
 export default class Cook extends Phaser.GameObjects.Sprite {
-    life = 20;
+    life = 250;
     score = 20;
     tickRate = 0.5;
     shootRate = 500; //milisegundos

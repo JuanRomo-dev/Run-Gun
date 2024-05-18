@@ -1,5 +1,10 @@
 import Phaser from 'phaser';
 
+import knife1 from "../../assets/img/cuchillo1.png";
+import knife2 from "../../assets/img/cuchillo2.png";
+import knife3 from "../../assets/img/cuchillo3.png";
+import knife4 from "../../assets/img/cuchillo4.png";
+import knife5 from "../../assets/img/cuchillo5.png";
 import enemy_bullet from "../../assets/img/enemy_bullet.png";
 import logo_estudio from "../../assets/img/logo_estudio.png";
 import m16 from "../../assets/img/m16.png";
@@ -7,11 +12,6 @@ import m16_bullet from "../../assets/img/m16_bullet.png";
 import rifle from "../../assets/img/rifle.png";
 import rifle_bullet from "../../assets/img/rifle_bullet.png";
 import thunder from "../../assets/img/thunder.png";
-import knife1 from "../../assets/img/cuchillo1.png";
-import knife2 from "../../assets/img/cuchillo2.png";
-import knife3 from "../../assets/img/cuchillo3.png";
-import knife4 from "../../assets/img/cuchillo4.png";
-import knife5 from "../../assets/img/cuchillo5.png";
 
 import map from '../../assets/maps/rungun.json';
 import bullet from '../../assets/sprites/bullet.png';
@@ -22,28 +22,28 @@ import cook_atlas from '../../assets/sprites/cook/cook_atlas.json';
 import mike_dash from '../../assets/sprites/Dash.png';
 import doorClosed from '../../assets/sprites/DoorClosed.png';
 import doorOpen from '../../assets/sprites/DoorOpen.png';
+import mike_idle_ak from "../../assets/sprites/idle_shootin_ak.png";
 import mike_idle_shoot from "../../assets/sprites/idle_shooting.png";
 import mike_idle_m16 from "../../assets/sprites/idle_shooting_m16.png";
-import mike_idle_ak from "../../assets/sprites/idle_shootin_ak.png";
 import mike_jump from '../../assets/sprites/Jump2.png';
-import mike_jump_m16 from '../../assets/sprites/mike_jump_m16.png';
-import mike_jump_ak from '../../assets/sprites/mike_jump_ak.png';
 import mike_down from '../../assets/sprites/mike_down.png';
 import mike_fall from '../../assets/sprites/mike_fall.png';
 import mike_idle from '../../assets/sprites/mike_idle.png';
 import mike_idle2 from '../../assets/sprites/mike_idle2.png';
+import mike_jump_ak from '../../assets/sprites/mike_jump_ak.png';
+import mike_jump_m16 from '../../assets/sprites/mike_jump_m16.png';
 import mike_running from '../../assets/sprites/mike_running.png';
-import mike_running_shoot from "../../assets/sprites/mike_running_shooting.png";
-import mike_running_m16 from "../../assets/sprites/mike_running_m16.png";
 import mike_running_ak from "../../assets/sprites/mike_running_ak.png";
+import mike_running_m16 from "../../assets/sprites/mike_running_m16.png";
+import mike_running_shoot from "../../assets/sprites/mike_running_shooting.png";
 import mike_is_down from '../../assets/sprites/mikeIsDown.png';
 import photonDestructor from '../../assets/sprites/photonDestructor.png';
 import photonDestructor_atlas_png from '../../assets/sprites/photondestructor/photondestructor.png';
 import photonDestructor_animacion from '../../assets/sprites/photondestructor/photondestructor_anim.json';
 import photonDestructor_atlas from '../../assets/sprites/photondestructor/photondestructor_atlas.json';
+import mike_is_down_ak from "../../assets/sprites/Sitdown_ak.png";
 import mike_is_down_shoot from "../../assets/sprites/Sitdown_shooting.png";
 import mike_is_down_m16 from "../../assets/sprites/Sitdown_shooting_m16.png";
-import mike_is_down_ak from "../../assets/sprites/Sitdown_ak.png";
 import spiderdron from '../../assets/sprites/spiderdron.png';
 import spiderdron_atlas_png from '../../assets/sprites/spiderdron/spiderdron.png';
 import spiderdron_animacion from '../../assets/sprites/spiderdron/spiderdron_anim.json';
@@ -57,18 +57,14 @@ import decorations from '../../assets/tilesets/Decorations.png';
 import ware from '../../assets/tilesets/House-kitchen.png';
 import tables from '../../assets/tilesets/Living Room.png';
 import fondos from '../../assets/tilesets/Terrain.png';
+import background from "../../assets/ui/backgroung.png";
+import bnt_controles from "../../assets/ui/btn_controles.png";
 import btn_full_size from '../../assets/ui/btn_full_size.png';
 import btn_restart from "../../assets/ui/btn_restart.png";
 import btn_start from "../../assets/ui/btn_start.png";
 import ui_heart_empty from "../../assets/ui/ui_heart_empty.png";
 import ui_heart_full from "../../assets/ui/ui_heart_full.png";
 import { FullSizeBtn } from '../components/fullSizeBtn';
-import cook from '../../assets/sprites/cook.png';
-import cook_atlas_png from '../../assets/sprites/cook/cook.png';
-import cook_animacion from '../../assets/sprites/cook/cook_anim.json';
-import cook_atlas from '../../assets/sprites/cook/cook_atlas.json';
-import doorOpen from '../../assets/sprites/doorOpen.png';
-import doorClosed from '../../assets/sprites/doorClosed.png';
 const level1 = require("url:../../assets/music/level1.wav");
 const photonDeath = require("url:../../assets/sounds/photonDeath.mp3");
 const t1000Death = require("url:../../assets/sounds/t-1000Death.wav");
@@ -80,6 +76,14 @@ const getWeapon = require("url:../../assets/sounds/getWeapon.wav");
 const jumpSound = require("url:../../assets/sounds/jump.wav");
 const pick = require("url:../../assets/sounds/health_pick_up.wav");
 const damaged = require("url:../../assets/sounds/hitted.wav");
+
+import dash_control from "../../assets/img/dash_control.png";
+import jump_control from "../../assets/img/jump_control.png";
+import run_left_control from "../../assets/img/run_left_control.png";
+import run_right_control from "../../assets/img/run_right_control.png";
+import shoot_control from "../../assets/img/shoot_control.png";
+import sit_control from "../../assets/img/sit_control.png";
+
 
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
@@ -101,6 +105,7 @@ export default class Boot extends Phaser.Scene {
    * Carga de los assets del juego
    */
   preload() {
+
     // Con setPath podemos establecer el prefijo que se añadirá a todos los load que aparecen a continuación
     this.load.setPath("assets/sprites/");
 
@@ -200,8 +205,18 @@ export default class Boot extends Phaser.Scene {
     this.load.image('ui-heart-empty', ui_heart_empty)
 		this.load.image('ui-heart-full', ui_heart_full)
     this.load.image('logo', logo_estudio);
-    this.load.image("btn_start",btn_start)
-    this.load.image("btn_restart", btn_restart)
+    this.load.image("btn_start",btn_start);
+    this.load.image("bnt_controles", bnt_controles);
+    this.load.image("btn_restart", btn_restart);
+    this.load.image("background", background);
+
+    this.load.image("dash_control", dash_control)
+    this.load.image("jump_control", jump_control)
+    this.load.image("run_left_control", run_left_control)
+
+    this.load.image("run_right_control", run_right_control)
+    this.load.image("shoot_control", shoot_control)
+    this.load.image("sit_control", sit_control)
 
     //Carga de los assets de weapons
     this.load.image('rifle', rifle);
@@ -217,6 +232,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image("knife4", knife4);
     this.load.image("knife5", knife5);
     
+
   }
 
   create() {
