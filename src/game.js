@@ -13,6 +13,7 @@ import Victory from "./scenes/victory.js";
  */
 let config = {
   type: Phaser.AUTO,
+  parent: "juego",
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
