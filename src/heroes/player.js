@@ -11,7 +11,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
   ammo = undefined;
   weapon = undefined;
   textureBullet = "bullet"
-  life = 5;
+  life = 20;
   isShooting = false;
   /**
    * Constructor del jugador
