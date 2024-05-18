@@ -191,7 +191,7 @@ import WeaponsGroup from "../weapons/weaponsGroup.js";
       this.deathLayer = this.map.getObjectLayer('deathLayer');
       this.wallsLayer = this.map.getObjectLayer('wallsLayer');
       
-      this.player = new Player(this, 6500, 510);
+      this.player = new Player(this, 100, 510);
       
       
       // Movimiento cámara sobre el jugador
@@ -218,17 +218,17 @@ import WeaponsGroup from "../weapons/weaponsGroup.js";
       this.enemyBullets = new Bullets(this);
       
       
-      // this.spawnerLayer.objects.forEach((spawnerObject) => {
-      //   console.log("spawn:", spawnerObject.properties[0].value);
-      //   if (spawnerObject.properties[0].value === 'PhotonDestructor') {
-      //     console.log("posicion nuevo", spawnerObject.x, spawnerObject.y);
-      //     this.enemies.push(new PhotonDestructor(this, this.player, spawnerObject.x, spawnerObject.y));
-      //   }
-      //   else if (spawnerObject.properties[0].value === 'T-1000') {
-      //     console.log("posicion nuevo", spawnerObject.x, spawnerObject.y);
-      //     this.enemies.push(new T1000(this, this.player, spawnerObject.x, spawnerObject.y));
-      //   }
-      // });
+      this.spawnerLayer.objects.forEach((spawnerObject) => {
+        console.log("spawn:", spawnerObject.properties[0].value);
+        if (spawnerObject.properties[0].value === 'PhotonDestructor') {
+          console.log("posicion nuevo", spawnerObject.x, spawnerObject.y);
+          this.enemies.push(new PhotonDestructor(this, this.player, spawnerObject.x, spawnerObject.y));
+        }
+        else if (spawnerObject.properties[0].value === 'T-1000') {
+          console.log("posicion nuevo", spawnerObject.x, spawnerObject.y);
+          this.enemies.push(new T1000(this, this.player, spawnerObject.x, spawnerObject.y));
+        }
+      });
       
       // Cargar deathZones
       this.deathLayer.objects.forEach((deathObject) => {
@@ -385,12 +385,4 @@ import WeaponsGroup from "../weapons/weaponsGroup.js";
       this.scene.start("end");
     }
     
-
-    initMap() {
-      // Crear tilemap
-      
-
-
-
-    }
   }
