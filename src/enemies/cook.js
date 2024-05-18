@@ -52,7 +52,14 @@ export default class Cook extends Phaser.GameObjects.Sprite {
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
         this.body.setSize(28,51); // Mantener el mismo tamaño del colisionador
-        this.setTint(0xffffff);
+        if(this.life >= 55){
+            this.setTint(0xffffff);
+        }else{
+            this.throwRate = 510;
+            this.shootRate = 450;
+            this.bulletVelocity = 410;
+            this.knifeVelocity = 235;
+        }
 
         if(Math.abs(this.player.x - this.x) < 550){ 
             this.activo = true;
