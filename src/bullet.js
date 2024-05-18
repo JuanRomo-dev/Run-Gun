@@ -95,7 +95,7 @@ export default class Bullets extends Phaser.GameObjects.Group {
     super(scene);
 
     this.createMultiple({
-      frameQuantity: 250,
+      frameQuantity: 300,
       key: texture,
       active: false,
       visible: false,
@@ -105,7 +105,6 @@ export default class Bullets extends Phaser.GameObjects.Group {
 
   fireBullet(player) {
     let bullet = this.getFirstDead(false);
-    console.log(bullet.texture.key);
     
     if (bullet) {
       bullet.changeTexture(player.textureBullet); 
