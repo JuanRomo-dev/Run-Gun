@@ -7,11 +7,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
   bulletDamage;
   bulletVelocity;
   defaultbulletDamage = 4;
-  defaultbulletVelocity = 350;
+  defaultbulletVelocity = 450;
   ammo = undefined;
   weapon = undefined;
   textureBullet = "bullet"
-  life = 5;
+  life = 6;
   isShooting = false;
   /**
    * Constructor del jugador
@@ -101,7 +101,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
   }
 
   updateConsumible(consumable){
-    if (this.life < 5) {
+    if (this.life < 6) {
         this.scene.sound.play('pickup', { volume: 0.3 });
         this.life += consumable.life;
       }

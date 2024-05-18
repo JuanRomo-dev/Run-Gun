@@ -19,7 +19,7 @@ export default class Victory extends Phaser.Scene {
    */
   create() {
     this.fullSizeBtn.create();
-    this.add.text(550, 250, 'Felicidades, has completado el Juego')
+    this.add.text(550, 250, 'FELICIDADES, has completado el Juego')
         .setOrigin(0.5, 0.5)  // Colocamos el pivote en el centro de cuadro de texto 
         .setAlign('center');  // Centramos el texto dentro del cuadro de texto
 

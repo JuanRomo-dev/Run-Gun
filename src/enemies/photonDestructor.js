@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
 export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
-    life = 15;
+    life = 20;
     score = 20;
     tickRate = 0.5;
     shootRate = 1000; //milisegundos
@@ -49,7 +49,7 @@ export default class PhotonDestructor extends Phaser.GameObjects.Sprite {
                     
                     
                 }else{
-                    if(Math.abs(this.player.x - this.x) > 500){ //Si esta demasiado lejos del jugador
+                    if(Math.abs(this.player.x - this.x) > 600){ //Si esta demasiado lejos del jugador
 
                         if (this.player.x  < this.x) { //si el jugador está a la izquierda 
                             this.body.setVelocityX(-this.speed);

@@ -2,11 +2,13 @@ import Phaser from 'phaser';
 import { sceneEvents } from "../events/eventsCenter.js";
 
 export default class Cook extends Phaser.GameObjects.Sprite {
-    life = 20;
-    score = 20;
-    tickRate = 0.5;
-    shootRate = 500; //milisegundos
-    bulletVelocity = 230;
+    life = 205;
+    score = 1000;
+    tickRate = 1;
+    shootRate = 800; //milisegundos
+    throwRate = 1000; //milisegundos
+    bulletVelocity = 300;
+    knifeVelocity = 265;
     textureBullet = "knife1";
     /**
      * Constructor del enemigo
@@ -52,7 +54,7 @@ export default class Cook extends Phaser.GameObjects.Sprite {
         this.body.setSize(28,51); // Mantener el mismo tamaño del colisionador
         this.setTint(0xffffff);
 
-        if(Math.abs(this.player.x - this.x) < 400){ 
+        if(Math.abs(this.player.x - this.x) < 550){ 
             this.activo = true;
             //cierra la puerta 
             this.scene.physics.add.collider(this.door, this.player);
@@ -110,7 +112,7 @@ export default class Cook extends Phaser.GameObjects.Sprite {
     throw(time){
         if(time > this.tickRate){
             this.bullets.throwKnife(this);
-            this.tickRate = time + this.shootRate;
+            this.tickRate = time + this.throwRate;
         }
     }
 

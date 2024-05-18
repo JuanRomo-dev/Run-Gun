@@ -19,7 +19,7 @@ export default class End extends Phaser.Scene {
    */
   create() {
     this.fullSizeBtn.create();
-    this.add.text(550, 250, 'Se acabó!\nHaz click en la imagen para volver a jugar')
+    this.add.text(550, 250, 'GAME OVER\nHaz click en la imagen para volver a jugar')
         .setOrigin(0.5, 0.5)  // Colocamos el pivote en el centro de cuadro de texto 
         .setAlign('center');  // Centramos el texto dentro del cuadro de texto
 

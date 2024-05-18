@@ -18,7 +18,7 @@ export default class GameUI extends Phaser.Scene{
         y: 38,
         stepX:18
       },
-      quantity: 5
+      quantity: 6
     })
     sceneEvents.on('player-health-changed', this.handlePlayerHealthChanged, this)
     sceneEvents.on('game-over', this.deleteUI, this); 

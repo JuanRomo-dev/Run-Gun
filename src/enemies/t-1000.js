@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
 export default class T1000 extends Phaser.GameObjects.Sprite {
-    life = 10;
+    life = 15;
     score = 5;
     tickRate = 0.5;
     shootRate = 1000; //milisegundos
@@ -38,7 +38,7 @@ export default class T1000 extends Phaser.GameObjects.Sprite {
                     this.body.setVelocityX(0);
                     this.anims.play('t1000_idle', true);
                 }else{
-                    if(Math.abs(this.player.x - this.x) > 450){ //Si esta demasiado lejos del jugador
+                    if(Math.abs(this.player.x - this.x) > 650){ //Si esta demasiado lejos del jugador
 
                         if (this.player.x  < this.x) { //si el jugador está a la izquierda 
                             this.body.setVelocityX(-this.speed);
