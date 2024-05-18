@@ -2,12 +2,12 @@ import Phaser from 'phaser';
 import { sceneEvents } from "../events/eventsCenter.js";
 
 export default class Cook extends Phaser.GameObjects.Sprite {
-    life = 10;
+    life = 20;
     score = 20;
     tickRate = 0.5;
     shootRate = 500; //milisegundos
     bulletVelocity = 230;
-    textureBullet = "knife";
+    textureBullet = "knife1";
     /**
      * Constructor del enemigo
      * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
@@ -87,6 +87,7 @@ export default class Cook extends Phaser.GameObjects.Sprite {
                 }else{
                     this.body.setVelocityX(0);
                 }
+                this.fire(t)
             }else{
                 this.body.setVelocityX(0);
                 if (this.player.x  < this.x) { //si el jugador está a la izquierda
@@ -98,7 +99,7 @@ export default class Cook extends Phaser.GameObjects.Sprite {
                     
                 }
             }
-            this.fire(t)
+            this.throw(t)
         }   
     }
 
@@ -106,9 +107,16 @@ export default class Cook extends Phaser.GameObjects.Sprite {
         this.bullets = bullets;
     }
 
-    fire(time){
+    throw(time){
         if(time > this.tickRate){
             this.bullets.throwKnife(this);
+            this.tickRate = time + this.shootRate;
+        }
+    }
+
+    fire(time){
+        if(time > this.tickRate){
+            this.bullets.fireBullet(this);
             this.tickRate = time + this.shootRate;
         }
     }
