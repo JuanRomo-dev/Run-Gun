@@ -83,7 +83,7 @@ import run_left_control from "../../assets/img/run_left_control.png";
 import run_right_control from "../../assets/img/run_right_control.png";
 import shoot_control from "../../assets/img/shoot_control.png";
 import sit_control from "../../assets/img/sit_control.png";
-
+import btn_exit from "../../assets/ui/btn_exit.png";
 
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
@@ -209,6 +209,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image("bnt_controles", bnt_controles);
     this.load.image("btn_restart", btn_restart);
     this.load.image("background", background);
+    this.load.image("btn_exit", btn_exit);
 
     this.load.image("dash_control", dash_control)
     this.load.image("jump_control", jump_control)
