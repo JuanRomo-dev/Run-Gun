@@ -10,29 +10,11 @@ La IA domina el mundo en un contexto apocalíptico tras una guerra nuclear entre
 
 <h3>Controles Teclado</h3> 
 <p>El movimiento es A para ir a izquierda y con la D para ir con la derecha </p>
-<p>Con W apuntas a arriba y con S apuntas a abajo</p>
-<p>Combinadno shift + S te bajas de una plataforma</p>
-<p>Combinando W + D apuntas en diagonal, lo mismo pasaria para apuntar en otras diagonales </p>
 <p>Disparo con el click </p>
 <p>Se salta con espacio </p>
 <p>Dash con shift</p>
 <p>Agacharse con ctrl</p>
-<p>Granadas con la C</p>
-<p>Superpoder con V</p>
 
-<h3>Controles Joystick (PlayStation)</h3>
-<p>Se irá a izquierda o derecha dependiendo del joystick </p>
-<p>Se apunta siguiendo la dirección del joystick, en 8 direcciones</p>
-<p>L2+joystick hacia abajo te bajas de las plataformas</p>
-<p>Disparo con el R2 </p>
-<p>Se salta con la X </p>
-<p>Dash con L2</p>
-<p>Agacharse con Círculo</p>
-<p>Granadas con la R1</p>
-<p>Supepoder con Triángulo</p>
-
-<h3>Otros</h3>
-<p>Se desbloqueará armas al final de cada nivel para poder comprarlas en una tienda antes y durante una misión,y al deslizarse (dash) se esquivaran las balas</p>
 
 # <img src="/images/RiGamepadLine.png" width="75" height="75"/> Género
 Run and gun / Shoot em up
@@ -51,8 +33,12 @@ Cualquier persona entusiaste de los arcade, sobre todo más clásicos, desde una
 
 # <img src="/images/grenade.png" width="50" height="60"/> Screen display 
 
-El juego tendrá una interfaz sencilla, con información relevante como las vidas del jugador, la barra que indica cuanto queda para cargar la habilidad del personaje, los puntos, la arma que se tiene en ese momento junto con la munición restante.
-El "feeling", es decir como se verá el juego, será usando colores vivos (neones, rayos láser, nuclear) junto a escenarios apagados y más sobrios propios de un apocalipsis.
+Se empieza con una escena de cargar donde aparece nuestro logo de la compañia. Luego, se muestra un menu con 2 botones para jugar o ver los controles. 
+
+El juego en si tendrá una interfaz sencilla, con información relevante como las vidas del jugador, los puntos y la municion.
+El "feeling", es decir como se verá el juego, será usando colores vivos (neones, rayos láser, nuclear) junto a escenarios apagados y más sobrios propios de un apocalipsis. 
+Además, estaran 2 componentes ui. Uno es el de activar/desactivar la música de fondo y el otro es de activar/desactivar la pantalla completa.
+
 
 # <img src="/images/grenade.png" width="50" height="60"/> Heróes 
 <table>
@@ -63,130 +49,99 @@ El "feeling", es decir como se verá el juego, será usando colores vivos (neone
   </tr>
   <tr>
     <th><img src="/images/mike.png" width="40" height="50"/> Mike</th>
-    <th>2 bloques/seg</th>
-    <th>5 vidas</th>
+    <th>300 unidades de phaser</th>
+    <th>6 vidas</th>
   </tr>
-  <tr>
-    <th><img src="/images/kime.png" width="40" height="50"/> Kime</th>
-    <th>2 bloques/seg</th>
-    <th>5 vidas</th>
-  </tr>
-  <tr>
-    <th><img src="/images/kike.png" width="40" height="50"/> Kike</th>
-    <th>2 bloques/seg</th>
-    <th>5 vidas</th>
-  </tr>
+
 </table>
 
-# <img src="/images/grenade.png" width="50" height="60"/> Suporpedores Héroes 
-<p>Matando 10 enemigos se llena la barra del superpoder. Al 100% se puede utilizar el superpoder. Cuando se utiliza la barra vuelve al 0%.</p>
-
-<table>
-  <tr>
-    <th>Héore</th>
-    <th>Nombre Superpoder</th>
-    <th>Daño</th>
-    <th>Descripcion</th>
-  </tr>
-  <tr>
-    <th> Mike</th>
-    <th>Rayo láser</th>
-    <th>10</th>
-    <th>Dispara un rayo láser desde el cabeza del jugador que va en horizontal ocupando el 3 veces el tamaño de la cabeza </th>
-  </tr>
-  <tr>
-    <th> Kime</th>
-    <th>Granada P.E.M.</th>
-    <th>0</th>
-    <th>Es un granada que lanza X distancia, que robota 2 veces, luego se eleva al centro de la pantalla y stunea a todos los enemigos con ondas electromágneticas</th>
-  </tr>
-  <tr>
-    <th> Kike</th>
-    <th>Dron</th>
-    <th>0</th>
-    <th>Despliega un dron, luego este se pega al jugador y le da un escudo de 1 vida y al ser golpeada el héroe el dron explota (hasta que no se destruya no se volverá a cargar la barra de superpoder)</th>
-  </tr>
-</table>
 
 # <img src="/images/LsGame.png" width="75" height="75"/> Enemigos
 <table>
   <tr>
     <th>Enemy</th>
     <th>Life</th>
-    <th>Velocidad</th>
+    <th>Puntos</th>
+    <th>Velocidad movimiento</th>
+    <th>Velocidad Disparo</th>
     <th>Description</th>
   </tr>
   <tr>
     <th><img src="/images/spider.gif" width="90" height="75"/> SpiderDron</th>
+    <th>5</th>
     <th>10</th>
-    <th>1 bloque/seg</th>
-    <th>Un enemigo débil pero molesto. Se sube al techo </th>
+    <th>200</th>
+    <th>0</th>
+    <th>Un enemigo débil pero molesto. Se sube al techo(Diseñado pero no implementado) </th>
   </tr>
   <tr>
-    <th><img src="/images/IG.png" width="120" height="90"/>      <br>   T-1000       </th>
-    <th>50</th>
-    <th>1.5 bloque/seg</th>
-    <th>Un enemigo básico no muy difícil de vencer. Apunta y dispara al héro un láser que va a 1.5 bloque/seg¿?</th>
+    <th><img src="/assets/sprites/t-1000.png" width="120" height="90"/>      <br>   T-1000       </th>
+    <th>15</th>
+    <th>5</th>
+    <th>0</th>
+    <th>300</th>
+    <th>Un enemigo básico no muy difícil de vencer. Apunta y dispara al héro un láser </th>
   </tr> 
   <tr>
     <th><img src="/images/PhotonDestructor.png" width="75"/> PhotonDestructor</th>
-    <th>80</th>
-    <th>0.75 bloque/seg</th>
-    <th>Enemigo tipo "tanque", que se mueve a baja velocidad, y posee mayor vida. Lanza una bola de energía (fotón), que al recorrer una cierta distancia explota en área</th>
+    <th>20</th>
+    <th>20</th>
+    <th>100</th>
+    <th>400</th>
+    <th>Enemigo tipo "tanque", que se mueve a baja velocidad, y posee mayor vida. Lanza una bola de energía (fotón)</th>
   </tr>
 </table>
 
 # <img src="/images/arma.png" width="75" height="75"/> Armas
 <table>
   <tr>
-    <th>Enemy</th>
+    <th>Name</th>
     <th>Damage</th>
-    <th>Firing rate (bullets/sec)</th>
+    <th>Velocity</th>
+    <th>Municion</th>
     <th>Description</th>
-    <th>Movimientos</th>
   </tr>
   <tr>
     <th><img src="/images/pistole.png" width="32" height="22"/> <br> Pistola</th>
-    <th>2</th>
-    <th>1</th>
+    <th>4</th>
+    <th>450</th>
+    <th>Infinito</th>
     <th>Una pistola básica para empezar</th>
   </tr>
+   <tr>
+    <th><img src="/assets/img/rifle.png" width="60" height="30"/>Rifle</th>
+    <th>5</th>
+    <th>600</th>
+    <th>20</th>
+    <th>Un fusil de asalto automático con buena cadencia de disparo y velocidad</th>
+  </tr>
   <tr>
-    <th><img src="/images/m16.png" width="60" height="30"/> M-16</th>
-    <th>4</th>
-    <th>3</th>
-    <th>Un fusil de asalto automático con buena cadencia de disparo</th>
+    <th><img src="/assets/img/m16.png" width="60" height="30"/> M-16</th>
+    <th>8</th>
+    <th>575</th>
+    <th>25</th>
+    <th>Un arma de plasma de gran daño</th>
   </tr>
 </table>
 
 # <img src="/images/jefe-final.png" width="75" height="75"/> Niveles y Jefes finales
-Vamos a tener 3 niveles. El primero sera dificultad fácil, el segundo medio y el último difícil. Tendrán barra de vida en la parte superior de la pantalla.
+Vamos a tener 1 nivel. El primero tiene una dificultad media.
 
-Estos serán los jefes finales de cada nivel:
+Estos será el jefe final de nivel 1
 <table>
   <tr>
-    <th>Nivel</th>
     <th>Nombre</th>
-    <th>Description (provisional)</th>
-    <th>Ataques (provisional)</th>
+    <th>Life</th>
+    <th>Puntos</th>
+    <th>Description </th>
+    <th>Ataques </th>
   </tr>
   <tr>
-    <th>1</th>
-    <th>Los cocineros (Jefe doble)</th>
-    <th>Uno estará armado con una espatula y el otro con un rodillo de cocina, ambos llevarán gorro de chef. La barra de vida estará partida a la mitad y serán independientes.</th>
-    <th>Golpes con su arma principal a melé cuando estas cerca y cuando te alejas te lanza utensilios de cocina (platos, cuchillos, comida, ...). A veces harán un ataque conjunto lanzando objetos hacia arriba obligando al juador a esquivar cuando caigan. Si matas a uno de los 2 el otro se enfadará y cubrira el suelo con salsa picante teniendo que combatir sobre las mesas. </th>
-  </tr>
-  <tr>
-    <th>2</th>
-    <th>EL vicedecano</th>
-  </tr>
-  <tr>
-    <th>3</th>
-    <th>Cleongh(plot twist)</th>
-  </tr>
-  
+    <th>Los cocineros</th>
+    <th>205</th>
+    <th>1000</th>
+    <th>Cocinero con delantal y gorra blanca listo para matarnos. Estara en un cuarto que se cerrara con una puerta al acercanos para tener un 1vs1. Si el jugador no va hacia él, este se acerca. Si el jugador se acerca a este, este retrocede utilizando su ataque corto</th>
+    <th>Consta de 2 ataques. El ataque a larga distancia consiste en tirar materiales de cocina en forma de parabola. El ataque a corta distancia consiste en tirar un cuchillo en horizontal</th>
 </table>
 
-Detalles de cada nivel:
-
-El nivel 1 empezará en el bosque porque nuestro personaje se ha perdido (ahi se encontrará con Cleongh y será el tutorial), después de avanzar un poco entrará por un agujero gigante en la pared de la facultad y continuará por lo pasillos hasta llegar a la cocina, donde aparecerá la primera pelea de jefe.
+El nivel 1 comienza en la cafeteria, donde habra hoyos que te mataran y platafomas varias. Varios enemigos y al final te enfretas al jefe.
