@@ -18,6 +18,19 @@ class Bullet extends Phaser.GameObjects.Sprite {
     this.body.reset(player.x, player.y);
     this.body.setAllowGravity(false);
 
+
+    if(player.textureBullet == "knife1"){      
+      this.setScale(1.5, 1.5);
+      this.body.setOffset(0, 10);
+      if(player.direction == "right"){
+        this.setFlipX(false);
+      }
+      else if(player.direction == "left"){
+        this.setFlipX(true);
+      }
+      
+    }
+
     this.setActive(true);
     this.setVisible(true);
     if(player.direction == "right"){
