@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
 export default class Rifle extends Phaser.GameObjects.Sprite {
-  bulletDamage = 4;
+  bulletDamage = 5;
   bulletVelocity = 600;
   name = "rifle";
   ammo = 20;

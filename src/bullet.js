@@ -56,10 +56,10 @@ class Bullet extends Phaser.GameObjects.Sprite {
     this.body.setVelocityY(-300);
     this.setScale(1.5, 1.5);
     if(player.direction == "right"){
-      this.body.setVelocityX(player.bulletVelocity); 
+      this.body.setVelocityX(player.knifeVelocity); 
     }
     else if(player.direction == "left"){
-      this.body.setVelocityX(-player.bulletVelocity);
+      this.body.setVelocityX(-player.knifeVelocity);
     }
   }
 
@@ -77,7 +77,7 @@ class Bullet extends Phaser.GameObjects.Sprite {
       this.setRotation(this.giro);
     }
 
-    if (this.x > cameraX + cameraWidth || this.x < cameraX) {
+    if (this.x > cameraX + cameraWidth + 30 || this.x < cameraX) {
       this.setActive(false);
       this.setVisible(false);
       this.destroy();
