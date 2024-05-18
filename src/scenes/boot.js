@@ -12,7 +12,6 @@ import m16_bullet from "../../assets/img/m16_bullet.png";
 import rifle from "../../assets/img/rifle.png";
 import rifle_bullet from "../../assets/img/rifle_bullet.png";
 import thunder from "../../assets/img/thunder.png";
-
 import map from '../../assets/maps/rungun.json';
 import bullet from '../../assets/sprites/bullet.png';
 import cook from '../../assets/sprites/cook.png';
@@ -64,6 +63,8 @@ import btn_restart from "../../assets/ui/btn_restart.png";
 import btn_start from "../../assets/ui/btn_start.png";
 import ui_heart_empty from "../../assets/ui/ui_heart_empty.png";
 import ui_heart_full from "../../assets/ui/ui_heart_full.png";
+import btn_music from '../../assets/ui/ui_music.png';
+import tituloJuego from "../../images/logo.png";
 import { FullSizeBtn } from '../components/fullSizeBtn';
 const level1 = require("url:../../assets/music/level1.wav");
 const photonDeath = require("url:../../assets/sounds/photonDeath.mp3");
@@ -153,7 +154,8 @@ export default class Boot extends Phaser.Scene {
     
     //sprites ui
     this.load.spritesheet('btnFullSize',btn_full_size, {frameWidth: 50, frameHeight:50});
-
+    this.load.spritesheet('btnMusic', btn_music, {frameWidth: 100, frameHeight:100})
+    
     this.load.audio('level1', level1);
     
     this.load.audio('photonDeath', photonDeath);
@@ -218,6 +220,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image("run_right_control", run_right_control)
     this.load.image("shoot_control", shoot_control)
     this.load.image("sit_control", sit_control)
+    this.load.image("tituloJuego", tituloJuego);
 
     //Carga de los assets de weapons
     this.load.image('rifle', rifle);

@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 
 import Bullets from '../bullet.js';
 import { FullSizeBtn } from '../components/fullSizeBtn.js';
+import { MusicBtn } from '../components/musicBtn.js';
 import ConsumiblesGroup from '../consumibles/consumiblesGroup.js';
 import Heart from '../consumibles/heart.js';
 import DeathZone from '../deathZones/deathZone.js';
@@ -28,6 +29,8 @@ export default class Level extends Phaser.Scene {
   constructor() {
     super({ key: "level" });
     this.fullSizeBtn = new FullSizeBtn(this);
+    this.musicBtn = new MusicBtn(this);
+    this.musicState = null; // Almacenar el estado de la música
   }
 
   /**
@@ -186,7 +189,6 @@ export default class Level extends Phaser.Scene {
     this.deathLayer = this.map.getObjectLayer('deathLayer');
     this.wallsLayer = this.map.getObjectLayer('wallsLayer');
     
-    console.log(this.spawnerLayer);
    
     this.player = new Player(this, 100, 510);
     
@@ -284,6 +286,7 @@ export default class Level extends Phaser.Scene {
       this.physics.add.collider(consumible, this.mesasLayer);
     })
 
+    this.musicBtn.create();
     this.fullSizeBtn.create();
     this.input.on(
       "pointerdown",

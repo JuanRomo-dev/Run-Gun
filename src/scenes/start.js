@@ -10,6 +10,7 @@ export default class Start extends Phaser.Scene{
   create(){
     this.add.image(0,0,"background").setScale(1.5);
     this.fullSizeBtn.create();
+    this.add.image(550,100,'tituloJuego').setScale(0.5);
     this.startButton = this.add.sprite(550,280,'btn_start').setInteractive().setScale(0.5);
     this.controlesButton = this.add.sprite(550, 420, "bnt_controles").setInteractive().setScale(1.5);
     this.startButton.on('pointerdown', () =>{
