@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-
+import { FullSizeBtn } from '../components/fullSizeBtn';
 /**
  * Escena de fin de juego. Cuando se han recogido todas las estrellas, se presenta un
  * texto que indica que el juego se ha acabado.
@@ -11,13 +11,15 @@ export default class End extends Phaser.Scene {
    */
   constructor() {
     super({ key: 'end' });
+    this.fullSizeBtn = new FullSizeBtn(this);
   }
 
   /**
    * Creación de la escena. Tan solo contiene el texto que indica que el juego se ha acabado
    */
   create() {
-    this.add.text(550, 250, 'Se acabó!\nHaz click en la imagen para volver a jugar')
+    this.fullSizeBtn.create();
+    this.add.text(550, 250, 'GAME OVER\nHaz click en la imagen para volver a jugar')
         .setOrigin(0.5, 0.5)  // Colocamos el pivote en el centro de cuadro de texto 
         .setAlign('center');  // Centramos el texto dentro del cuadro de texto
 

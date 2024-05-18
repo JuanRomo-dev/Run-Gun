@@ -7,11 +7,11 @@ export default class Player extends Phaser.GameObjects.Sprite {
   bulletDamage;
   bulletVelocity;
   defaultbulletDamage = 4;
-  defaultbulletVelocity = 350;
+  defaultbulletVelocity = 450;
   ammo = undefined;
   weapon = undefined;
   textureBullet = "bullet"
-  life = 5;
+  life = 6;
   isShooting = false;
   /**
    * Constructor del jugador
@@ -87,7 +87,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
   }
 
-  updateWeapon(weapon){
+  updateWeapon(weapon) {
+    this.scene.sound.play('getWeapon');
     this.bulletVelocity = weapon.bulletVelocity;
     this.bulletDamage = weapon.bulletDamage;
     this.textureBullet = weapon.textureBullet;
@@ -99,7 +100,14 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.updateAmmoLabel(this.ammo);
   }
 
-  loseLife(){
+  updateConsumible(consumable){
+    if (this.life < 6) {
+        this.scene.sound.play('pickup', { volume: 0.3 });
+        this.life += consumable.life;
+      }
+  }
+  loseLife() {
+    this.scene.sound.play('damaged', { volume: 0.7 } );
     --this.life;
   }
 
@@ -144,8 +152,15 @@ export default class Player extends Phaser.GameObjects.Sprite {
             this.body.setVelocityX(0);
             if(!this.isShooting)
               this.anims.play('mikeIsDown', true);
-            else{
-              this.anims.play('mikeIsDownShoot', true);
+            else {
+              if (this.textureBullet === "bullet") {
+                this.anims.play('mikeIsDownShoot', true);
+              }
+              else if (this.weapon.name == "m16") {
+                this.anims.play('mikeIsDownM16', true);
+              } else if (this.weapon.name == "rifle") {
+                this.anims.play('mikeIsDownAK', true);
+              }
               this.once('animationcomplete', () =>{ 
                 this.isShooting = false;
               });
@@ -153,26 +168,63 @@ export default class Player extends Phaser.GameObjects.Sprite {
           } else if (this.cursors.right.isDown) { // Player se mueve a la derecha
             this.direction = "right";
             this.body.setVelocityX(this.speed);
-            this.anims.play('mike_run', true).setFlipX(false);
+            if (this.textureBullet == "bullet") {
+              this.anims.play('mike_run', true).setFlipX(false);
+            } else if (this.weapon.name == "m16") {
+              this.anims.play('mike_run_m16', true).setFlipX(false);
+            } else if (this.weapon.name == "rifle") {
+              this.anims.play('mike_run_ak', true).setFlipX(false);
+            }
           } else if (this.cursors.left.isDown) { // Player se mueve a la izquierda
             this.direction = "left";
             this.body.setVelocityX(-this.speed);
-            this.anims.play('mike_run', true).setFlipX(true);
+            if (this.textureBullet == "bullet") {
+              this.anims.play('mike_run', true).setFlipX(true);
+            } else if (this.weapon.name == "m16") {
+              this.anims.play('mike_run_m16', true).setFlipX(true);
+            } else if (this.weapon.name == "rifle") {
+              this.anims.play('mike_run_ak', true).setFlipX(true);
+            }
           } else { // Player está quieto
             this.body.setVelocityX(0);
             if(!this.isShooting)
               this.anims.play('mike_idle', true);
-            else{
-              this.anims.play('mike_idle_shoot', true);
-              this.once('animationcomplete', () =>{ 
+            else {
+              if (this.textureBullet === "bullet") {
+                this.anims.play('mike_idle_shoot', true);
+                this.once('animationcomplete', () =>{ 
                 this.isShooting = false;
               });
+              }
+              else if (this.weapon.name == "m16") {
+                console.log("m16_bullet");
+                this.anims.play('mike_idle_m16', true);
+                this.once('animationcomplete', () =>{ 
+                this.isShooting = false;
+              });
+              }
+              else if (this.weapon.name == "rifle") {
+                console.log("Animacionnnnnn riffle_bullet");
+                this.anims.play('mike_idle_ak', true);
+                this.once('animationcomplete', () =>{ 
+                this.isShooting = false;
+              });
+              }
+              
             }
           }
           // Control de salto
           if (Phaser.Input.Keyboard.JustDown(this.cursors.spacebar)) { // Si la tecla de espacio se presiona
             this.body.setVelocityY(this.jumpSpeed);
-            this.anims.play('mike_jump', true);
+            this.scene.sound.play('jump', { volume: 0.3 });
+            if (this.textureBullet == "bullet") {
+              this.anims.play('mike_jump', true);
+            } else if (this.weapon.name == "m16") { 
+              this.anims.play('mike_jump_m16', true);
+            }
+            else if (this.weapon.name == "rifle") {
+              this.anims.play('mike_jump_ak', true);
+            }
           }
         } else if (this.body.velocity.y < 0) { // Si está saltando (subiendo verticalmente)
           if (this.cursors.right.isDown) {
@@ -194,6 +246,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
       dashControl: () => {
         if (Phaser.Input.Keyboard.JustDown(this.cursors.shift) && this.canDash) {
           this.initDash();
+          this.scene.sound.play('dash');
           this.play('mikeDash', true);
         }
       },

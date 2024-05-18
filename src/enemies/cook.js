@@ -2,11 +2,14 @@ import Phaser from 'phaser';
 import { sceneEvents } from "../events/eventsCenter.js";
 
 export default class Cook extends Phaser.GameObjects.Sprite {
-    life = 20;
-    score = 20;
-    tickRate = 0.5;
-    shootRate = 1000; //milisegundos
-    bulletVelocity = 400;
+    life = 205;
+    score = 1000;
+    tickRate = 1;
+    shootRate = 800; //milisegundos
+    throwRate = 1000; //milisegundos
+    bulletVelocity = 300;
+    knifeVelocity = 265;
+    textureBullet = "knife1";
     /**
      * Constructor del enemigo
      * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
@@ -21,14 +24,14 @@ export default class Cook extends Phaser.GameObjects.Sprite {
         this.scene.physics.add.existing(this);
         this.scene.physics.add.collider(this, player);
         this.body.setCollideWorldBounds();
-        this.speed = 100;
+        this.speed = 200;
         this.jumpSpeed = -100;
         this.player = player;
         this.direction = "left";
         this.setScale(2, 2);
         this.activo = false;
 
-
+        //Crea el puerta
         this.door = scene.physics.add.sprite(6505, 500, "doorOpen"); 
         this.door.setScale(1.5,2); 
         this.door.setSize(25,200);
@@ -39,6 +42,7 @@ export default class Cook extends Phaser.GameObjects.Sprite {
         this.door.body.setCollideWorldBounds();
         this.door.body.allowGravity = false;
         this.door.body.immovable = true;    
+        this.scene.physics.add.collider(this.door, this);
     }
 
 /**
@@ -48,11 +52,18 @@ export default class Cook extends Phaser.GameObjects.Sprite {
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
         this.body.setSize(28,51); // Mantener el mismo tamaño del colisionador
-        //this.body.setOffset(4,0); // Mantener el mismo desplazamiento del colisionador
-        this.setTint(0xffffff);
+        if(this.life >= 55){
+            this.setTint(0xffffff);
+        }else{
+            this.throwRate = 510;
+            this.shootRate = 450;
+            this.bulletVelocity = 410;
+            this.knifeVelocity = 235;
+        }
 
-        if(Math.abs(this.player.x - this.x) < 400){
+        if(Math.abs(this.player.x - this.x) < 550){ 
             this.activo = true;
+            //cierra la puerta 
             this.scene.physics.add.collider(this.door, this.player);
             this.door.setTexture('doorClosed');
             this.door.setOffset(30, -90);
@@ -74,26 +85,42 @@ export default class Cook extends Phaser.GameObjects.Sprite {
                 }else{
                     this.body.setVelocityX(0);
                 }
+            }else if(Math.abs(this.player.x - this.x) < 300){ //Si esta demasiado cerca del jugador
+
+                if (this.player.x  < this.x) { //si el jugador está a la izquierda 
+                    this.body.setVelocityX(this.speed);
+                    this.anims.play('cook_run', true).setFlipX(true); 
+                }else if (this.player.x > this.x){ //si el jugador está a la derecha
+                    this.body.setVelocityX(-this.speed);
+                    this.anims.play('cook_run', true).setFlipX(false); 
+                }else{
+                    this.body.setVelocityX(0);
+                }
+                this.fire(t)
             }else{
                 this.body.setVelocityX(0);
                 if (this.player.x  < this.x) { //si el jugador está a la izquierda
+                    this.direction = "left"
                     this.anims.play('cook_atack', true).setFlipX(true);
-                    //this.body.setSize(23,34); // Mantener el mismo tamaño del colisionador
-                    //this.body.setOffset(21.5,0); // Mantener el mismo desplazamiento del colisionador
-                    this.fire(t)
                 }else{ //si el jugador está a la derecha
                     this.direction = "right"
                     this.anims.play('cook_atack', true).setFlipX(false);
-                    //this.body.setSize(23,34); // Mantener el mismo tamaño del colisionador
-                    //this.body.setOffset(6,0); // Mantener el mismo desplazamiento del colisionador
-                    this.fire(t)
+                    
                 }
             }
+            this.throw(t)
         }   
     }
 
     initBullets(bullets){
         this.bullets = bullets;
+    }
+
+    throw(time){
+        if(time > this.tickRate){
+            this.bullets.throwKnife(this);
+            this.tickRate = time + this.throwRate;
+        }
     }
 
     fire(time){
@@ -104,8 +131,8 @@ export default class Cook extends Phaser.GameObjects.Sprite {
     }
 
     dead(scene){
-        sceneEvents.emit('game-over')
-        scene.scene.start("end")
+        sceneEvents.emit('game-over');
+        scene.scene.start("victory");
         this.destroy();
     }
 
